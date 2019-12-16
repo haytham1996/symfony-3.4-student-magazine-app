@@ -1,0 +1,35 @@
+/*--Instagram post--*/
+
+.instagram-post-list-wrapper {
+    .category-list-wrapper;
+
+    li {
+        width: 33.333333%;
+        height: 12rem;
+
+        .post-info-wrapper {
+            transform: translateY(101%);
+            transition: all .3s;
+        }
+
+        .list-inner {
+            &:hover {
+                .post-info-wrapper {
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
+
+    .post-info {
+        font-size: 1.4rem;
+        line-height: 2.1rem;
+        color: #fff;
+        font-weight: var(--p-medium);
+
+        i {
+            font-size: 1.2rem;
+            margin-right: .4rem;
+        }
+    }
+}

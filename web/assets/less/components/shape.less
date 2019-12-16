@@ -1,0 +1,36 @@
+/*--Shapes--*/
+
+.axil-shape-circle {
+    position: absolute;
+    @width: 93.7rem;
+    width: @width;
+    height: @width;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .3);
+    transform: scale(.2);
+    transition: all 1s;
+
+    @media @OnTabletPro {
+        @width : 75vw;
+        width: @width;
+        height: @width;
+    }
+
+
+    &.shape-loaded {
+        transform: scale(1);
+    }
+}
+
+.axil-shape-circle__two {
+    .axil-shape-circle;
+    @width: 71rem;
+    width: @width;
+    height: @width;
+
+    @media @OnTabletPro {
+        @width : 50vw;
+        width: @width;
+        height: @width;
+    }
+}

@@ -1,0 +1,42 @@
+/*--Plyr--*/
+
+.plyr {
+    margin-bottom: 2rem;
+
+    video {
+        margin-bottom: 0;
+    }
+}
+
+.plyr--full-ui.plyr--video .plyr__control--overlaid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 7rem;
+    height: 7rem;
+    background: #fff;
+    color: var(--grey-dark-one);
+
+    &:hover {
+        box-shadow: 0 0 10rem rgba(0, 0, 0, 0.7);
+    }
+}
+
+.plyr--audio .plyr__controls {
+    background-color: var(--primary-color);
+}
+
+.plyr__control,
+.plyr__time {
+    color: #fff;
+}
+
+.plyr__volume input[type=range] {
+    color: var(--color-yellow-one);
+}
+
+.plyr--audio .plyr__control.plyr__tab-focus,
+.plyr--audio .plyr__control:hover,
+.plyr--audio .plyr__control[aria-expanded=true] {
+    background: var(--color-yellow-one);
+}

@@ -1,0 +1,116 @@
+/*--Social share--*/
+
+.social-share {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+
+    li {
+        margin-right: 1rem;
+
+        a {
+            font-size: 2rem;
+            color: var(--grey-dark-one);
+
+            &:hover {
+                color: var(--primary-color);
+            }
+        }
+    }
+
+    &__with-bg {
+
+        li {
+
+            a {
+                display: block;
+                width: 3.2rem;
+                height: 3.2rem;
+                background: var(--grey-dark-one);
+                border-radius: 100%;
+                font-size: 1.2rem;
+                line-height: 3.2rem;
+                color: #fff;
+                text-align: center;
+
+                &:hover {
+                    background: var(--primary-color);
+                    color: #fff;
+                    transform: rotate(45deg);
+                }
+            }
+        }
+
+        &-white {
+            li {
+                a {
+                    background: #fff;
+                    color: var(--grey-dark-one);
+                }
+            }
+        }
+    }
+
+    &__vertical {
+        flex-direction: column;
+
+        li {
+            margin: 0 0 2rem;
+        }
+    }
+
+    &__square {
+        li {
+            margin: 0;
+
+            a {
+                width: 8rem;
+                height: 6rem;
+                line-height: 6rem;
+                border-radius: 0;
+
+                @media @OnTabletMini {
+                    width: 6rem;
+                }
+
+                &:hover {
+                    transform: none;
+                }
+            }
+        }
+    }
+}
+
+.post-details__social-share {
+    position: absolute;
+    top: 0;
+    left: -6.4rem;
+
+    @media @OnTabletPro {
+        position: static;
+
+        .social-share__vertical {
+            flex-direction: row;
+            margin-bottom: 2rem;
+
+            li {
+                margin: 0 1rem 1rem 0;
+            }
+        }
+    }
+}
+
+.contact-social-share {
+    .social-share-list-wrapper {
+        margin: -1rem;
+
+        li {
+            width: 7.2rem;
+            height: 7.2rem;
+            padding: 1rem;
+        }
+    }
+}

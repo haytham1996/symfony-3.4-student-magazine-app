@@ -1,0 +1,47 @@
+
+/*--Sidebar social share--*/
+.social-share-list-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: -.5rem;
+
+    li {
+        width: 25%;
+        height: 10rem;
+        padding: .5rem;
+        color: #fff;
+
+        .list-inner {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            transition: all .2s;
+
+            &:hover {
+                color: inherit;
+                transform: translateY(-2px);
+            }
+        }
+
+        i {
+            font-size: 1.8rem;
+        }
+
+        .counts {
+            font-size: 1.4rem;
+            line-height: 2.2rem;
+            font-weight: var(--p-bold);
+        }
+
+        .title {
+            font-family: var(--secondary-font);
+            font-size: 1rem;
+            line-height: 1.3rem;
+        }
+
+    }
+}

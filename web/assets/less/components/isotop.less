@@ -1,0 +1,233 @@
+/*--Isotop--*/
+
+.axil-filter-button-group {
+    .filter-btn {
+        font-size: 1.2rem;
+        line-height: 2rem;
+        color: var(--grey-dark-one);
+        font-weight: var(--p-bold);
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        position: relative;
+        padding: 0;
+        margin: 0 1rem;
+
+        @media @OnTabletMini {
+            margin: 0 1rem 1rem 0;
+
+            &:nth-last-of-type(1) {
+                margin-right: 0;
+            }
+        }
+
+
+        &::after {
+            content: " ";
+            position: absolute;
+            bottom: -2.1rem;
+            left: 0;
+            width: 100%;
+            height: .2rem;
+            background-color: var(--primary-color);
+            display: block;
+            transform: scaleX(0);
+            transition: all .5s;
+        }
+
+        &:hover,
+        &.is-checked,
+        &:focus {
+            outline: 0;
+
+            &::after {
+                transform: scaleX(1);
+            }
+        }
+    }
+}
+
+.section-title {
+    .axil-filter-button-group {
+        @media @OnTabletMini {
+            order: 3;
+            margin-top: 2rem;
+
+            .filter-btn {
+                &::after {
+                    bottom: -.5rem;
+                }
+            }
+        }
+    }
+}
+
+.axil-iso-grid {
+    transition: height .5s;
+}
+
+.iso-grid-item {
+    margin-bottom: 3rem;
+
+    .post-block {
+        margin-bottom: 0;
+    }
+}
+
+.axil-img-container {
+    position: relative;
+    overflow: hidden;
+
+    &.flex-height-container {
+        height: calc(100% - 3rem);
+
+        @media @OnTabletMini {
+            height: auto;
+            margin-bottom: 3rem;
+
+            img {
+                min-height: 25rem;
+                object-fit: cover;
+            }
+        }
+
+        img {
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .media-body {
+            height: 100%;
+        }
+    }
+
+    &.flex-height-container__forced {
+        height: calc(100% - 9rem);
+
+        img {
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .media {
+            height: 100%;
+        }
+    }
+
+    img {
+        width: 100%;
+        transition: all .5s;
+    }
+
+    &:hover {
+        >a {
+            >img {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    >a {
+        .grad-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .media {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        margin-bottom: 0 !important;
+    }
+
+    .media-body {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 3rem;
+
+        .axil-post-title {
+            color: #fff;
+
+            @media @OnTabletMini {
+                font-size: 1.6rem;
+                line-height: 2.6rem;
+            }
+        }
+
+        &__big {
+            padding: 5rem;
+            justify-content: flex-end;
+
+            @media @OnTabletMini {
+                padding: 3rem;
+            }
+
+            .axil-post-title {
+                font-size: 2.8rem;
+                line-height: 1.4;
+
+                @media @OnTabletMini {
+                    font-size: 1.8rem;
+                    line-height: 2.8rem;
+                }
+            }
+        }
+    }
+
+    .post-metas {
+        ul {
+            color: var(--grey-light-one);
+        }
+
+        img {
+            max-width: 4rem;
+            margin-right: 1rem !important;
+
+            @media @OnMobile {
+                margin: 0 1rem 0 0 !important;
+            }
+        }
+    }
+
+    .video-play-btn {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        @media @OnTabletMini {
+            top: 3rem;
+            left: 3rem;
+            width: 5rem;
+            height: 5rem;
+            transform: none;
+        }
+    }
+
+    &.video-container__type-2 {
+        .video-play-btn {
+            top: 5rem;
+            left: 5rem;
+            transform: none;
+
+            @media @OnTabletMini {
+                top: 3rem;
+                left: 3rem;
+            }
+        }
+    }
+}
+
+.axil-img-container {
+    &:hover {
+        .hover-line {
+            a {
+                background-size: 100% 2px;
+            }
+        }
+    }
+}

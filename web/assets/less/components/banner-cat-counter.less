@@ -1,0 +1,67 @@
+
+/*--Banner category counter--*/
+.axil-banner-cat-counter {
+    transform: translateY(-50%);
+    margin-bottom: -9.2rem;
+
+    @media @OnTabletPro {
+        transform: none;
+        margin-bottom: 6rem;
+    }
+
+    .axil-content {
+        position: relative;
+        background: #fff;
+
+        &::before {
+            content: " ";
+            position: absolute;
+            top: 5rem;
+            right: 5.5rem;
+            bottom: -2rem;
+            left: 5.5rem;
+            background: rgba(18, 18, 19, .2);
+            filter: blur(12px);
+        }
+
+        @media @OnTabletPro {
+            margin-top: 6rem;
+            box-shadow: 0 0 50px rgba(0, 0, 0, .2);
+
+            &::before {
+                display: none;
+            }
+        }
+    }
+
+    .category-list-wrapper {
+        position: relative;
+        background: #fff;
+        margin: 0 -2.5rem;
+        padding: 3rem;
+
+        li {
+            width: 20%;
+            padding: 3rem;
+        }
+
+        @media @OnTabletPro {
+            justify-content: center;
+            margin: 0;
+
+            li {
+                width: 25%;
+                padding: 1rem;
+            }
+        }
+
+        @media @OnMobile {
+            padding: 1rem;
+
+            li {
+                width: 50%;
+                padding: 1rem;
+            }
+        }
+    }
+}

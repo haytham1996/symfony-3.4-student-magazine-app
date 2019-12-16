@@ -1,0 +1,71 @@
+/*--Contacts--*/
+
+.axil-map-wrapper {
+    height: 55rem;
+    overflow: hidden;
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    @media @OnTabletMini {
+        height: 30rem;
+    }
+}
+
+.axil-contact-form-block,
+.axil-contact-info-inner {
+    background: #fff;
+    padding: 5rem;
+
+    @media @OnTabletMini {
+        padding: 4rem 2rem;
+    }
+}
+
+address {
+    .tel {
+        font-family: var(--secondary-font);
+        display: block;
+        font-size: 1.6rem;
+        line-height: 2.8rem;
+        color: var(--grey-dark-two);
+        margin-bottom: 1.5rem;
+        .line-hover-effect;
+        background-position: 0 100%;
+        margin-left: 2.2rem;
+
+        i {
+            position: absolute;
+            top: 3px;
+            left: -2.2rem;
+            font-size: 1.4rem;
+        }
+
+        @media @OnTabletMini {
+            font-size: 1.4rem;
+            line-height: 2.4rem;
+
+            i {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+.contact-social-share {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .axil-social-title {
+        margin-bottom: 0;
+        margin-right: 2rem;
+    }
+
+    .social-share li {
+        margin-right: 1rem;
+    }
+}

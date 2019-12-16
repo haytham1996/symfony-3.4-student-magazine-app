@@ -1,0 +1,24 @@
+/*--Author details--*/
+
+.author-details-block {
+    position: relative;
+    padding: 3rem;
+    background: var(--color-white);
+
+    .author-social-share {
+        position: absolute;
+        top: 3rem;
+        right: 2rem;
+
+        @media @OnTabletMini {
+            position: static;
+            margin-top: 2rem;
+        }
+    }
+}
+
+.author-social-share {
+    .social-share__with-bg li {
+        margin-right: 1rem;
+    }
+}

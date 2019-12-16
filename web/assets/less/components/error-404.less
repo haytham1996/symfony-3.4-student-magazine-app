@@ -1,0 +1,53 @@
+/*--Error 404--*/
+
+.error-404-banner {
+    padding: 16rem 0;
+
+    @media @OnTabletMini {
+        padding: 20rem 0;
+    }
+
+    @media @OnMobile {
+        padding: 6rem 0;
+    }
+}
+
+.error-404-content {
+    position: relative;
+
+    .txt-404 {
+        position: relative;
+        font-size: 47rem;
+        line-height: 1;
+        color: #fff;
+        font-weight: var(--p-bold);
+        z-index: 1;
+    }
+
+    .error-inner-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 5;
+		width: 100%;
+    }
+
+    @media @OnTabletMini {
+        .txt-404 {
+            font-size: 30rem;
+        }
+    }
+
+    @media @OnMobile {
+        .txt-404 {
+            font-size: 12rem;
+            margin-bottom: 1rem;
+        }
+
+        .error-inner-content {
+            position: static;
+            transform: none;
+        }
+    }
+}

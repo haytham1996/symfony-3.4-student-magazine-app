@@ -1,0 +1,84 @@
+/*--Under construction--*/
+
+.under-construction-inner-content {
+    height: 100vh;
+    padding: 10rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+
+    .brand-logo-container {
+        margin-bottom: 4rem;
+
+        .brand-logo {
+            max-width: 25rem;
+            max-height: 4.5rem;
+            height: 4.5rem;
+        }
+    }
+
+    .axil-title {
+        margin-bottom: 4rem;
+    }
+
+    .newsletter-content {
+        margin: 0;
+
+        .form-group {
+            width: 25rem;
+        }
+    }
+
+    .btn {
+        margin-left: 2rem;
+    }
+
+    @media @OnTabletPro {
+        height: calc(100vh - 7rem);
+        padding: 10vw;
+        background: #fff;
+
+        .brand-logo {
+            max-height: 5rem;
+            max-width: 18rem;
+        }
+    }
+
+    @media @OnMobile {
+        height: calc(100vh - 3rem);
+        padding: 8vw;
+        background: #fff;
+
+        .brand-logo-container {
+            margin-bottom: 3rem;
+        }
+
+        .brand-logo {
+            max-height: 5rem;
+            max-width: 18rem;
+        }
+
+        .axil-title {
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+        }
+
+        .btn {
+            margin-left: 0;
+        }
+    }
+}
+
+.under-construction-banner {
+    @media @OnTabletPro {
+        padding: 3.5rem 0;
+    }
+
+    @media @OnMobile {
+        padding: 1.5rem 0;
+    }
+}

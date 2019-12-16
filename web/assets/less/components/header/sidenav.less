@@ -1,0 +1,291 @@
+/*--Sidenav--*/
+
+.side-nav {
+    @width: 60vw;
+    width: @width;
+    height: 100vh;
+    background: var(--color-white);
+    position: fixed;
+    top: 0;
+    right: -61vw;
+    z-index: 9999;
+    padding: 10.5rem;
+    transition: all .8s var(--cubic-easing);
+
+    ::placeholder {
+        color: var(--grey-mid);
+        opacity: 1;
+    }
+
+    :-ms-input-placeholder {
+        color: var(--grey-mid);
+    }
+
+    ::-ms-input-placeholder {
+        color: var(--grey-mid);
+    }
+
+    &.opened {
+        right: 0;
+    }
+
+    @media @OnTabletPro {
+        width: 100vw;
+        right: -100vw;
+        padding: 2rem;
+
+        &.opened {
+            right: 0;
+        }
+    }
+
+
+    &__left {
+        right: auto;
+        left: -61vw;
+
+        &.opened {
+            left: 0;
+        }
+
+        @media @OnTabletPro {
+            left: -100vw;
+        }
+    }
+
+
+    .side-navigation {
+        padding: 0;
+        align-items: flex-start;
+
+        li {
+            font-size: 3.6rem;
+            line-height: 5rem;
+            color: var(--grey-dark-one);
+            font-weight: var(--p-semi-bold);
+            margin-bottom: 3rem;
+            padding: 0;
+            text-align: left;
+
+            a {
+                background: none;
+            }
+
+            &.hovered {
+                color: var(--grey-dark-one);
+            }
+
+            &.hover-removed {
+                color: var(--grey-light-one);
+            }
+        }
+
+        a {
+
+            &::before {
+                display: none;
+            }
+
+            &:hover {
+                color: inherit;
+            }
+        }
+
+        a::after {
+            bottom: -3.5rem;
+        }
+
+        @media @OnTabletMini {
+            visibility: visible;
+            opacity: 1;
+            margin-bottom: 1.5rem;
+
+            li {
+                font-size: 2rem;
+                line-height: 2rem;
+            }
+
+            a {
+                color: inherit;
+            }
+        }
+
+        @media @OnTabletMini {
+            li {
+                font-size: 1.6rem;
+                line-height: 2.6rem;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    form {
+        margin-bottom: 8rem;
+
+        @media @OnTabletMini {
+            margin-bottom: 4rem;
+        }
+
+        .input-border {
+            stroke-width: 4px;
+        }
+
+        @media @OnTabletMini {
+            font-size: 2rem;
+            bottom: 0.5rem;
+        }
+    }
+
+    .side-nav-search-btn {
+        position: absolute;
+        right: 0;
+        bottom: 1.8rem;
+        border: none;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
+
+        i {
+            font-size: 2rem;
+            color: var(--grey-mid);
+            transition: all 0.5s;
+            font-weight: 400;
+        }
+
+        &:hover {
+            i {
+                color: var(--primary-color);
+            }
+        }
+
+        @media @OnMobile {
+            bottom: 1rem;
+            right: 2rem;
+
+            i {
+                font-size: 1.6rem;
+            }
+        }
+    }
+
+    input {
+        font-family: var(--primary-font);
+        font-size: 3rem;
+        line-height: 3.2rem;
+        color: var(--grey-dark-one);
+        font-weight: var(--p-medium);
+        padding: 1.9rem 0;
+        border: none;
+        border-bottom: 2px solid var(--grey-mid);
+
+        @media @OnMobile {
+            font-size: 1.6rem;
+            padding: .9rem 0;
+        }
+    }
+
+    .focused {
+        input {
+            border-color: var(--primary-color);
+        }
+    }
+
+    .form-group {
+        &.focused {
+            .input-txt {
+                transform: translateY(6rem);
+
+                @media @OnMobile {
+                    transform: translateY(4rem);
+                }
+            }
+        }
+    }
+}
+
+.axil-contact-info-inner {
+    padding: 0;
+    margin-bottom: 3rem;
+}
+
+.close-sidenav {
+    position: absolute;
+    top: 5rem;
+    right: 10.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 4.6rem;
+    height: 4.6rem;
+    border-radius: 100%;
+    padding: 0;
+    cursor: pointer;
+    z-index: 9;
+    transition: transform 0.2s;
+
+    @media @OnTabletMini {
+        top: 1rem;
+        right: 1rem;
+    }
+
+    div {
+        width: 2rem;
+        height: .2rem;
+        background: var(--grey-dark-one);
+
+        &:nth-of-type(1) {
+            transform: rotate(45deg);
+        }
+
+        &:nth-of-type(2) {
+            transform: rotate(-45deg) translate(1px, -1px);
+        }
+    }
+
+    &:hover {
+        transform: rotate(90deg);
+    }
+}
+
+
+
+.side-navigation {
+    li {
+        opacity: 0;
+        left: -5rem;
+    }
+}
+
+.side-nav-opened {
+    position: relative;
+    overflow: hidden;
+    padding-right: 17px;
+
+    @media @OnTabletMini {
+        padding-right: 0;
+    }
+
+    &::after {
+        content: " ";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .4);
+        z-index: 999;
+    }
+}
+
+.side-nav-inner {
+    height: 100%;
+    overflow-x: hidden;
+    padding: 5rem 1.5rem;
+}
+
+.side-nav-content {
+    .axil-contact-info-inner {
+        padding: .7rem 0 0;
+    }
+}
