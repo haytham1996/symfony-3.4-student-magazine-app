@@ -40,41 +40,41 @@
     <title>Home</title>
     <!-- links for favicon
         ======================================== -->
-    <link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="assets/favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="assets/favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="assets/favicon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="assets/favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/favicon/manifest.json">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('assets/favicon/apple-icon-57x57.png') }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('assets/favicon/apple-icon-60x60.png')}}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('assets/favicon/apple-icon-72x72.png')}}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/favicon/apple-icon-76x76.png')}}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('assets/favicon/apple-icon-114x114.png')}}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('assets/favicon/apple-icon-120x120.png')}}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('assets/favicon/apple-icon-144x144.png')}}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('assets/favicon/apple-icon-152x152.png')}}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/favicon/apple-icon-180x180.png')}}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/favicon/android-icon-192x192.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/favicon/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('assets/favicon/favicon-96x96.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/favicon/favicon-16x16.png')}}">
+    <link rel="manifest" href="{{ asset('assets/favicon/manifest.json')}}">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="{{ asset('assets/favicon/ms-icon-144x144.png')}}">
     <meta name="theme-color" content="#ffffff">
     <!-- Icon fonts
         ======================================== -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,500i,700,700i,900" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/iconfont.css')}}">
     <!-- css links
         ======================================== -->
     <!-- Bootstrap link -->
-    <link rel="stylesheet" type="text/css" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/bootstrap.min.css')}}">
     <!-- Link Swiper's CSS -->
-    <link rel="stylesheet" href="assets/css/vendor/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/vendor/owl.carousel.min.css')}}">
     <!-- Magnific popup -->
-    <link rel="stylesheet" type="text/css" href="assets/css/vendor/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/magnific-popup.css')}}">
     <!-- Animate css -->
-    <link rel="stylesheet" type="text/css" href="assets/css/vendor/animate.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/animate.css')}}">
 
     <!-- Custom css -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css')}}">
     {% block css %}
     {% endblock %}
 </head>
@@ -90,7 +90,7 @@
         <div class="row no-gutters">
             <div class="col-lg-6">
                 <div class="img-container">
-                    <img src="assets/images/subscribe-popup-img.jpg" alt="subscribe img">
+                    <img src="{{ asset('assets/images/subscribe-popup-img.jpg')}}" alt="subscribe img">
                 </div>
             </div>
             <!-- End of .col-lg-6 -->
@@ -236,68 +236,35 @@
                 <div class="navbar-inner">
                     <div class="brand-logo-container">
                         <a href="index.html">
-                            <img src="assets/images/logo-black.svg" alt="" class="brand-logo">
+                            <img src="{{ asset('assets/images/logo-black.svg')}}" alt="" class="brand-logo">
                         </a>
                     </div>
                     <!-- End of .brand-logo-container -->
                     <div class="main-nav-wrapper">
                         <ul class="main-navigation list-inline" id="main-menu">
-                            <li class="has-dropdown">
+                            <li >
                                 <a href="#">Home</a>
-                                <ul class="submenu">
-                                    <li><a href="index.html">Home One</a></li>
-                                    <li><a href="home-2.html">Home Two</a></li>
-                                    <li><a href="home-3.html">Home Three</a></li>
-                                    <li><a href="home-4.html">Home Four</a></li>
-                                    <li><a href="home-5.html">Home Five</a></li>
-                                </ul>
+
                                 <!-- End of .submenu -->
                             </li>
-                            <li class="has-dropdown">
-                                <a href="#">Posts</a>
-                                <ul class="submenu">
-                                    <li class="has-dropdown">
-                                        <a href="#">Post Layout</a>
-                                        <ul class="submenu">
-                                            <li><a href="post-layout-one.html">Post Layout 1</a></li>
-                                            <li><a href="post-layout-two.html">Post Layout 2</a></li>
-                                            <li><a href="post-layout-three.html">Post Layout 3</a></li>
-                                            <li><a href="post-layout-four.html">Post Layout 4</a></li>
-                                            <li><a href="post-layout-five.html">Post Layout 5</a></li>
-                                        </ul>
+                            <li >
+                                <a href="#">News</a>
+
                                         <!-- End of .submenu -->
                                     </li>
-                                    <li class="has-dropdown">
-                                        <a href="#">Post Format</a>
-                                        <ul class="submenu">
-                                            <li><a href="post-format-standard.html">Post Format Standard</a>
-                                            </li>
-                                            <li><a href="post-format-video.html">Post Format Video</a></li>
-                                            <li><a href="post-format-audio.html">Post Format Audio</a></li>
-                                            <li><a href="post-format-gallery.html">Post Format Gallery</a></li>
-                                            <li><a href="post-format-quote.html">Post Format Quote</a></li>
-                                            <li><a href="post-format-text-only.html">Post Format Text Only</a>
-                                            </li>
-                                        </ul>
+
                                         <!-- End of .submenu -->
-                                    </li>
-                                </ul>
+
+
                                 <!-- End of .submenu -->
-                            </li>
+
                             <li><a href="business.html">Business</a></li>
                             <li><a href="lifestyle.html">Lifestyle</a></li>
                             <li><a href="technology.html">Technology</a></li>
-                            <li><a href="sports.html">Sports</a></li>
-                            <li class="has-dropdown">
-                                <a href="#">Pages</a>
-                                <ul class="submenu">
-                                    <li><a href="author.html">Author</a></li>
-                                    <li><a href="error-404.html">404 Error</a></li>
-                                    <li><a href="under-construction.html">Coming Soon</a></li>
-                                    <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="team.html">Team</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                </ul>
+                            <li><a href="sports.html">Events</a></li>
+                            <li >
+                                <a href="#">Opportunities</a>
+
                                 <!-- End of .submenu -->
                             </li>
                         </ul>
@@ -344,211 +311,203 @@
     <!-- End of .page-header -->
 
 {% block body %}
+
 {% endblock %}
-<footer class="page-footer bg-grey-dark-key">
-    <div class="container">
-        <div class="footer-top">
-            <div class="row">
-                <div class="col-lg-2 col-md-4 col-6">
-                    <div class="footer-widget">
-                        <h2 class="footer-widget-title">
-                            World
-                        </h2>
-                        <ul class="footer-nav">
-                            <li><a href="#">U.N.</a></li>
-                            <li><a href="#">Conflicts</a></li>
-                            <li><a href="#">Terrorism</a></li>
-                            <li><a href="#">Disasters</a></li>
-                            <li><a href="#">Global Economy</a></li>
-                            <li><a href="#">Global Economy</a></li>
-                            <li><a href="#">Environment</a></li>
-                            <li><a href="#">Religion</a></li>
-                            <li><a href="#">Scandals</a></li>
-                        </ul>
-                        <!-- End of .footer-nav -->
-                    </div>
-                    <!-- End of .footer-widget -->
-                </div>
-                <!-- End of .col-lg-2 -->
-                <div class="col-lg-2 col-md-4 col-6">
-                    <div class="footer-widget">
-                        <h2 class="footer-widget-title">
-                            Politics
-                        </h2>
-                        <ul class="footer-nav">
-                            <li><a href="#">Executive</a></li>
-                            <li><a href="#">Senate</a></li>
-                            <li><a href="#">House</a></li>
-                            <li><a href="#">Judiciary</a></li>
-                            <li><a href="#">Foreign policy</a></li>
-                            <li><a href="#">Polls</a></li>
-                            <li><a href="#">Elections</a></li>
-                        </ul>
-                        <!-- End of .footer-nav -->
-                    </div>
-                    <!-- End of .footer-widget -->
-                </div>
-                <!-- End of .col-lg-2 -->
-                <div class="col-lg-2 col-md-4 col-6">
-                    <div class="footer-widget">
-                        <h2 class="footer-widget-title">
-                            Entertainment
-                        </h2>
-                        <ul class="footer-nav">
-                            <li><a href="#">Celebrity News</a></li>
-                            <li><a href="#">Movies</a></li>
-                            <li><a href="#">TV News</a></li>
-                            <li><a href="#">Music News</a></li>
-                            <li><a href="#">Style News</a></li>
-                            <li><a href="#">Entertainment Video</a></li>
-                        </ul>
-                        <!-- End of .footer-nav -->
-                    </div>
-                    <!-- End of .footer-widget -->
-                </div>
-                <!-- End of .col-lg-2 -->
-                <div class="col-lg-2 col-md-4 col-6">
-                    <div class="footer-widget">
-                        <h2 class="footer-widget-title">
-                            Business
-                        </h2>
-                        <ul class="footer-nav">
-                            <li><a href="#">Markets</a></li>
-                            <li><a href="#">Politics</a></li>
-                            <li><a href="#">Technology</a></li>
-                            <li><a href="#">Features</a></li>
-                            <li><a href="#">Business Leaders</a></li>
-                        </ul>
-                        <!-- End of .footer-nav -->
-                    </div>
-                    <!-- End of .footer-widget -->
-                </div>
-                <!-- End of .col-lg-2 -->
-                <div class="col-lg-2 col-md-4 col-6">
-                    <div class="footer-widget">
-                        <h2 class="footer-widget-title">
-                            Health
-                        </h2>
-                        <ul class="footer-nav">
-                            <li><a href="#">Healthy Living</a></li>
-                            <li><a href="#">Medical Research</a></li>
-                            <li><a href="#">Mental Health</a></li>
-                            <li><a href="#">Cancer</a></li>
-                            <li><a href="#">Heart Health</a></li>
-                            <li><a href="#">Children's Health</a></li>
-                        </ul>
-                        <!-- End of .footer-nav -->
-                    </div>
-                    <!-- End of .footer-widget -->
-                </div>
-                <!-- End of .col-lg-2 -->
-                <div class="col-lg-2 col-md-4 col-6">
-                    <div class="footer-widget">
-                        <h2 class="footer-widget-title">
-                            About
-                        </h2>
-                        <ul class="footer-nav">
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Fox Around the World</a></li>
-                            <li><a href="#">Advertise With Us</a></li>
-                            <li><a href="#">Ad Choices</a></li>
-                            <li><a href="#">Media Relations</a></li>
-                            <li><a href="#">Compliance</a></li>
-                        </ul>
-                        <!-- End of .footer-nav -->
-                    </div>
-                    <!-- End of .footer-widget -->
-                </div>
-                <!-- End of .col-lg-2 -->
-            </div>
-            <!-- End of .row -->
-        </div>
-        <!-- End of .footer-top -->
-        <div class="footer-mid">
-            <div class="row align-items-center">
-                <div class="col-md">
-                    <div class="footer-logo-container">
-                        <a href="index.html">
-                            <img src="assets/images/logo-symbol.svg" alt="footer logo" class="footer-logo">
-                        </a>
-                    </div>
-                    <!-- End of .brand-logo-container -->
-                </div>
-                <!-- End of .col-md-6 -->
-                <div class="col-md-auto">
-                    <div class="footer-social-share-wrapper">
-                        <div class="footer-social-share">
-                            <div class="axil-social-title">Find us here</div>
-                            <ul class="social-share social-share__with-bg">
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                            </ul>
+    <footer class="page-footer bg-grey-dark-key">
+        <div class="container">
+            <div class="footer-top">
+                <div class="row">
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <div class="footer-widget">
+                            <h2 class="footer-widget-title">
+                                About US
+                            </h2>
+                            <p>
+                                We are a student magazine based n Hammamet
+                            </p>
+                            <!-- End of .footer-nav -->
                         </div>
+                        <!-- End of .footer-widget -->
                     </div>
-                    <!-- End of .footer-social-share-wrapper -->
+                    <!-- End of .col-lg-2 -->
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <div class="footer-widget">
+                            <h2 class="footer-widget-title">
+                                Politics
+                            </h2>
+                            <ul class="footer-nav">
+                                <li><a href="#">Executive</a></li>
+                                <li><a href="#">Senate</a></li>
+                                <li><a href="#">House</a></li>
+                                <li><a href="#">Judiciary</a></li>
+                                <li><a href="#">Foreign policy</a></li>
+                                <li><a href="#">Polls</a></li>
+                                <li><a href="#">Elections</a></li>
+                            </ul>
+                            <!-- End of .footer-nav -->
+                        </div>
+                        <!-- End of .footer-widget -->
+                    </div>
+                    <!-- End of .col-lg-2 -->
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <div class="footer-widget">
+                            <h2 class="footer-widget-title">
+                                Entertainment
+                            </h2>
+                            <ul class="footer-nav">
+                                <li><a href="#">Celebrity News</a></li>
+                                <li><a href="#">Movies</a></li>
+                                <li><a href="#">TV News</a></li>
+                                <li><a href="#">Music News</a></li>
+                                <li><a href="#">Style News</a></li>
+                                <li><a href="#">Entertainment Video</a></li>
+                            </ul>
+                            <!-- End of .footer-nav -->
+                        </div>
+                        <!-- End of .footer-widget -->
+                    </div>
+                    <!-- End of .col-lg-2 -->
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <div class="footer-widget">
+                            <h2 class="footer-widget-title">
+                                Business
+                            </h2>
+                            <ul class="footer-nav">
+                                <li><a href="#">Markets</a></li>
+                                <li><a href="#">Politics</a></li>
+                                <li><a href="#">Technology</a></li>
+                                <li><a href="#">Features</a></li>
+                                <li><a href="#">Business Leaders</a></li>
+                            </ul>
+                            <!-- End of .footer-nav -->
+                        </div>
+                        <!-- End of .footer-widget -->
+                    </div>
+                    <!-- End of .col-lg-2 -->
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <div class="footer-widget">
+                            <h2 class="footer-widget-title">
+                                Health
+                            </h2>
+                            <ul class="footer-nav">
+                                <li><a href="#">Healthy Living</a></li>
+                                <li><a href="#">Medical Research</a></li>
+                                <li><a href="#">Mental Health</a></li>
+                                <li><a href="#">Cancer</a></li>
+                                <li><a href="#">Heart Health</a></li>
+                                <li><a href="#">Children's Health</a></li>
+                            </ul>
+                            <!-- End of .footer-nav -->
+                        </div>
+                        <!-- End of .footer-widget -->
+                    </div>
+                    <!-- End of .col-lg-2 -->
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <div class="footer-widget">
+                            <h2 class="footer-widget-title">
+                                About
+                            </h2>
+                            <ul class="footer-nav">
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Fox Around the World</a></li>
+                                <li><a href="#">Advertise With Us</a></li>
+                                <li><a href="#">Ad Choices</a></li>
+                                <li><a href="#">Media Relations</a></li>
+                                <li><a href="#">Compliance</a></li>
+                            </ul>
+                            <!-- End of .footer-nav -->
+                        </div>
+                        <!-- End of .footer-widget -->
+                    </div>
+                    <!-- End of .col-lg-2 -->
                 </div>
-                <!-- End of .col-md-6 -->
+                <!-- End of .row -->
             </div>
-            <!-- End of .row -->
+            <!-- End of .footer-top -->
+            <div class="footer-mid">
+                <div class="row align-items-center">
+                    <div class="col-md">
+                        <div class="footer-logo-container">
+                            <a href="index.html">
+                                <img src="assets/images/logo-symbol.svg" alt="footer logo" class="footer-logo">
+                            </a>
+                        </div>
+                        <!-- End of .brand-logo-container -->
+                    </div>
+                    <!-- End of .col-md-6 -->
+                    <div class="col-md-auto">
+                        <div class="footer-social-share-wrapper">
+                            <div class="footer-social-share">
+                                <div class="axil-social-title">Find us here</div>
+                                <ul class="social-share social-share__with-bg">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- End of .footer-social-share-wrapper -->
+                    </div>
+                    <!-- End of .col-md-6 -->
+                </div>
+                <!-- End of .row -->
+            </div>
+            <!-- End of .footer-mid -->
+            <div class="footer-bottom">
+                <ul class="footer-bottom-links">
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Accessibility & CC</a></li>
+                    <li><a href="#">AdChoices</a></li>
+                    <li><a href="#">Modern Slavery Act Statement</a></li>
+                    <li><a href="#">Advertise with us</a></li>
+                    <li><a href="#">Papr Store</a></li>
+                    <li><a href="#">Newsletters</a></li>
+                    <li><a href="#">Transcripts</a></li>
+                    <li><a href="#">License Footage</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                </ul>
+                <!-- End of .footer-bottom-links -->
+                <p class="axil-copyright-txt">
+                    © 2019. All rights reserved by Your Company.
+                </p>
+            </div>
+            <!-- End of .footer-bottom -->
         </div>
-        <!-- End of .footer-mid -->
-        <div class="footer-bottom">
-            <ul class="footer-bottom-links">
-                <li><a href="#">Terms of Use</a></li>
-                <li><a href="#">Accessibility & CC</a></li>
-                <li><a href="#">AdChoices</a></li>
-                <li><a href="#">Modern Slavery Act Statement</a></li>
-                <li><a href="#">Advertise with us</a></li>
-                <li><a href="#">Papr Store</a></li>
-                <li><a href="#">Newsletters</a></li>
-                <li><a href="#">Transcripts</a></li>
-                <li><a href="#">License Footage</a></li>
-                <li><a href="#">Sitemap</a></li>
-            </ul>
-            <!-- End of .footer-bottom-links -->
-            <p class="axil-copyright-txt">
-                © 2019. All rights reserved by Your Company.
-            </p>
-        </div>
-        <!-- End of .footer-bottom -->
-    </div>
-    <!-- End of .container -->
-</footer>
-<!-- End of footer -->
+        <!-- End of .container -->
+    </footer>
 </div>
 <!-- End of .main-content -->
 <!-- Javascripts
     ======================================= -->
 <!-- jQuery -->
-<script src="assets/js/vendor/jquery.min.js"></script>
-<script src="assets/js/vendor/jquery-migrate.min.js"></script>
+<script src="{{ asset('assets/js/vendor/jquery.min.js')}}"></script>
+<script src="{{ asset('assets/js/vendor/jquery-migrate.min.js')}}"></script>
 <!-- jQuery Easing Plugin -->
-<script src="assets/js/vendor/easing-1.3.js"></script>
+<script src="{{ asset('assets/js/vendor/easing-1.3.js')}}"></script>
 <!-- Waypoints js -->
-<script src="assets/js/vendor/jquery.waypoints.min.js"></script>
+<script src="{{ asset('assets/js/vendor/jquery.waypoints.min.js')}}"></script>
 <!-- Owl Carousel JS -->
-<script src="assets/js/vendor/owl.carousel.min.js"></script>
+<script src="{{ asset('assets/js/vendor/owl.carousel.min.js')}}"></script>
 <!-- Slick Carousel JS -->
-<script src="assets/js/vendor/slick.min.js"></script>
+<script src="{{ asset('assets/js/vendor/slick.min.js')}}"></script>
 <!-- Bootstrap js -->
-<script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
-<script src="assets/js/vendor/isotope.pkgd.min.js"></script>
+<script src="{{ asset('assets/js/vendor/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ asset('assets/js/vendor/isotope.pkgd.min.js')}}"></script>
 <!-- Counter up js -->
-<script src="assets/js/vendor/jquery.counterup.js"></script>
+<script src="{{ asset('assets/js/vendor/jquery.counterup.js')}}"></script>
 <!-- Magnific Popup js -->
-<script src="assets/js/vendor/jquery.magnific-popup.min.js"></script>
+<script src="{{ asset('assets/js/vendor/jquery.magnific-popup.min.js')}}"></script>
 <!-- Nicescroll js -->
-<script src="assets/js/vendor/jquery.nicescroll.min.js"></script>
+<script src="{{ asset('assets/js/vendor/jquery.nicescroll.min.js')}}"></script>
 <!-- IF ie -->
 <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
 <!-- Plugins -->
-<script src="assets/js/plugins.js"></script>
+<script src="{{ asset('assets/js/plugins.js')}}"></script>
 <!-- Custom Script -->
-<script src="assets/js/main.js"></script>
+<script src="{{ asset('assets/js/main.js')}}"></script>
 {% block js %}
 {% endblock %}
 </body>

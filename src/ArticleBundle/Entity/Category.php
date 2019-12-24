@@ -31,9 +31,9 @@ class Category
     /**
      * @var int
      *
-     * @ORM\Column(name="views", type="integer", nullable=true)
+     * @ORM\Column(name="nb_articles", type="integer", nullable=true)
      */
-    private $views;
+    private $nbArticles;
 
 
     /**
@@ -71,27 +71,26 @@ class Category
     }
 
     /**
-     * Set views
+     * Set nbArticles
      *
-     * @param integer $views
+     * @param integer $nbArticles
      *
      * @return Category
      */
-    public function setViews($views)
+    public function setNbArticles($nbArticles)
     {
-        $this->views = $views;
+        $this->nbArticles = $nbArticles;
 
         return $this;
     }
 
     /**
-     * Get views
+     * Get nbArticles
      *
-     * @return int
+     * @return integer
      */
-    public function getViews()
+    public function getNbArticles()
     {
-        return $this->views;
+        return $this->nbArticles;
     }
 }
-
