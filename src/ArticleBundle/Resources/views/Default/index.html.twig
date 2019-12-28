@@ -12,7 +12,7 @@
                     <div class="axil-latest-post">
                         <div class="media post-block m-b-xs-20">
                             <figure class="fig-container">
-                                <a href="{{path('show_article',{'id':latestArticle.id})}}"><img src="{{asset('assets/images/post/latest-post.jpg')}}"
+                                <a href="{{path('show_article',{'id':latestArticle.id})}}"><img src="{{latestArticle.displayCover}}"
                                                                          alt="latest post"></a>
 
                                 <div class="post-cat-group m-b-xs-10">
@@ -33,7 +33,7 @@
                             </figure>
                             <div class="media-body">
                                 <h3 class="axil-post-title hover-line hover-line"><a
-                                            href="post-format-standard.html">{{latestArticle.title}}</a></h3>
+                                            href="{{path('show_article',{'id':latestArticle.id})}}">{{latestArticle.title}}</a></h3>
                                 <div class="post-metas">
                                     <ul class="list-inline">
                                         <li>By <a href="#" class="post-author">By {{latestArticle.author}}</a></li>
@@ -60,8 +60,9 @@
                         {% for a in articles %}
                         <div class="axil-content" >
                             <div class="media post-block m-b-xs-30">
-                                <a href="post-format-standard.html" class="align-self-center"><img
-                                            class=" m-r-xs-30" src="{{ asset('assets/images/post/post-img-18.jpg')}}" alt=""></a>
+                                <a href="{{path('show_article',{'id':a.id})}}" class="align-self-center"><img src="{{a.displayCover}}"
+
+                                            class=" m-r-xs-30"  alt=""></a>
                                 <div class="media-body">
                                     <div class="post-cat-group m-b-xs-10">
                                         {% if (a.category.name=="Lifestyle") %}
@@ -79,7 +80,7 @@
                                         {% endif %}
                                     </div>
                                     <h3 class="axil-post-title hover-line hover-line"><a
-                                                href="post-format-standard.html">{{ a.title }}</a></h3>
+                                                href="{{path('show_article',{'id':a.id})}}">{{ a.title }}</a></h3>
                                     <div class="post-metas">
                                         <ul class="list-inline">
                                             <li><a href="#">{{a.author}}</a></li>
@@ -111,8 +112,8 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="axil-img-container m-b-xs-30">
-                        <a href="post-format-standard.html" class="d-block">
-                            <img src="{{ asset('assets/images/top-stories/top-stories-1.jpg')}}" alt="gallery images"
+                        <a href="{{path('show_article',{'id':topArticles[0].id})}}" class="d-block">
+                            <img src="{{ topArticles[0].displayCover }}" alt="gallery images"
                                  class="w-100">
                             <div class="grad-overlay"></div>
                         </a>
@@ -131,7 +132,7 @@
                                 </div>
                                 <div class="axil-media-bottom">
                                     <h3 class="axil-post-title hover-line hover-line"><a
-                                                href="post-format-standard.html">{{topArticles[0].title}}</a></h3>
+                                                href="{{path('show_article',{'id':topArticles[0].id})}}">{{topArticles[0].title}}</a></h3>
                                     <div class="post-metas">
                                         <ul class="list-inline">
                                             <li>By <a href="#" class="post-author">{{topArticles[0].author}}</a></li>
@@ -150,8 +151,8 @@
                 <!-- End of .grid-item -->
                 <div class="col-lg-4">
                     <div class="axil-img-container m-b-xs-30">
-                        <a href="post-format-standard.html" class="d-block">
-                            <img src="{{ asset('assets/images/top-stories/top-stories-2.jpg')}}" alt="gallery images"
+                        <a href="{{path('show_article',{'id':topArticles[1].id})}}" class="d-block">
+                            <img src="{{  topArticles[1].displayCover }}" alt="gallery images"
                                  class="w-100">
                             <div class="grad-overlay"></div>
                         </a>
@@ -170,7 +171,7 @@
                                 </div>
                                 <div class="axil-media-bottom">
                                     <h3 class="axil-post-title hover-line hover-line"><a
-                                                href="post-format-standard.html">{{topArticles[1].title}}</a></h3>
+                                                href="{{path('show_article',{'id':topArticles[1].id})}}">{{topArticles[1].title}}</a></h3>
                                     <div class="post-metas">
                                         <ul class="list-inline">
                                             <li><a href="post-format-standard.html"
@@ -184,8 +185,8 @@
                     </div>
                     <!-- End of .axil-img-container -->
                     <div class="axil-img-container m-b-xs-30">
-                        <a href="post-format-standard.html" class="d-block">
-                            <img src="{{ asset('assets/images/top-stories/top-stories-3.jpg')}}" alt="gallery images"
+                        <a href="{{path('show_article',{'id':topArticles[2].id})}}" class="d-block">
+                            <img src="{{ topArticles[2].displayCover }}" alt="gallery images"
                                  class="w-100">
                             <div class="grad-overlay"></div>
                         </a>
@@ -205,7 +206,7 @@
                                 </div>
                                 <div class="axil-media-bottom">
                                     <h3 class="axil-post-title hover-line hover-line"><a
-                                                href="post-format-standard.html">{{topArticles[2].title}}</a></h3>
+                                                href="{{path('show_article',{'id':topArticles[2].id})}}">{{topArticles[2].title}}</a></h3>
                                     <div class="post-metas">
                                         <ul class="list-inline">
                                             <li><a href="#" class="d-flex align-items-center"><span>By {{topArticles[2].author}}</span></a></li>
@@ -239,8 +240,7 @@
                 <div class="col-lg-6">
 
                     <div class="media post-block m-b-xs-30">
-                        <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
-                                                                                           src="{{ asset('assets/images/trending-stories/trending-stories-6.jpg')}}" alt=""></a>
+                        <a href="{{path('show_article',{'id':tr.id})}}" class="align-self-center"><img class=" m-r-xs-30" src="{{ tr.displayCover }}" alt=""></a>
                         <div class="media-body">
                             <div class="post-cat-group m-b-xs-10">
                                 {% if tr.category.name=="Lifestyle" %}
@@ -254,7 +254,7 @@
                                 {% endif %}
                             </div>
                             <h3 class="axil-post-title hover-line hover-line"><a
-                                        href="post-format-standard.html">{{ tr.title }}</a>
+                                        href="{{path('show_article',{'id':tr.id})}}">{{ tr.title }}</a>
                             </h3>
                             <div class="post-metas">
                                 <ul class="list-inline">
@@ -420,8 +420,7 @@
                     <main class="axil-content">
                       {% for la in articlesList %}
                         <div class="media post-block post-block__mid m-b-xs-30">
-                            <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
-                                                                                               src="{{ asset('assets/images/post/post-img-10.jpg')}}" alt=""></a>
+                            <a href="{{path('show_article',{'id':la.id})}}" class="align-self-center"><img class=" m-r-xs-30" src="{{ la.displayCover }}" alt=""></a>
                             <div class="media-body">
                                 <div class="post-cat-group m-b-xs-10">
                                     {% if la.category.name=="Lifestyle" %}
@@ -435,7 +434,7 @@
                                     {% endif %}
                                 </div>
                                 <h3 class="axil-post-title hover-line hover-line"><a
-                                            href="post-format-standard.html">{{ la.title }}</a>
+                                            href="{{path('show_article',{'id':la.id})}}">{{ la.title }}</a>
                                 </h3>
                                 <p class="mid">{{ la.introduction }} </p>
                                 <div class="post-metas">
@@ -459,6 +458,7 @@
                             <a href="#"><img src="{{ asset('assets/images/clientbanner/clientbanner2.jpg')}}" alt="sidebar add"
                                              class="img-fluid"></a>
                         </div>
+                        {{ form_start(form) }}
                         <div class="newsletter-widget weekly-newsletter bg-grey-light-three m-b-xs-40">
                             <div class="newsletter-content">
                                 <div class="newsletter-icon">
@@ -473,14 +473,14 @@
                                 </div>
                                 <!-- End of .section-title -->
                                 <div class="subscription-form-wrapper">
-                                    <form action="#" class="subscription-form">
+                                    <form class="subscription-form" method="POST" >
                                         <div class="form-group form-group-small m-b-xs-20">
                                             <label for="subscription-email-2">Enter Email Address</label>
-                                            <input type="text" name="subscription-email-2"
-                                                   id="subscription-email-2">
+                                            {{ form_widget(form.mail) }}
                                         </div>
                                         <div class="m-b-xs-0">
-                                            <button class="btn btn-primary btn-small">SUBSCRIBE</button>
+                                            {{ form_widget(form.Subscribe, { 'attr': {'class': 'btn btn-primary btn-small'} }) }}
+                                            {{ form_rest(form) }}
                                         </div>
                                     </form>
                                     <!-- End of .subscription-form -->
@@ -489,6 +489,7 @@
                             </div>
                             <!-- End of .newsletter-content -->
                         </div>
+                        {{ form_end(form) }}
                         <!-- End of  .newsletter-widget -->
                         <div class="category-widget m-b-xs-40">
                             <div class="widget-title">
@@ -676,8 +677,8 @@
                                     <div class="axil-content">
                                         {% for ra in recentArticles %}
                                         <div class="media post-block post-block__small">
-                                            <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{{ asset('assets/images/media/small-media-4.jpg')}}"
+                                            <a href="{{path('show_article',{'id':ra.id})}}" class="align-self-center"><img
+                                                        class=" m-r-xs-30" src="{{ ra.displayCover }}"
                                                         alt="media image"></a>
                                             <div class="media-body">
                                                 {% if ra.category.name=="Lifestyle" %}
@@ -705,7 +706,7 @@
                                                        class="post-cat color-blue-one">{{ra.category.name}}</a>
                                                 {% endif %}
                                                 <h4 class="axil-post-title hover-line hover-line"><a
-                                                            href="post-format-standard.html">{{ra.title}}</a></h4>
+                                                            href="{{path('show_article',{'id':ra.id})}}">{{ra.title}}</a></h4>
                                                 <div class="post-metas">
                                                     <ul class="list-inline">
                                                         <li>By <a href="#">{{ra.author}}</a></li>
@@ -721,178 +722,54 @@
                                 <!-- End of .tab-pane -->
                                 <div class="tab-pane fade" id="popular-post">
                                     <div class="axil-content">
-                                        <div class="media post-block post-block__small">
-                                            <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{{ asset('assets/images/media/small-media-3.jpg')}}"
-                                                        alt="media image"></a>
-                                            <div class="media-body">
-                                                <a href="post-format-standard.html"
-                                                   class="post-cat color-blue-one">FASHION</a>
-                                                <h4 class="axil-post-title hover-line hover-line"><a
-                                                            href="post-format-standard.html">To
-                                                        Keep Makeup Looking Fresh
-                                                        Take A Powder</a></h4>
-                                                <div class="post-metas">
-                                                    <ul class="list-inline">
-                                                        <li>By <a href="#">Sergio Pliego</a></li>
-                                                    </ul>
+                                        {% for po in popularArticles %}
+
+                                            <div class="media post-block post-block__small">
+                                                <a href="post-format-standard.html" class="align-self-center"><img
+                                                            class=" m-r-xs-30" src="{{ po.displayCover }}"
+                                                            alt="media image"></a>
+                                                <div class="media-body">
+                                                    {% if po.category.name=="Lifestyle" %}
+                                                        <a href="post-format-standard.html"
+                                                           class="post-cat color-green-one">{{po.category.name}}</a>
+                                                    {% endif %}
+                                                    {% if po.category.name=="Business" %}
+                                                        <a href="post-format-standard.html"
+                                                           class="post-cat color-blue-two">{{po.category.name}}</a>
+                                                    {% endif %}
+                                                    {% if po.category.name=="Technology" %}
+                                                        <a href="post-format-standard.html"
+                                                           class="post-cat color-blue-one">{{po.category.name}}</a>
+                                                    {% endif %}
+                                                    {% if po.category.name=="Events" %}
+                                                        <a href="post-format-standard.html"
+                                                           class="post-cat color-red-one">{{po.category.name}}</a>
+                                                    {% endif %}
+                                                    {% if po.category.name=="Opportunities" %}
+                                                        <a href="post-format-standard.html"
+                                                           class="post-cat color-blue-grey-one">{{po.category.name}}</a>
+                                                    {% endif %}
+                                                    {% if po.category.name=="News" %}
+                                                        <a href="post-format-standard.html"
+                                                           class="post-cat color-blue-one">{{po.category.name}}</a>
+                                                    {% endif %}
+                                                    <h4 class="axil-post-title hover-line hover-line"><a
+                                                                href="{{path('show_article',{'id':po.id})}}">{{po.title}}</a></h4>
+                                                    <div class="post-metas">
+                                                        <ul class="list-inline">
+                                                            <li>By <a href="#">{{po.author}}</a></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- End of .post-block -->
-                                        <div class="media post-block post-block__small">
-                                            <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{{ asset('assets/images/media/small-media-2.jpg')}}"
-                                                        alt="media image"></a>
-                                            <div class="media-body">
-                                                <a href="#post-format-standard.html"
-                                                   class="post-cat color-blue-three">BEAUTY</a>
-                                                <h4 class="axil-post-title hover-line hover-line"><a
-                                                            href="post-format-standard.html">Stocking Your Restaurant
-                                                        Kitchen Finding Reliable
-                                                        Sellers</a></h4>
-                                                <div class="post-metas">
-                                                    <ul class="list-inline">
-                                                        <li>By <a href="#">Amachea Jajah</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End of .post-block -->
-                                        <div class="media post-block post-block__small">
-                                            <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{{ asset('assets/images/media/small-media-1.jpg')}}"
-                                                        alt="media image"></a>
-                                            <div class="media-body">
-                                                <a href="post-format-standard.html"
-                                                   class="post-cat color-green-three">TRAVEL</a>
-                                                <h4 class="axil-post-title hover-line hover-line"><a
-                                                            href="post-format-standard.html">Trip
-                                                        To Iqaluit In Nunavut A
-                                                        Canadian Arctic
-                                                        City</a>
-                                                </h4>
-                                                <div class="post-metas">
-                                                    <ul class="list-inline">
-                                                        <li>By <a href="#">Xu Jianhong</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End of .post-block -->
-                                        <div class="media post-block post-block__small">
-                                            <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{{ asset('assets/images/media/small-media-4.jpg')}}"
-                                                        alt="media image"></a>
-                                            <div class="media-body">
-                                                <a href="post-format-standard.html"
-                                                   class="post-cat color-red-two">SPORTS</a>
-                                                <h4 class="axil-post-title hover-line hover-line"><a
-                                                            href="post-format-standard.html">RCB
-                                                        vs RR, IPL 2019:
-                                                        Bangalore, Rajasthan desperate
-                                                        for
-                                                        win</a></h4>
-                                                <div class="post-metas">
-                                                    <ul class="list-inline">
-                                                        <li>By <a href="#">Ahmad Nazeri</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            {% endfor %}
                                         <!-- End of .post-block -->
                                     </div>
                                     <!-- End of .content -->
                                 </div>
                                 <!-- End of .tab-pane -->
-                                <div class="tab-pane fade" id="comments">
-                                    <div class="axil-content">
-                                        <div class="media post-block post-block__small">
-                                            <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{{ asset('assets/images/media/small-media-2.jpg')}}"
-                                                        alt="media image"></a>
-                                            <div class="media-body">
-                                                <a href="post-format-standard.html"
-                                                   class="post-cat color-red-two">SPORTS</a>
-                                                <h4 class="axil-post-title hover-line hover-line"><a
-                                                            href="post-format-standard.html">RCB
-                                                        vs RR, IPL 2019:
-                                                        Bangalore, Rajasthan desperate
-                                                        for
-                                                        win</a></h4>
-                                                <div class="post-metas">
-                                                    <ul class="list-inline">
-                                                        <li>By <a href="#">Ahmad Nazeri</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End of .post-block -->
-                                        <div class="media post-block post-block__small">
-                                            <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{{ asset('assets/images/media/small-media-1.jpg')}}"
-                                                        alt="media image"></a>
-                                            <div class="media-body">
-                                                <a href="post-format-standard.html"
-                                                   class="post-cat color-blue-three">BEAUTY</a>
-                                                <h4 class="axil-post-title hover-line hover-line"><a
-                                                            href="post-format-standard.html">Stocking Your Restaurant
-                                                        Kitchen Finding Reliable
-                                                        Sellers</a></h4>
-                                                <div class="post-metas">
-                                                    <ul class="list-inline">
-                                                        <li>By <a href="#">Amachea Jajah</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End of .post-block -->
-                                        <div class="media post-block post-block__small">
-                                            <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{{ asset('assets/images/media/small-media-3.jpg')}}"
-                                                        alt="media image"></a>
-                                            <div class="media-body">
-                                                <a href="post-format-standard.html"
-                                                   class="post-cat color-green-three">TRAVEL</a>
-                                                <h4 class="axil-post-title hover-line hover-line"><a
-                                                            href="post-format-standard.html">Trip
-                                                        To Iqaluit In Nunavut A
-                                                        Canadian Arctic
-                                                        City</a>
-                                                </h4>
-                                                <div class="post-metas">
-                                                    <ul class="list-inline">
-                                                        <li>By <a href="post-format-standard.html">Xu Jianhong</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End of .post-block -->
-                                        <div class="media post-block post-block__small">
-                                            <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{{ asset('assets/images/media/small-media-4.jpg')}}"
-                                                        alt="media image"></a>
-                                            <div class="media-body">
-                                                <a href="post-format-standard.html"
-                                                   class="post-cat color-blue-one">FASHION</a>
-                                                <h4 class="axil-post-title hover-line hover-line"><a
-                                                            href="post-format-standard.html">To
-                                                        Keep Makeup Looking Fresh
-                                                        Take A Powder</a></h4>
-                                                <div class="post-metas">
-                                                    <ul class="list-inline">
-                                                        <li>By <a href="#">Sergio Pliego</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End of .post-block -->
-                                    </div>
-                                    <!-- End of .content -->
-                                </div>
-                                <!-- End of .tab-pane -->
-                            </div>
+
+
                             <!-- End of .tab-content -->
                         </div>
                         <!-- End of .sidebar-post-widget -->

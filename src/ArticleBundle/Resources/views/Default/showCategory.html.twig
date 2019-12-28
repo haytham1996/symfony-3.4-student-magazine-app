@@ -1,0 +1,422 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+{% endblock %}
+
+{% block body %}
+    <div class="breadcrumb-wrapper">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Business</li>
+                </ol>
+                <!-- End of .breadcrumb -->
+            </nav>
+        </div>
+        <!-- End of .container -->
+    </div>
+    <!-- End of .breadcrumb-container -->
+
+    <!-- Banner starts -->
+    <section class="banner banner__default bg-grey-light-three">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="post-title-wrapper">
+                        <h2 class="m-b-xs-0 axil-post-title hover-line">{{ category.name }}</h2>
+                    </div>
+                    <!-- End of .post-title-wrapper -->
+                </div>
+                <!-- End of .col-lg-8 -->
+            </div>
+        </div>
+        <!-- End of .container -->
+    </section>
+    <!-- End of .banner -->
+
+    <div class="random-posts section-gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <main class="axil-content">
+                        <div class="add-container m-b-xs-60">
+                            <a href="#"><img src="assets/images/clientbanner/clientbanner.jpg" alt="add one"
+                                             class="img-fluid"></a>
+                        </div>
+
+                        {% for art in articlesInCategory %}
+                        <div class="media post-block post-block__mid m-b-xs-30">
+                            <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
+                                                                                               src="{{art.displayCover}}" alt=""></a>
+                            <div class="media-body">
+                                <div class="post-cat-group m-b-xs-10">
+                                    {% if art.category.name=="Lifestyle" %}
+                                        <a href="post-format-standard.html"
+                                           class="post-cat color-green-one">{{art.category.name}}</a>
+                                    {% endif %}
+                                    {% if art.category.name=="Business" %}
+                                        <a href="post-format-standard.html"
+                                           class="post-cat color-blue-two">{{art.category.name}}</a>
+                                    {% endif %}
+                                    {% if art.category.name=="Technology" %}
+                                        <a href="post-format-standard.html"
+                                           class="post-cat color-blue-one">{{art.category.name}}</a>
+                                    {% endif %}
+                                    {% if art.category.name=="Events" %}
+                                        <a href="post-format-standard.html"
+                                           class="post-cat color-red-one">{{art.category.name}}</a>
+                                    {% endif %}
+                                    {% if art.category.name=="Opportunities" %}
+                                        <a href="post-format-standard.html"
+                                           class="post-cat color-blue-grey-one">{{art.category.name}}</a>
+                                    {% endif %}
+                                    {% if art.category.name=="News" %}
+                                        <a href="post-format-standard.html"
+                                           class="post-cat color-blue-one">{{art.category.name}}</a>
+                                    {% endif %}
+                                </div>
+                                <h3 class="axil-post-title hover-line hover-line"><a
+                                            href="post-format-standard.html">{{ art.title }}</a>
+                                </h3>
+                                <p class="mid">{{art.introduction}} </p>
+                                <div class="post-metas">
+                                    <ul class="list-inline">
+                                        <li>By <a href="#"{{art.author}}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <!-- End of .post-block -->
+
+
+                    </main>
+                    <!-- End of .axil-content -->
+                </div>
+                <!-- End of .col-lg-8 -->
+
+                <div class="col-lg-4">
+                    <aside class="post-sidebar">
+                        <div class="add-block-widget m-b-xs-40">
+                            <a href="#"><img src="assets/images/clientbanner/clientbanner2.jpg" alt="sidebar add"
+                                             class="img-fluid"></a>
+                        </div>
+                        <!-- End of .add-block-widget -->
+
+
+                        <div class="sidebar-social-share-widget m-b-xs-40">
+                            <ul class="social-share-list-wrapper">
+                                <li class="social-share-list text-center perfect-square">
+                                    <a href="#" class="list-inner bg-color-facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                        <div class="counts">2000+</div>
+                                        <div class="title">Fans</div>
+                                    </a>
+                                </li>
+                                <!-- End of .social-share-list -->
+
+                                <li class="social-share-list text-center perfect-square">
+                                    <a href="#" class="list-inner bg-color-twitter">
+                                        <i class="fab fa-twitter"></i>
+                                        <div class="counts">4000+</div>
+                                        <div class="title">Followers</div>
+                                    </a>
+                                </li>
+                                <!-- End of .social-share-list -->
+
+                                <li class="social-share-list text-center perfect-square">
+                                    <a href="#" class="list-inner bg-color-youtube">
+                                        <i class="fab fa-youtube"></i>
+                                        <div class="counts">1M+</div>
+                                        <div class="title">Subscribers</div>
+                                    </a>
+                                </li>
+                                <!-- End of .social-share-list -->
+
+
+                                <!-- End of .social-share-list -->
+
+                                <li class="social-share-list text-center perfect-square">
+                                    <a href="#" class="list-inner bg-color-instagram">
+                                        <i class="fab fa-instagram"></i>
+                                        <div class="counts">1K+</div>
+                                        <div class="title">Followers</div>
+                                    </a>
+                                </li>
+                                <!-- End of .social-share-list -->
+                            </ul>
+                            <!-- End of .social-share-list-wrapper -->
+                        </div>
+                        <!-- End of .sidebar-social-share -->
+
+                        <div class="category-widget m-b-xs-40">
+                            <div class="widget-title">
+                                <h3>Categories</h3>
+                                <div class="owl-nav">
+                                    <button class="custom-owl-prev"><i
+                                                class="feather icon-chevron-left"></i></button>
+                                    <button class="custom-owl-next"><i
+                                                class="feather icon-chevron-right"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="category-carousel">
+                                <div class="owl-carousel owl-theme">
+                                    <div class="cat-carousel-inner">
+                                        <ul class="category-list-wrapper">
+                                            <li class="category-list perfect-square">
+                                                <a href="#" class="list-inner"
+                                                   style="background-image: url(assets/images/category-bg/category-bg-5.jpg)">
+                                                    <div class="post-info-wrapper overlay">
+                                                        <div class="counter-inner"><span class="counter">20</span>+
+                                                        </div>
+                                                        <h4 class="cat-title">Top Stories</h4>
+                                                    </div>
+                                                    <!-- End of .counter-wrapper -->
+                                                </a>
+                                            </li>
+                                            <!-- End of .category-list -->
+
+                                            <li class="category-list perfect-square">
+                                                <a href="#" class="list-inner"
+                                                   style="background-image: url(assets/images/category-bg/category-bg-6.jpg)">
+                                                    <div class="post-info-wrapper overlay">
+                                                        <div class="counter-inner"><span class="counter">100</span>+
+                                                        </div>
+                                                        <h4 class="cat-title">Business</h4>
+                                                    </div>
+                                                    <!-- End of .counter-wrapper -->
+                                                </a>
+                                            </li>
+                                            <!-- End of .category-list -->
+
+                                            <li class="category-list perfect-square">
+                                                <a href="#" class="list-inner"
+                                                   style="background-image: url(assets/images/category-bg/category-bg-7.jpg)">
+                                                    <div class="post-info-wrapper overlay">
+                                                        <div class="counter-inner"><span class="counter">10</span>+
+                                                        </div>
+                                                        <h4 class="cat-title">Travel</h4>
+                                                    </div>
+                                                    <!-- End of .counter-wrapper -->
+                                                </a>
+                                            </li>
+                                            <!-- End of .category-list -->
+
+                                            <li class="category-list perfect-square">
+                                                <a href="#" class="list-inner"
+                                                   style="background-image: url(assets/images/category-bg/category-bg-8.jpg)">
+                                                    <div class="post-info-wrapper overlay">
+                                                        <div class="counter-inner"><span class="counter">10</span>+
+                                                        </div>
+                                                        <h4 class="cat-title">Food</h4>
+                                                    </div>
+                                                    <!-- End of .counter-wrapper -->
+                                                </a>
+                                            </li>
+                                            <!-- End of .category-list -->
+                                        </ul>
+                                        <!-- End of .category-list-wrapper -->
+                                    </div>
+                                    <!-- End of .cat-carousel-inner -->
+
+                                    <div class="cat-carousel-inner">
+                                        <ul class="category-list-wrapper">
+                                            <li class="category-list perfect-square">
+                                                <a href="#" class="list-inner"
+                                                   style="background-image: url(assets/images/category-bg/category-bg-9.jpg)">
+                                                    <div class="post-info-wrapper overlay">
+                                                        <div class="counter-inner"><span class="counter">20</span>+
+                                                        </div>
+                                                        <h4 class="cat-title">Top Stories</h4>
+                                                    </div>
+                                                    <!-- End of .counter-wrapper -->
+                                                </a>
+                                            </li>
+                                            <!-- End of .category-list -->
+
+                                            <li class="category-list perfect-square">
+                                                <a href="#" class="list-inner"
+                                                   style="background-image: url(assets/images/category-bg/category-bg-5.jpg)">
+                                                    <div class="post-info-wrapper overlay">
+                                                        <div class="counter-inner"><span class="counter">100</span>+
+                                                        </div>
+                                                        <h4 class="cat-title">Business</h4>
+                                                    </div>
+                                                    <!-- End of .counter-wrapper -->
+                                                </a>
+                                            </li>
+                                            <!-- End of .category-list -->
+
+                                            <li class="category-list perfect-square">
+                                                <a href="#" class="list-inner"
+                                                   style="background-image: url(assets/images/category-bg/category-bg-6.jpg)">
+                                                    <div class="post-info-wrapper overlay">
+                                                        <div class="counter-inner"><span class="counter">10</span>+
+                                                        </div>
+                                                        <h4 class="cat-title">Travel</h4>
+                                                    </div>
+                                                    <!-- End of .counter-wrapper -->
+                                                </a>
+                                            </li>
+                                            <!-- End of .category-list -->
+
+                                            <li class="category-list perfect-square">
+                                                <a href="#" class="list-inner"
+                                                   style="background-image: url(assets/images/category-bg/category-bg-7.jpg)">
+                                                    <div class="post-info-wrapper overlay">
+                                                        <div class="counter-inner"><span class="counter">10</span>+
+                                                        </div>
+                                                        <h4 class="cat-title">Food</h4>
+                                                    </div>
+                                                    <!-- End of .counter-wrapper -->
+                                                </a>
+                                            </li>
+                                            <!-- End of .category-list -->
+                                        </ul>
+                                        <!-- End of .category-list-wrapper -->
+                                    </div>
+                                    <!-- End of .cat-carousel-inner -->
+                                </div>
+                                <!-- End of  .owl-carousel -->
+                            </div>
+                            <!-- End of .category-carousel -->
+                        </div>
+                        <!-- End of .category-widget -->
+
+                        <div class="post-widget sidebar-post-widget m-b-xs-40">
+                            <ul class="nav nav-pills row no-gutters">
+                                <li class="nav-item col">
+                                    <a class="nav-link active" data-toggle="pill" href="#recent-post">Recent</a>
+                                </li>
+                                <li class="nav-item col">
+                                    <a class="nav-link" data-toggle="pill" href="#popular-post">Popular</a>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="recent-post">
+                                    <div class="axil-content">
+                                        {% for ra in recentArticles %}
+                                            <div class="media post-block post-block__small">
+                                                <a href="{{path('show_article',{'id':ra.id})}}" class="align-self-center"><img
+                                                            class=" m-r-xs-30" src="{{ ra.displayCover }}"
+                                                            alt="media image"></a>
+                                                <div class="media-body">
+                                                    {% if ra.category.name=="Lifestyle" %}
+                                                        <a href="post-format-standard.html"
+                                                           class="post-cat color-green-one">{{ra.category.name}}</a>
+                                                    {% endif %}
+                                                    {% if ra.category.name=="Business" %}
+                                                        <a href="post-format-standard.html"
+                                                           class="post-cat color-blue-two">{{ra.category.name}}</a>
+                                                    {% endif %}
+                                                    {% if ra.category.name=="Technology" %}
+                                                        <a href="post-format-standard.html"
+                                                           class="post-cat color-blue-one">{{ra.category.name}}</a>
+                                                    {% endif %}
+                                                    {% if ra.category.name=="Events" %}
+                                                        <a href="post-format-standard.html"
+                                                           class="post-cat color-red-one">{{ra.category.name}}</a>
+                                                    {% endif %}
+                                                    {% if ra.category.name=="Opportunities" %}
+                                                        <a href="post-format-standard.html"
+                                                           class="post-cat color-blue-grey-one">{{ra.category.name}}</a>
+                                                    {% endif %}
+                                                    {% if ra.category.name=="News" %}
+                                                        <a href="post-format-standard.html"
+                                                           class="post-cat color-blue-one">{{ra.category.name}}</a>
+                                                    {% endif %}
+                                                    <h4 class="axil-post-title hover-line hover-line"><a
+                                                                href="{{path('show_article',{'id':ra.id})}}">{{ra.title}}</a></h4>
+                                                    <div class="post-metas">
+                                                        <ul class="list-inline">
+                                                            <li>By <a href="#">{{ra.author}}</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                        <!-- End of .post-block -->
+                                    </div>
+                                    <!-- End of .content -->
+                                </div>
+                                <!-- End of .tab-pane -->
+                                <div class="tab-pane fade" id="popular-post">
+                                    <div class="axil-content">
+                                        {% for po in popularArticles %}
+
+                                            <div class="media post-block post-block__small">
+                                                <a href="post-format-standard.html" class="align-self-center"><img
+                                                            class=" m-r-xs-30" src="{{ po.displayCover }}"
+                                                            alt="media image"></a>
+                                                <div class="media-body">
+                                                    {% if po.category.name=="Lifestyle" %}
+                                                        <a href="post-format-standard.html"
+                                                           class="post-cat color-green-one">{{po.category.name}}</a>
+                                                    {% endif %}
+                                                    {% if po.category.name=="Business" %}
+                                                        <a href="post-format-standard.html"
+                                                           class="post-cat color-blue-two">{{po.category.name}}</a>
+                                                    {% endif %}
+                                                    {% if po.category.name=="Technology" %}
+                                                        <a href="post-format-standard.html"
+                                                           class="post-cat color-blue-one">{{po.category.name}}</a>
+                                                    {% endif %}
+                                                    {% if po.category.name=="Events" %}
+                                                        <a href="post-format-standard.html"
+                                                           class="post-cat color-red-one">{{po.category.name}}</a>
+                                                    {% endif %}
+                                                    {% if po.category.name=="Opportunities" %}
+                                                        <a href="post-format-standard.html"
+                                                           class="post-cat color-blue-grey-one">{{po.category.name}}</a>
+                                                    {% endif %}
+                                                    {% if po.category.name=="News" %}
+                                                        <a href="post-format-standard.html"
+                                                           class="post-cat color-blue-one">{{po.category.name}}</a>
+                                                    {% endif %}
+                                                    <h4 class="axil-post-title hover-line hover-line"><a
+                                                                href="{{path('show_article',{'id':po.id})}}">{{po.title}}</a></h4>
+                                                    <div class="post-metas">
+                                                        <ul class="list-inline">
+                                                            <li>By <a href="#">{{po.author}}</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                        <!-- End of .post-block -->
+                                    </div>
+                                    <!-- End of .content -->
+                                </div>
+                                <!-- End of .tab-pane -->
+
+
+                                <!-- End of .tab-content -->
+                            </div>
+                            <!-- End of .sidebar-post-widget -->
+
+                        <div class="add-block-widget m-b-xs-40">
+                            <a href="#"><img src="assets/images/clientbanner/clientbanner3.jpg" alt="sidebar add"
+                                             class="img-fluid"></a>
+                        </div>
+                        <!-- End of .add-block-widget -->
+                    </aside>
+                    <!-- End of .post-sidebar -->
+                </div>
+                <!-- End of .col-lg-4 -->
+            </div>
+            <!-- End of .row -->
+        </div>
+        <!-- End of .container -->
+    </div>
+    <!-- End of .random-posts -->
+
+{% endblock %}
+
+
+{% block js %}
+{% endblock %}
+
+

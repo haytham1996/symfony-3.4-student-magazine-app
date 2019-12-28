@@ -4,3 +4,7 @@ article_homepage:
 show_article:
     path:     /article/{id}
     defaults: { _controller: ArticleBundle:Article:showArticle }
+show_category:
+  path:     /category/{id}
+  defaults: { _controller: ArticleBundle:Article:showCategory }
+

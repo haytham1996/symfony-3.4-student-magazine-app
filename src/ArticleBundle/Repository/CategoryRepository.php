@@ -10,4 +10,5 @@ namespace ArticleBundle\Repository;
  */
 class CategoryRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

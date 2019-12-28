@@ -219,9 +219,9 @@
                     </div>
                     <div class="col-md-auto">
                         <ul class="ml-auto social-share header-top__social-share">
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://www.facebook.com/studentmag.tn/"><i class="fab fa-facebook-f"></i></a></li>
                             <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="https://www.instagram.com/studentmag.tn/"><i class="fab fa-instagram"></i></a></li>
                             <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
                         </ul>
                     </div>
@@ -247,26 +247,13 @@
 
                                 <!-- End of .submenu -->
                             </li>
+                            {% for ca in categories %}
                             <li >
-                                <a href="#">News</a>
+                                <a href="{{ path('show_category',{'id':ca.id}) }}">{{ ca.name }}</a>
 
                                         <!-- End of .submenu -->
-                                    </li>
-
-                                        <!-- End of .submenu -->
-
-
-                                <!-- End of .submenu -->
-
-                            <li><a href="business.html">Business</a></li>
-                            <li><a href="lifestyle.html">Lifestyle</a></li>
-                            <li><a href="technology.html">Technology</a></li>
-                            <li><a href="sports.html">Events</a></li>
-                            <li >
-                                <a href="#">Opportunities</a>
-
-                                <!-- End of .submenu -->
                             </li>
+                            {% endfor %}
                         </ul>
                         <!-- End of .main-navigation -->
                     </div>
@@ -317,110 +304,21 @@
         <div class="container">
             <div class="footer-top">
                 <div class="row">
-                    <div class="col-lg-2 col-md-4 col-6">
+
                         <div class="footer-widget">
                             <h2 class="footer-widget-title">
                                 About US
                             </h2>
                             <p>
-                                We are a student magazine based n Hammamet
+                                We are a student magazine based in Hammamet, <br> that inspires , educates and celebrates students
+                                <br> Our vision: Build a generation of young Entrepreneurs <br> that will change the world and crate a better future .
+                                <br> Our Mission: Arm our students with knowledge and inspire <br>them to push their limits and to be more active and creative
                             </p>
                             <!-- End of .footer-nav -->
                         </div>
-                        <!-- End of .footer-widget -->
-                    </div>
-                    <!-- End of .col-lg-2 -->
-                    <div class="col-lg-2 col-md-4 col-6">
-                        <div class="footer-widget">
-                            <h2 class="footer-widget-title">
-                                Politics
-                            </h2>
-                            <ul class="footer-nav">
-                                <li><a href="#">Executive</a></li>
-                                <li><a href="#">Senate</a></li>
-                                <li><a href="#">House</a></li>
-                                <li><a href="#">Judiciary</a></li>
-                                <li><a href="#">Foreign policy</a></li>
-                                <li><a href="#">Polls</a></li>
-                                <li><a href="#">Elections</a></li>
-                            </ul>
-                            <!-- End of .footer-nav -->
-                        </div>
-                        <!-- End of .footer-widget -->
-                    </div>
-                    <!-- End of .col-lg-2 -->
-                    <div class="col-lg-2 col-md-4 col-6">
-                        <div class="footer-widget">
-                            <h2 class="footer-widget-title">
-                                Entertainment
-                            </h2>
-                            <ul class="footer-nav">
-                                <li><a href="#">Celebrity News</a></li>
-                                <li><a href="#">Movies</a></li>
-                                <li><a href="#">TV News</a></li>
-                                <li><a href="#">Music News</a></li>
-                                <li><a href="#">Style News</a></li>
-                                <li><a href="#">Entertainment Video</a></li>
-                            </ul>
-                            <!-- End of .footer-nav -->
-                        </div>
-                        <!-- End of .footer-widget -->
-                    </div>
-                    <!-- End of .col-lg-2 -->
-                    <div class="col-lg-2 col-md-4 col-6">
-                        <div class="footer-widget">
-                            <h2 class="footer-widget-title">
-                                Business
-                            </h2>
-                            <ul class="footer-nav">
-                                <li><a href="#">Markets</a></li>
-                                <li><a href="#">Politics</a></li>
-                                <li><a href="#">Technology</a></li>
-                                <li><a href="#">Features</a></li>
-                                <li><a href="#">Business Leaders</a></li>
-                            </ul>
-                            <!-- End of .footer-nav -->
-                        </div>
-                        <!-- End of .footer-widget -->
-                    </div>
-                    <!-- End of .col-lg-2 -->
-                    <div class="col-lg-2 col-md-4 col-6">
-                        <div class="footer-widget">
-                            <h2 class="footer-widget-title">
-                                Health
-                            </h2>
-                            <ul class="footer-nav">
-                                <li><a href="#">Healthy Living</a></li>
-                                <li><a href="#">Medical Research</a></li>
-                                <li><a href="#">Mental Health</a></li>
-                                <li><a href="#">Cancer</a></li>
-                                <li><a href="#">Heart Health</a></li>
-                                <li><a href="#">Children's Health</a></li>
-                            </ul>
-                            <!-- End of .footer-nav -->
-                        </div>
-                        <!-- End of .footer-widget -->
-                    </div>
-                    <!-- End of .col-lg-2 -->
-                    <div class="col-lg-2 col-md-4 col-6">
-                        <div class="footer-widget">
-                            <h2 class="footer-widget-title">
-                                About
-                            </h2>
-                            <ul class="footer-nav">
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Careers</a></li>
-                                <li><a href="#">Fox Around the World</a></li>
-                                <li><a href="#">Advertise With Us</a></li>
-                                <li><a href="#">Ad Choices</a></li>
-                                <li><a href="#">Media Relations</a></li>
-                                <li><a href="#">Compliance</a></li>
-                            </ul>
-                            <!-- End of .footer-nav -->
-                        </div>
-                        <!-- End of .footer-widget -->
-                    </div>
-                    <!-- End of .col-lg-2 -->
+
+
+
                 </div>
                 <!-- End of .row -->
             </div>

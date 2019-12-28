@@ -49,6 +49,16 @@ class Article
      * @ORM\Column(name="cover", type="blob")
      */
     private $cover;
+    private $rawCover;
+
+    public function displayCover()
+    {
+        if(null === $this->rawCover) {
+            $this->rawCover = "data:image/png;base64," . base64_encode(stream_get_contents($this->getCover()));
+        }
+
+        return $this->rawCover;
+    }
 
     /**
      * @var string
