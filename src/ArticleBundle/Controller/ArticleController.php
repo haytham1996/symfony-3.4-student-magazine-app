@@ -6,9 +6,12 @@ use ArticleBundle\Entity\Article;
 use ArticleBundle\Entity\Category;
 use ArticleBundle\Entity\User;
 use ArticleBundle\Form\UserType;
+
+use Symfony\Component\BrowserKit ;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ArticleController extends Controller
 {
@@ -38,15 +41,15 @@ class ArticleController extends Controller
 
 
 
+        $form=$this->createFormBuilder($user) ;
         $form=$this->createForm('ArticleBundle\Form\UserType',$user) ;
-
         $form->handleRequest($request) ;
-        if($form->isValid() && $form->isSubmitted())
+        if($form->isSubmitted() && $form->isValid())
         {
             $em=$this->getDoctrine()->getManager() ;
             $em->persist($user) ;
             $em->flush() ;
-
+            return $this->redirectToRoute('article_homepage');
         }
 
 
@@ -59,14 +62,15 @@ class ArticleController extends Controller
             'articlesList'=>$articlesList,
             'recentArticles'=>$recentArticles ,
             'popularArticles'=>$popularArticles,
-          'form'=>$form->createView() ,
           'categories'=>$categories,
+            'form'=>$form->createView() ,
+            'form2'=>$form->createView(),
 
 
         ));
     }
 
-    public function showArticleAction(Article $article)
+    public function showArticleAction(Article $article , Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -77,6 +81,21 @@ class ArticleController extends Controller
         $image3=$images[2];
         $recentArticles=$em->getRepository('ArticleBundle:Article')->findMost4Recent();
         $popularArticles=$em->getRepository('ArticleBundle:Article')->findPopularArticles();
+
+        $user=new User();
+        $form=$this->createFormBuilder($user) ;
+
+        $form=$this->createForm('ArticleBundle\Form\UserType',$user) ;
+        $form->handleRequest($request) ;
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em=$this->getDoctrine()->getManager() ;
+            $em->persist($user) ;
+            $em->flush() ;
+            return $this->redirectToRoute('show_article', ['id' => $article->getId()]);
+        }
+
+
         return $this->render('@Article/Default/showArticle.html.twig', array(
             'article' => $article,
             'categories'=>$categories,
@@ -85,10 +104,11 @@ class ArticleController extends Controller
             'image3'=>$image3,
             'recentArticles'=>$recentArticles ,
             'popularArticles'=>$popularArticles,
+            'form'=>$form->createView(),
 
         ));
     }
-    public function showCategoryAction(Category $category)
+    public function showCategoryAction(Category $category , Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $articlesInCategory=$em->getRepository('ArticleBundle:Article')->findArticlesinCategory($category->getId());
@@ -96,6 +116,23 @@ class ArticleController extends Controller
 
         $recentArticles=$em->getRepository('ArticleBundle:Article')->findMost4Recent();
         $popularArticles=$em->getRepository('ArticleBundle:Article')->findPopularArticles();
+
+
+
+        $user=new User();
+        $form=$this->createFormBuilder($user) ;
+
+        $form=$this->createForm('ArticleBundle\Form\UserType',$user) ;
+        $form->handleRequest($request) ;
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em=$this->getDoctrine()->getManager() ;
+            $em->persist($user) ;
+            $em->flush() ;
+            return $this->redirectToRoute('show_category', ['id' => $category->getId()]);
+        }
+
+
         return $this->render('@Article/Default/showCategory.html.twig', array(
 
             'category'=>$category,
@@ -103,7 +140,26 @@ class ArticleController extends Controller
             'recentArticles'=>$recentArticles ,
             'popularArticles'=>$popularArticles,
             'articlesInCategory'=>$articlesInCategory,
+            'form'=>$form->createView(),
 
         ));
+    }
+    public function searchAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $requestString = $request->get('q');
+        $articles =  $em->getRepository('ArticleBundle:Article')->findEntitiesByString($requestString);
+        if(!$articles) {
+            $result['articles']['error'] = "article Not found :( ";
+        } else {
+            $result['articles'] = $this->getRealEntities($articles);
+        }
+        return new Response(json_encode($result));
+    }
+    public function getRealEntities($articles){
+        foreach ($articles as $articles){
+            $realEntities[$articles->getId()] = [$articles->displayCover(),$articles->getTitle()];
+        }
+        return $realEntities;
     }
 }

@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block body %}
+
     <div class="recent-news-wrapper section-gap p-t-xs-15 p-t-sm-60">
         <div class="container">
             <div class="row">
@@ -54,7 +55,7 @@
                     <div class="axil-recent-news">
                         <div class="section-title d-flex m-b-xs-30">
                             <h2 class="axil-title">Recent Articles</h2>
-                            <a href="#" class="btn-link ml-auto">ALL RECENT Articles</a>
+
                         </div>
                         <!-- End of .section-title -->
                         {% for a in articles %}
@@ -107,7 +108,7 @@
         <div class="container">
             <div class="section-title m-b-xs-40">
                 <h2 class="axil-title">Top Articles</h2>
-                <a href="#" class="btn-link">All Top Articles</a>
+
             </div>
             <div class="row">
                 <div class="col-lg-8">
@@ -123,7 +124,7 @@
                                     {% if topArticles[0].category.name=="Lifestyle" %}
                                     <a href="business.html" class="post-cat cat-btn bg-color-green-one">{{topArticles[0].category.name}}</a>
                                     {% endif %}
-                                    {% if topArticles[0].category.name=="business" %}
+                                    {% if topArticles[0].category.name=="Business" %}
                                         <a href="business.html" class="post-cat cat-btn bg-color-purple-one">{{topArticles[0].category.name}}</a>
                                     {% endif %}
                                     {% if topArticles[0].category.name=="Technology" %}
@@ -230,7 +231,7 @@
         <div class="container">
             <div class="section-title m-b-xs-40">
                 <h2 class="axil-title">Trending Articles</h2>
-                <a href="#" class="btn-link">ALL TRENDING Articles</a>
+
             </div>
 
             <div class="row">
@@ -458,7 +459,9 @@
                             <a href="#"><img src="{{ asset('assets/images/clientbanner/clientbanner2.jpg')}}" alt="sidebar add"
                                              class="img-fluid"></a>
                         </div>
-                        {{ form_start(form) }}
+
+
+
                         <div class="newsletter-widget weekly-newsletter bg-grey-light-three m-b-xs-40">
                             <div class="newsletter-content">
                                 <div class="newsletter-icon">
@@ -471,25 +474,28 @@
                                         products,
                                         updates.</p>
                                 </div>
-                                <!-- End of .section-title -->
+                                {{ form_start(form2) }}
                                 <div class="subscription-form-wrapper">
-                                    <form class="subscription-form" method="POST" >
+                                    <form action="#" class="subscription-form">
                                         <div class="form-group form-group-small m-b-xs-20">
                                             <label for="subscription-email-2">Enter Email Address</label>
-                                            {{ form_widget(form.mail) }}
+                                            {{ form_widget(form2.mail) }}
                                         </div>
                                         <div class="m-b-xs-0">
-                                            {{ form_widget(form.Subscribe, { 'attr': {'class': 'btn btn-primary btn-small'} }) }}
-                                            {{ form_rest(form) }}
+                                            {{ form_widget(form2.Subscribe, { 'attr': {'class': 'btn btn-primary btn-small'} }) }}
+                                            {{ form_rest(form2) }}
                                         </div>
                                     </form>
                                     <!-- End of .subscription-form -->
                                 </div>
+                                {{ form_end(form2) }}
+
                                 <!-- End of .subscription-form-wrapper -->
                             </div>
                             <!-- End of .newsletter-content -->
                         </div>
-                        {{ form_end(form) }}
+
+
                         <!-- End of  .newsletter-widget -->
                         <div class="category-widget m-b-xs-40">
                             <div class="widget-title">

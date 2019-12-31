@@ -95,6 +95,7 @@
             </div>
             <!-- End of .col-lg-6 -->
             <div class="col-lg-6">
+
                 <div class="newsletter-widget weekly-newsletter bg-grey-light-three">
                     <div class="newsletter-content">
                         <div class="newsletter-icon">
@@ -103,18 +104,20 @@
                         <div class="section-title">
                             <h3 class="axil-title">Subscribe To Our Weekly Newsletter</h3>
                             <p class="mid m-t-xs-10 m-b-xs-20">No spam, notifications only about new
-                                products,
+                                articles,
                                 updates.</p>
                         </div>
                         <!-- End of .section-title -->
+                        {{ form_start(form) }}
                         <div class="subscription-form-wrapper">
-                            <form action="#" class="subscription-form">
+                            <form action="#" class="subscription-form" method="post">
                                 <div class="form-group form-group-small m-b-xs-20">
                                     <label for="subscription-email">Enter Email Address</label>
-                                    <input type="text" name="subscription-email" id="subscription-email">
+                                    {{form_widget(form.mail)}}
                                 </div>
                                 <div class="m-b-xs-0">
-                                    <button class="btn btn-primary btn-small">SUBSCRIBE</button>
+                                    {{ form_widget(form.Subscribe, { 'attr': {'class': 'btn btn-primary btn-small'} }) }}
+                                    {{ form_rest(form) }}
                                 </div>
                             </form>
                             <!-- End of .subscription-form -->
@@ -123,6 +126,7 @@
                     </div>
                     <!-- End of .newsletter-content -->
                 </div>
+                {{ form_end(form) }}
                 <!-- End of .newsletter-widget -->
             </div>
             <!-- End of .col-lg-6 -->
@@ -137,13 +141,7 @@
 <div class="main-content">
     <div class="side-nav">
         <div class="side-nav-inner nicescroll-container">
-            <form action="#" class="side-nav-search-form">
-                <div class="form-group search-field">
-                    <input type="text" class="search-field" name="search-field" placeholder="Search...">
-                    <button class="side-nav-search-btn"><i class="fas fa-search"></i></button>
-                </div>
-                <!-- End of .side-nav-search-form -->
-            </form>
+            <h3 class="title ">Welcome to Student mag</h3>
             <!-- End of .side-nav-search-form -->
             <div class="side-nav-content">
                 <div class="row ">
@@ -243,7 +241,7 @@
                     <div class="main-nav-wrapper">
                         <ul class="main-navigation list-inline" id="main-menu">
                             <li >
-                                <a href="#">Home</a>
+                                <a href="{{ path('article_homepage') }}">Home</a>
 
                                 <!-- End of .submenu -->
                             </li>
@@ -261,7 +259,7 @@
                     <div class="navbar-extra-features ml-auto">
                         <form action="#" class="navbar-search">
                             <div class="search-field">
-                                <input type="text" class="navbar-search-field" placeholder="Search Here...">
+                                <input type="text" class="navbar-search-field" placeholder="Search Here..." id="search">
                                 <button class="navbar-search-btn" type="button"><i
                                             class="fal fa-search"></i></button>
                             </div>
@@ -290,12 +288,97 @@
                 <!-- End of .navbar-inner -->
             </div>
 
+
             <!-- End of .container -->
         </nav>
 
         <!-- End of .navbar -->
     </header>
     <!-- End of .page-header -->
+    <section class="section-gap section-gap-top__with-text trending-stories">
+        <div class="container">
+
+            <div class="row">
+    <div class="col-lg-6"  id="entitiesNav">
+
+
+            </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            var searchRequest = null;
+            $("#search").keyup(function() {
+                var minlength = 1;
+                var that = this;
+                var value = $(this).val();
+
+
+
+
+                var entitySelector = $("#entitiesNav").html('');
+                if (value.length >= minlength ) {
+
+
+                    if (searchRequest != null)
+                        searchRequest.abort();
+                    searchRequest = $.ajax({
+                        type: "GET",
+                        url: "{{ path('search_ajax') }}",
+                        data: {
+                            'q' : value
+                        },
+                        dataType: "text",
+                        success: function(msg){
+
+
+                            //we need to check if the value is the same
+                            if (value===$(that).val()) {
+
+                                var result = JSON.parse(msg);
+                                $.each(result, function(key, arr) {
+                                    $.each(arr, function(id, value) {
+                                        if (key === 'articles') {
+                                            if (id !== 'error') {
+                                                console.log(value[1]);
+
+                                                entitySelector.append('<div class="media post-block m-b-xs-30">\n' +
+                                                    '            <div class="media post-block m-b-xs-30"> '+' <a href="/Studentmag/web/app_dev.php/mag/article/'+id+'">'+'<img class=" m-r-xs-30" src="'+value[0]+'" >'+'</a>'+'<div class="media-body">'+' <div class="post-cat-group m-b-xs-10">\n' +
+                                                    '\t\t\t\t\t\t\t\t\t<a href="business.html" class="post-cat cat-btn bg-color-blue-two">SPORTS</a>\n' +
+                                                    '\t\t\t\t\t\t\t\t</div><h3 class="axil-post-title hover-line hover-line">'+value[1]+'</h3>'+' <div class="post-metas">\n' +
+                                                    '\t\t\t\t\t\t\t\t\t<ul class="list-inline">\n' +
+                                                    '\t\t\t\t\t\t\t\t\t\t<li>By <a href="#">Xu Jianhong</a></li>\n' +
+                                                    '\t\t\t\t\t\t\t\t\t</ul>\n' +
+                                                    '\t\t\t\t\t\t\t\t</div>\n' +
+                                                    '\t\t\t\t\t\t\t</div> '+' </div>\n' +
+                                                    '            </div>');
+                                            } else {
+                                                entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                            }
+                                        }
+                                    });
+                                });
+                            }
+                        }
+                    });
+                }
+
+            });
+
+        });
+    </script>
 
 {% block body %}
 

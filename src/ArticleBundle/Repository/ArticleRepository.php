@@ -58,7 +58,18 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
     public function findArticlesinCategory($idCat)
     {
         $q=$this->getEntityManager()->createQuery("select v FROM  ArticleBundle:Article v 
- where v.category= :idCat ")->setParameter('idCat', $idCat)->setMaxResults(4);
+ where v.category= :idCat ")->setParameter('idCat', $idCat)->setMaxResults(8);
         return $q->getResult();
+    }
+
+    public function findEntitiesByString($str){
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p
+                FROM ArticleBundle:Article p
+                WHERE p.title LIKE :str'
+            )
+            ->setParameter('str', '%'.$str.'%')
+            ->getResult();
     }
 }

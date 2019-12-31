@@ -75,7 +75,7 @@
                                     <p>{{ article.introduction   }}</p>
 
                                 <figure>
-                                    <img src="{{image1.displayImage}}" alt="img">
+                                    <img src="{{image1.displayImage}}" alt="img" srcset="{{ image1.displayImage }} 390w 292w">
                                     <figcaption>Drawn for an insurance company</figcaption>
                                 </figure>
 
@@ -417,8 +417,8 @@
                         <div class="post-shares m-t-xs-60">
                             <div class="title">SHARE:</div>
                             <ul class="social-share social-share__rectangular">
-                                <li><a href="#" class="btn bg-color-twitch"><i class="fab fa-twitch"></i>
-                                        1K+</a>
+                                <li><button  class="btn bg-color-twitch share_facebook" data-url="http://localhost:8080/Studentmag/web/app_dev.php/mag/article/8">
+                                        1K+</button>
                                 </li>
                                 <li><a href="#" class="btn bg-color-facebook"><i class="fab fa-facebook-f"></i>
                                         1K+</a>
@@ -763,7 +763,7 @@
                                         {% for ra in recentArticles %}
                                             <div class="media post-block post-block__small">
                                                 <a href="post-format-standard.html" class="align-self-center"><img
-                                                            class=" m-r-xs-30" src="{{ ra.displayCoverxx }}"
+                                                            class=" m-r-xs-30" src="{{ ra.displayCover }}"
                                                             alt="media image"></a>
                                                 <div class="media-body">
                                                     {% if ra.category.name=="Lifestyle" %}
@@ -1029,6 +1029,39 @@
 
 
 {% block js %}
+
+
+    <script type="text/javascript">
+        (function () {
+
+
+        var popupCenter = function (url , title , width , height) {
+            console.log("hello");
+            var popupWidth = width || 640;
+            var popupHeight = height || 320;
+
+            var windowLeft = window.screenLeft || window.screenX;
+            var windowTop = window.screenTop || window.screenY;
+            var windowWidth = window.innerWidth || document.documentElement.clientWidth;
+            var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+            var popupLeft = windowLeft + windowWidth / 2 - popupWidth / 2;
+            var popupTop = windowTop + windowHeight / 2 - popupHeight / 2;
+            window.open(url, title, 'scrollbars=yes, width=' + popupWidth + ',height=' + popupHeight + ', top=' + popupTop + ', left=' + popupLeft);
+        } ;
+
+
+  document.querySelector('.share_facebook').addEventListener('click' , function (e) {
+      e.preventDefault();
+      var url = this.getAttribute('data-url') ;
+      var shareUrl = "https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(url) ;
+      popupCenter(shareUrl, "partager sur facebook ")
+
+  })
+
+        })()
+
+
+    </script>
 {% endblock %}
 
 
