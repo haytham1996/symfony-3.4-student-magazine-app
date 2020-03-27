@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Validator\Constraints\Date;
 
 class ArticleController extends Controller
 {
@@ -28,10 +29,11 @@ class ArticleController extends Controller
          $recentArticles=$em->getRepository('ArticleBundle:Article')->findMost4Recent();
          $popularArticles=$em->getRepository('ArticleBundle:Article')->findPopularArticles();
         $categories=$em->getRepository('ArticleBundle:Category')->findAll();
+        $date= new Date();
 
-      /*  return $this->render('base.html.twig', array(
-            'categories' => $categories,
-        ));*/
+        /*  return $this->render('base.html.twig', array(
+              'categories' => $categories,
+          ));*/
        /* foreach ($articles as $key=>$value)
         {
             $value->setCover(base64_encode(stream_get_contents($value->getCover())));
@@ -65,6 +67,7 @@ class ArticleController extends Controller
           'categories'=>$categories,
             'form'=>$form->createView() ,
             'form2'=>$form->createView(),
+            'date'=>$date ,
 
 
         ));
@@ -77,8 +80,8 @@ class ArticleController extends Controller
         $categories = $em->getRepository('ArticleBundle:Category')->findAll();
         $images=$em->getRepository('ArticleBundle:Images')->findImagesByArticle($article->getId());
         $image1=$images[0] ;
-        $image2=$images[1];
-        $image3=$images[2];
+     //   $image2=$images[1];
+       // $image3=$images[2];
         $recentArticles=$em->getRepository('ArticleBundle:Article')->findMost4Recent();
         $popularArticles=$em->getRepository('ArticleBundle:Article')->findPopularArticles();
 
@@ -100,8 +103,8 @@ class ArticleController extends Controller
             'article' => $article,
             'categories'=>$categories,
             'image1'=>$image1,
-                'image2'=>$image2,
-            'image3'=>$image3,
+               // 'image2'=>$image2,
+           // 'image3'=>$image3,
             'recentArticles'=>$recentArticles ,
             'popularArticles'=>$popularArticles,
             'form'=>$form->createView(),
@@ -158,7 +161,7 @@ class ArticleController extends Controller
     }
     public function getRealEntities($articles){
         foreach ($articles as $articles){
-            $realEntities[$articles->getId()] = [$articles->displayCover(),$articles->getTitle()];
+            $realEntities[$articles->getId()] = [$articles->displayCover(),$articles->getTitle() , $articles->getAuthor()];
         }
         return $realEntities;
     }

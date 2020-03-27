@@ -46,10 +46,10 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="cover", type="blob")
+     * @ORM\Column(name="cover", type="string")
      */
     private $cover;
-    private $rawCover;
+  /*  private $rawCover;
 
     public function displayCover()
     {
@@ -58,14 +58,8 @@ class Article
         }
 
         return $this->rawCover;
-    }
+    }*/
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="author", type="string", length=255)
-     */
-    private $author;
 
     /**
      * @var \DateTime
@@ -94,6 +88,13 @@ class Article
      *
      */
     private $category ;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Author")
+     * @ORM\JoinColumn(name="IdAuthor",referencedColumnName="id" , onDelete="Cascade")
+     *
+     */
+    private $author ;
 
 
 
@@ -180,28 +181,23 @@ class Article
     }
 
     /**
-     * Set author
-     *
-     * @param string $author
-     *
-     * @return Article
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-
-        return $this;
-    }
-
-    /**
-     * Get author
-     *
-     * @return string
+     * @return mixed
      */
     public function getAuthor()
     {
         return $this->author;
     }
+
+    /**
+     * @param mixed $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
+
+
+
 
     /**
      * Set date

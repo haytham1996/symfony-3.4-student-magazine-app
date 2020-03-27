@@ -8,15 +8,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ArticleBundle\Controller\ArticleController;
 use ArticleBundle\Repository\ArticleRepository;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\Date;
 
 class DefaultController extends Controller
 {
     public function indexAction()
     {    $em = $this->getDoctrine()->getManager();
-
+        $date=new Date() ;
         $articles= $em->getRepository('ArticleBundle:Article')->findMost3Viewed();
         return $this->render('@Article/Default/index.html.twig', array(
             'articles' => $articles,
+            'date'=>$date ,
 
 
         ));

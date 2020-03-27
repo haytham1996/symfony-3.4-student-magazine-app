@@ -55,12 +55,12 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
  ORDER BY v.share DESC  ")->setMaxResults(4);
         return $q->getResult();
     }
-    public function findArticlesinCategory($idCat)
-    {
-        $q=$this->getEntityManager()->createQuery("select v FROM  ArticleBundle:Article v 
- where v.category= :idCat ")->setParameter('idCat', $idCat)->setMaxResults(8);
-        return $q->getResult();
-    }
+        public function findArticlesinCategory($idCat)
+        {
+            $q=$this->getEntityManager()->createQuery("select v FROM  ArticleBundle:Article v 
+     where v.category= :idCat ")->setParameter('idCat', $idCat)->setMaxResults(8);
+            return $q->getResult();
+        }
 
     public function findEntitiesByString($str){
         return $this->getEntityManager()

@@ -31,19 +31,19 @@ class Images
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="blob")
+     * @ORM\Column(name="image", type="string", length=255)
      */
     private $image;
     private $rawImage;
 
-    public function displayImage()
+   /* public function displayImage()
     {
         if(null === $this->rawImage) {
             $this->rawImage = "data:image/png;base64," . base64_encode(stream_get_contents($this->getImage()));
         }
 
         return $this->rawImage;
-    }
+    }*/
     /**
      * @ORM\ManyToOne(targetEntity="Article")
      * @ORM\JoinColumn(name="IdArticle",referencedColumnName="id" , onDelete="Cascade")

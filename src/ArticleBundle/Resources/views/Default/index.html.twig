@@ -13,21 +13,21 @@
                     <div class="axil-latest-post">
                         <div class="media post-block m-b-xs-20">
                             <figure class="fig-container">
-                                <a href="{{path('show_article',{'id':latestArticle.id})}}"><img src="{{latestArticle.displayCover}}"
+                                <a href="{{path('show_article',{'id':latestArticle.id})}}"><img src="{{asset('assets/images/article/')}}{{latestArticle.cover}}"
                                                                          alt="latest post"></a>
 
                                 <div class="post-cat-group m-b-xs-10">
                                     {% if (  latestArticle.category.name =="Lifestyle") %}
 
-                                        <a href="business.html"
+                                        <a href="{{ path('show_category',{'id':2}) }}"
                                            class="post-cat cat-btn bg-color-green-one">{{ latestArticle.category.name }}</a>
                                     {% endif %}
                                     {% if ( latestArticle.category.name =="Business") %}
-                                        <a href="business.html"
+                                        <a href="{{ path('show_category',{'id':1}) }}"
                                            class="post-cat cat-btn bg-color-purple-one">{{ latestArticle.category.name }}</a>
                                     {% endif %}
                                     {% if (latestArticle.category.name =="Technology") %}
-                                        <a href="business.html"
+                                        <a href="{{ path('show_category',{'id':3}) }}"
                                            class="post-cat cat-btn bg-color-blue-one">{{ latestArticle.category.name }}</a>
                                     {% endif %}
                                 </div>
@@ -37,7 +37,7 @@
                                             href="{{path('show_article',{'id':latestArticle.id})}}">{{latestArticle.title}}</a></h3>
                                 <div class="post-metas">
                                     <ul class="list-inline">
-                                        <li>By <a href="#" class="post-author">By {{latestArticle.author}}</a></li>
+                                        <li>By <a href="#" class="post-author"> {{latestArticle.author.firstName}}&nbsp{{latestArticle.author.lastName}}</a></li>
                                         <li><i class="dot">.</i>{{latestArticle.date | date('d-m-20y')}}</li>
                                         <li><a href="#"><i class="feather icon-activity"></i>{{latestArticle.views}}</a></li>
                                         <li><a href="#"><i class="feather icon-share-2"></i>{{latestArticle.share}}</a></li>
@@ -61,7 +61,7 @@
                         {% for a in articles %}
                         <div class="axil-content" >
                             <div class="media post-block m-b-xs-30">
-                                <a href="{{path('show_article',{'id':a.id})}}" class="align-self-center"><img src="{{a.displayCover}}"
+                                <a href="{{path('show_article',{'id':a.id})}}" class="align-self-center"><img src="{{asset('assets/images/article/')}}{{a.cover}}"
 
                                             class=" m-r-xs-30"  alt=""></a>
                                 <div class="media-body">
@@ -84,7 +84,7 @@
                                                 href="{{path('show_article',{'id':a.id})}}">{{ a.title }}</a></h3>
                                     <div class="post-metas">
                                         <ul class="list-inline">
-                                            <li><a href="#">{{a.author}}</a></li>
+                                            <li><a href="#">{{a.author.firstName}}{{a.author.lastName}}</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -114,7 +114,7 @@
                 <div class="col-lg-8">
                     <div class="axil-img-container m-b-xs-30">
                         <a href="{{path('show_article',{'id':topArticles[0].id})}}" class="d-block">
-                            <img src="{{ topArticles[0].displayCover }}" alt="gallery images"
+                            <img src="{{asset('assets/images/article/')}}{{ topArticles[0].cover }}" alt="gallery images"
                                  class="w-100">
                             <div class="grad-overlay"></div>
                         </a>
@@ -136,7 +136,7 @@
                                                 href="{{path('show_article',{'id':topArticles[0].id})}}">{{topArticles[0].title}}</a></h3>
                                     <div class="post-metas">
                                         <ul class="list-inline">
-                                            <li>By <a href="#" class="post-author">{{topArticles[0].author}}</a></li>
+                                            <li>By <a href="#" class="post-author">{{topArticles[0].author.firstName}}&nbsp{{topArticles[0].author.lastName}}</a></li>
                                             <li><i class="dot">.</i>{{topArticles[0].date | date('d-m-20y')}}</li>
                                             <li><a href="#"><i class="feather icon-activity"></i>{{topArticles[0].views}}</a></li>
                                             <li><a href="#"><i class="feather icon-share-2"></i>{{topArticles[0].share}}</a></li>
@@ -153,7 +153,7 @@
                 <div class="col-lg-4">
                     <div class="axil-img-container m-b-xs-30">
                         <a href="{{path('show_article',{'id':topArticles[1].id})}}" class="d-block">
-                            <img src="{{  topArticles[1].displayCover }}" alt="gallery images"
+                            <img src="{{asset('assets/images/article/')}}{{  topArticles[1].cover }}" alt="gallery images"
                                  class="w-100">
                             <div class="grad-overlay"></div>
                         </a>
@@ -175,8 +175,8 @@
                                                 href="{{path('show_article',{'id':topArticles[1].id})}}">{{topArticles[1].title}}</a></h3>
                                     <div class="post-metas">
                                         <ul class="list-inline">
-                                            <li><a href="post-format-standard.html"
-                                                   class="d-flex align-items-center"><span>By {{topArticles[1].author}}</span></a></li>
+                                            <li><a href="#"
+                                                   class="d-flex align-items-center"><span>By {{topArticles[1].author.firstName}} {{topArticles[1].author.lastName}}</span></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -187,7 +187,7 @@
                     <!-- End of .axil-img-container -->
                     <div class="axil-img-container m-b-xs-30">
                         <a href="{{path('show_article',{'id':topArticles[2].id})}}" class="d-block">
-                            <img src="{{ topArticles[2].displayCover }}" alt="gallery images"
+                            <img src="{{asset('assets/images/article/')}}{{ topArticles[2].cover }}" alt="gallery images"
                                  class="w-100">
                             <div class="grad-overlay"></div>
                         </a>
@@ -210,7 +210,7 @@
                                                 href="{{path('show_article',{'id':topArticles[2].id})}}">{{topArticles[2].title}}</a></h3>
                                     <div class="post-metas">
                                         <ul class="list-inline">
-                                            <li><a href="#" class="d-flex align-items-center"><span>By {{topArticles[2].author}}</span></a></li>
+                                            <li><a href="#" class="d-flex align-items-center"><span>By {{topArticles[2].author.firstName}}&nbsp{{topArticles[2].author.lastName}}</span></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -241,7 +241,7 @@
                 <div class="col-lg-6">
 
                     <div class="media post-block m-b-xs-30">
-                        <a href="{{path('show_article',{'id':tr.id})}}" class="align-self-center"><img class=" m-r-xs-30" src="{{ tr.displayCover }}" alt=""></a>
+                        <a href="{{path('show_article',{'id':tr.id})}}" class="align-self-center"><img class=" m-r-xs-30" src="{{asset('assets/images/article/')}}{{ tr.cover }}" alt=""></a>
                         <div class="media-body">
                             <div class="post-cat-group m-b-xs-10">
                                 {% if tr.category.name=="Lifestyle" %}
@@ -259,7 +259,7 @@
                             </h3>
                             <div class="post-metas">
                                 <ul class="list-inline">
-                                    <li>By <a href="#">{{tr.author}}</a></li>
+                                    <li>By <a href="#">{{tr.author.firstName}}&nbsp{{tr.author.lastName}}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -277,170 +277,35 @@
         <!-- End of .container -->
     </section>
     <!-- End of .trending-stories -->
-    <section class="axil-video-posts section-gap section-gap-top__with-text bg-grey-dark-one">
-        <div class="container">
-            <div class="section-title title-white m-b-xs-40">
-                <h2 class="axil-title">Videos</h2>
-                <a href="#" class="btn-link ml-auto">All VIDEOS</a>
-            </div>
-            <!-- End of .section-title -->
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="axil-img-container flex-height-container">
-                        <a href="post-format-video.html" class="d-block h-100">
-                            <img src="{{ asset('assets/images/video-post/video-post-latest.jpg')}}" alt="video post"
-                                 class="w-100">
-                            <div class="grad-overlay grad-overlay__transparent"></div>
-                            <div class="video-popup video-play-btn video-play-btn__big"></div>
-                        </a>
-                        <div class="media post-block grad-overlay__transparent position-absolute m-b-xs-30">
-                            <div class="media-body media-body__big">
-                                <div class="axil-media-bottom mt-auto">
-                                    <h3 class="axil-post-title hover-line hover-line"><a
-                                                href="post-format-standard.html">Maui
-                                            By Air The
-                                            Best Way Around The
-                                            Island</a></h3>
-                                    <div class="post-metas">
-                                        <ul class="list-inline">
-                                            <li>By <a href="#" class="post-author">Ashley Graham</a></li>
-                                            <li><i class="dot">.</i>July 23, 2019</li>
-                                            <li><a href="#"><i class="feather icon-activity"></i>5k Views</a></li>
-                                            <li><a href="#"><i class="feather icon-share-2"></i>230 Shares</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End of .media-body -->
-                        </div>
-                        <!-- End of .post-block -->
-                    </div>
-                    <!-- End of .axil-img-container -->
-                </div>
-                <!-- End of .col-lg-8 -->
-                <div class="col-lg-4">
-                    <div class="axil-content">
-                        <div class="media post-block post-block__small post-block__on-dark-bg m-b-xs-30">
-                            <a href="post-format-video.html" class="align-self-center">
-                                <img class=" m-r-xs-30" src="{{ asset('assets/images/video-post/video-post-1.jpg')}}" alt="">
-                                <span class="video-play-btn video-play-btn__small"></span>
-                            </a>
-                            <div class="media-body">
-                                <div class="post-cat-group">
-                                    <a href="post-format-video.html" class="post-cat color-blue-three">BEAUTY</a>
-                                </div>
-                                <h3 class="axil-post-title hover-line hover-line"><a
-                                            href="post-format-video.html">Stocking
-                                        Your
-                                        Restaurant Kitchen Finding
-                                        Reliable
-                                        Sellers</a></h3>
-                                <div class="post-metas">
-                                    <ul class="list-inline">
-                                        <li>By <a href="#">Amachea Jajah</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of .post-block -->
-                        <div class="media post-block post-block__small post-block__on-dark-bg m-b-xs-30">
-                            <a href="post-format-video.html" class="align-self-center"><img class=" m-r-xs-30"
-                                                                                            src="{{ asset('assets/images/video-post/video-post-2.jpg')}}" alt="">
-                                <span class="video-play-btn video-play-btn__small"></span></a>
-                            <div class="media-body">
-                                <a href="post-format-video.html" class="post-cat color-green-three">TRAVEL</a>
-                                <h3 class="axil-post-title hover-line hover-line"><a
-                                            href="post-format-video.html">Trip To
-                                        Iqaluit In
-                                        Nunavut A Canadian
-                                        Arctic
-                                        City</a>
-                                </h3>
-                                <div class="post-metas">
-                                    <ul class="list-inline">
-                                        <li>By <a href="#">Xu Jianhong</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of .post-block -->
-                        <div class="media post-block post-block__small post-block__on-dark-bg m-b-xs-30">
-                            <a href="post-format-video.html" class="align-self-center"><img class=" m-r-xs-30"
-                                                                                            src="{{ asset('assets/images/video-post/video-post-3.jpg')}}" alt="">
-                                <span class="video-play-btn video-play-btn__small"></span></a>
-                            <div class="media-body">
-                                <a href="post-format-video.html" class="post-cat color-red-two">SPORTS</a>
-                                <h3 class="axil-post-title hover-line hover-line"><a
-                                            href="post-format-video.html">Get The Boot A Birds Eye Look Into Mcse
-                                        Boot Camps</a></h3>
-                                <div class="post-metas">
-                                    <ul class="list-inline">
-                                        <li>By <a href="#">Ahmad Nazeri</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of .post-block -->
-                        <div class="media post-block post-block__small post-block__on-dark-bg m-b-xs-30">
-                            <a href="post-format-video.html" class="align-self-center"><img class=" m-r-xs-30"
-                                                                                            src="{{ asset('assets/images/video-post/video-post-4.jpg')}}" alt="">
-                                <span class="video-play-btn video-play-btn__small"></span></a>
-                            <div class="media-body">
-                                <a href="post-format-video.html" class="post-cat color-blue-one">FASHION</a>
-                                <h3 class="axil-post-title hover-line hover-line"><a
-                                            href="post-format-video.html">To Keep
-                                        Makeup
-                                        Looking Fresh Take A
-                                        Powder</a></h3>
-                                <div class="post-metas">
-                                    <ul class="list-inline">
-                                        <li>By <a href="#">Sergio Pliego</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of .post-block -->
-                    </div>
-                    <!-- End of .axil-content -->
-                </div>
-                <!-- End of .col-lg-4 -->
-            </div>
-            <!-- End of .row -->
-        </div>
-        <!-- End of .container -->
-    </section>
-    <!-- End of .axil-video-posts -->
+
     <div class="random-posts section-gap">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="add-container m-b-xs-60">
-                        <a href="#"><img src="{{ asset('assets/images/clientbanner/clientbanner.jpg')}}" alt="add one"
-                                         class="img-fluid"></a>
-                    </div>
                     <main class="axil-content">
                       {% for la in articlesList %}
                         <div class="media post-block post-block__mid m-b-xs-30">
-                            <a href="{{path('show_article',{'id':la.id})}}" class="align-self-center"><img class=" m-r-xs-30" src="{{ la.displayCover }}" alt=""></a>
+                            <a href="{{path('show_article',{'id':la.id})}}" class="align-self-center"><img class=" m-r-xs-30" src="{{asset('assets/images/article/')}}{{ la.cover }}" alt=""></a>
                             <div class="media-body">
                                 <div class="post-cat-group m-b-xs-10">
                                     {% if la.category.name=="Lifestyle" %}
-                                        <a href="business.html" class="post-cat cat-btn bg-color-green-one">{{la.category.name}}</a>
+                                        <a href="{{path('show_category',{'id':la.category.id})}}" class="post-cat cat-btn bg-color-green-one">{{la.category.name}}</a>
                                     {% endif %}
                                     {% if la.category.name=="Business" %}
-                                        <a href="business.html" class="post-cat cat-btn bg-color-purple-one">{{la.category.name}}</a>
+                                        <a href="{{path('show_category',{'id':la.category.id})}}" class="post-cat cat-btn bg-color-purple-one">{{la.category.name}}</a>
                                     {% endif %}
                                     {% if la.category.name=="Technology" %}
-                                        <a href="business.html" class="post-cat cat-btn bg-color-blue-one">{{la.category.name}}</a>
+                                        <a href="{{path('show_category',{'id':la.category.id})}}" class="post-cat cat-btn bg-color-blue-one">{{la.category.name}}</a>
                                     {% endif %}
                                 </div>
                                 <h3 class="axil-post-title hover-line hover-line"><a
                                             href="{{path('show_article',{'id':la.id})}}">{{ la.title }}</a>
                                 </h3>
-                                <p class="mid">{{ la.introduction }} </p>
+                                {% set intro = la.introduction | split('.') %}
+                                <p class="mid">{{ intro[0] }} ... </p>
                                 <div class="post-metas">
                                     <ul class="list-inline">
-                                        <li>By <a href="#">{{la.author}}</a></li>
+                                        <li>By <a href="#">{{la.author.firstName}}&nbsp{{la.author.lastName}}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -455,10 +320,7 @@
                 <!-- End of .col-lg-8 -->
                 <div class="col-lg-4">
                     <aside class="post-sidebar">
-                        <div class="add-block-widget m-b-xs-40">
-                            <a href="#"><img src="{{ asset('assets/images/clientbanner/clientbanner2.jpg')}}" alt="sidebar add"
-                                             class="img-fluid"></a>
-                        </div>
+
 
 
 
@@ -471,7 +333,7 @@
                                     <h3 class="axil-title">Subscribe To Our Weekly
                                         Newsletter</h3>
                                     <p class="mid m-t-xs-10 m-b-xs-20">No spam, notifications only about new
-                                        products,
+                                        articles,
                                         updates.</p>
                                 </div>
                                 {{ form_start(form2) }}
@@ -507,29 +369,29 @@
                                                 class="feather icon-chevron-right"></i></button>
                                 </div>
                             </div>
+
                             <div class="category-carousel">
-                                <div class="owl-carousel owl-theme" data-owl-items="1" data-owl-loop="true"
-                                     data-owl-autoplay="true" data-owl-dots="false" data-owl-nav="false"
-                                     data-owl-margin="10">
+                                <div class="owl-carousel owl-theme">
                                     <div class="cat-carousel-inner">
                                         <ul class="category-list-wrapper">
                                             <li class="category-list perfect-square">
-                                                <a href="post-format-standard.html" class="list-inner"
-                                                   style="background-image: url({{ asset('assets/images/category-bg/category-bg-1.png')}}">
+                                                <a href="{{ path('show_category',{'id':2}) }}" class="list-inner"
+                                                   >
                                                     <div class="post-info-wrapper overlay">
-                                                        <div class="counter-inner"><span class="counter">20</span>+
+                                                        <div class="counter-inner"><span class="counter">4</span>+
                                                         </div>
-                                                        <h4 class="cat-title">Top Stories</h4>
+                                                        <h4 class="cat-title">Lifestyle</h4>
                                                     </div>
                                                     <!-- End of .counter-wrapper -->
                                                 </a>
                                             </li>
                                             <!-- End of .category-list -->
+
                                             <li class="category-list perfect-square">
-                                                <a href="post-format-standard.html" class="list-inner"
-                                                   style="background-image: url({{ asset('assets/images/category-bg/category-bg-2.png')}}">
+                                                <a href="{{ path('show_category',{'id':1}) }}" class="list-inner"
+                                                  >
                                                     <div class="post-info-wrapper overlay">
-                                                        <div class="counter-inner"><span class="counter">100</span>+
+                                                        <div class="counter-inner"><span class="counter">1</span>+
                                                         </div>
                                                         <h4 class="cat-title">Business</h4>
                                                     </div>
@@ -537,25 +399,27 @@
                                                 </a>
                                             </li>
                                             <!-- End of .category-list -->
+
                                             <li class="category-list perfect-square">
-                                                <a href="post-format-standard.html" class="list-inner"
-                                                   style="background-image: url({{ asset('assets/images/category-bg/category-bg-3.png')}}">
+                                                <a href="{{ path('show_category',{'id':3}) }}" class="list-inner"
+                                                   >
                                                     <div class="post-info-wrapper overlay">
-                                                        <div class="counter-inner"><span class="counter">10</span>+
+                                                        <div class="counter-inner"><span class="counter">0</span>+
                                                         </div>
-                                                        <h4 class="cat-title">Travel</h4>
+                                                        <h4 class="cat-title">Technology</h4>
                                                     </div>
                                                     <!-- End of .counter-wrapper -->
                                                 </a>
                                             </li>
                                             <!-- End of .category-list -->
+
                                             <li class="category-list perfect-square">
-                                                <a href="post-format-standard.html" class="list-inner"
-                                                   style="background-image: url({{ asset('assets/images/category-bg/category-bg-4.png')}}">
+                                                <a href="{{ path('show_category',{'id':7}) }}" class="list-inner"
+                                                 >
                                                     <div class="post-info-wrapper overlay">
-                                                        <div class="counter-inner"><span class="counter">10</span>+
+                                                        <div class="counter-inner"><span class="counter">0</span>+
                                                         </div>
-                                                        <h4 class="cat-title">Food</h4>
+                                                        <h4 class="cat-title">news</h4>
                                                     </div>
                                                     <!-- End of .counter-wrapper -->
                                                 </a>
@@ -565,59 +429,8 @@
                                         <!-- End of .category-list-wrapper -->
                                     </div>
                                     <!-- End of .cat-carousel-inner -->
-                                    <div class="cat-carousel-inner">
-                                        <ul class="category-list-wrapper">
-                                            <li class="category-list perfect-square">
-                                                <a href="post-format-standard.html" class="list-inner"
-                                                   style="background-image: url({{ asset('assets/images/category-bg/category-bg-5.jpg')}}">
-                                                    <div class="post-info-wrapper overlay">
-                                                        <div class="counter-inner"><span class="counter">20</span>+
-                                                        </div>
-                                                        <h4 class="cat-title">Top Stories</h4>
-                                                    </div>
-                                                    <!-- End of .counter-wrapper -->
-                                                </a>
-                                            </li>
-                                            <!-- End of .category-list -->
-                                            <li class="category-list perfect-square">
-                                                <a href="post-format-standard.html" class="list-inner"
-                                                   style="background-image: url({{ asset('assets/images/category-bg/category-bg-6.jpg')}}">
-                                                    <div class="post-info-wrapper overlay">
-                                                        <div class="counter-inner"><span class="counter">100</span>+
-                                                        </div>
-                                                        <h4 class="cat-title">Business</h4>
-                                                    </div>
-                                                    <!-- End of .counter-wrapper -->
-                                                </a>
-                                            </li>
-                                            <!-- End of .category-list -->
-                                            <li class="category-list perfect-square">
-                                                <a href="post-format-standard.html" class="list-inner"
-                                                   style="background-image: url({{ asset('assets/images/category-bg/category-bg-7.jpg')}}">
-                                                    <div class="post-info-wrapper overlay">
-                                                        <div class="counter-inner"><span class="counter">10</span>+
-                                                        </div>
-                                                        <h4 class="cat-title">Travel</h4>
-                                                    </div>
-                                                    <!-- End of .counter-wrapper -->
-                                                </a>
-                                            </li>
-                                            <!-- End of .category-list -->
-                                            <li class="category-list perfect-square">
-                                                <a href="post-format-standard.html" class="list-inner"
-                                                   style="background-image: url({{ asset('assets/images/category-bg/category-bg-8.jpg')}}">
-                                                    <div class="post-info-wrapper overlay">
-                                                        <div class="counter-inner"><span class="counter">10</span>+
-                                                        </div>
-                                                        <h4 class="cat-title">Food</h4>
-                                                    </div>
-                                                    <!-- End of .counter-wrapper -->
-                                                </a>
-                                            </li>
-                                            <!-- End of .category-list -->
-                                        </ul>
-                                        <!-- End of .category-list-wrapper -->
-                                    </div>
+
+
                                     <!-- End of .cat-carousel-inner -->
                                 </div>
                                 <!-- End of  .owl-carousel -->
@@ -628,25 +441,25 @@
                         <div class="sidebar-social-share-widget m-b-xs-40">
                             <ul class="social-share-list-wrapper">
                                 <li class="social-share-list text-center perfect-square">
-                                    <a href="#" class="list-inner bg-color-facebook">
+                                    <a href="https://www.facebook.com/studentmag.tn"  class="list-inner bg-color-facebook"  target="_blank">
                                         <i class="fab fa-facebook-f"></i>
-                                        <div class="counts">2000+</div>
+                                        <div class="counts">300+</div>
                                         <div class="title">Fans</div>
                                     </a>
                                 </li>
                                 <!-- End of .social-share-list -->
                                 <li class="social-share-list text-center perfect-square">
-                                    <a href="#" class="list-inner bg-color-twitter">
+                                    <a href="https://twitter.com/studentmag_tn" class="list-inner bg-color-twitter">
                                         <i class="fab fa-twitter"></i>
-                                        <div class="counts">4000+</div>
+                                        <div class="counts">10+</div>
                                         <div class="title">Followers</div>
                                     </a>
                                 </li>
                                 <!-- End of .social-share-list -->
                                 <li class="social-share-list text-center perfect-square">
-                                    <a href="#" class="list-inner bg-color-youtube">
+                                    <a href="https://www.youtube.com/channel/UCNZJ0sWo0-c5NApCkMjDY5Q/featured" class="list-inner bg-color-youtube" target="_blank">
                                         <i class="fab fa-youtube"></i>
-                                        <div class="counts">1M+</div>
+                                        <div class="counts">10+</div>
                                         <div class="title">Subscribers</div>
                                     </a>
                                 </li>
@@ -657,9 +470,9 @@
 
 
                                 <li class="social-share-list text-center perfect-square">
-                                    <a href="#" class="list-inner bg-color-instagram">
+                                    <a href="https://www.instagram.com/studentmag.tn/" class="list-inner bg-color-instagram" target="_blank">
                                         <i class="fab fa-instagram"></i>
-                                        <div class="counts">1K+</div>
+                                        <div class="counts">50+</div>
                                         <div class="title">Followers</div>
                                     </a>
                                 </li>
@@ -684,38 +497,38 @@
                                         {% for ra in recentArticles %}
                                         <div class="media post-block post-block__small">
                                             <a href="{{path('show_article',{'id':ra.id})}}" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{{ ra.displayCover }}"
+                                                        class=" m-r-xs-30" src="{{asset('assets/images/article/')}}{{ ra.cover }}"
                                                         alt="media image"></a>
                                             <div class="media-body">
                                                 {% if ra.category.name=="Lifestyle" %}
-                                                <a href="post-format-standard.html"
+                                                <a href="{{path('show_category',{'id': ra.category.id})}}"
                                                    class="post-cat color-green-one">{{ra.category.name}}</a>
                                                 {% endif %}
                                                 {% if ra.category.name=="Business" %}
-                                                    <a href="post-format-standard.html"
+                                                    <a href="{{path('show_category',{'id': ra.category.id})}}"
                                                        class="post-cat color-blue-two">{{ra.category.name}}</a>
                                                 {% endif %}
                                                 {% if ra.category.name=="Technology" %}
-                                                    <a href="post-format-standard.html"
+                                                    <a href="{{path('show_category',{'id':ra.category.id})}}"
                                                        class="post-cat color-blue-one">{{ra.category.name}}</a>
                                                 {% endif %}
                                                 {% if ra.category.name=="Events" %}
-                                                    <a href="post-format-standard.html"
+                                                    <a href="{{path('show_category',{'id': ra.category.id})}}"
                                                        class="post-cat color-red-one">{{ra.category.name}}</a>
                                                 {% endif %}
                                                 {% if ra.category.name=="Opportunities" %}
-                                                    <a href="post-format-standard.html"
+                                                    <a href="{{path('show_category',{'id': ra.category.id})}}"
                                                        class="post-cat color-blue-grey-one">{{ra.category.name}}</a>
                                                 {% endif %}
                                                 {% if ra.category.name=="News" %}
-                                                    <a href="post-format-standard.html"
+                                                    <a href="{{path('show_category',{'id': ra.category.id})}}"
                                                        class="post-cat color-blue-one">{{ra.category.name}}</a>
                                                 {% endif %}
                                                 <h4 class="axil-post-title hover-line hover-line"><a
                                                             href="{{path('show_article',{'id':ra.id})}}">{{ra.title}}</a></h4>
                                                 <div class="post-metas">
                                                     <ul class="list-inline">
-                                                        <li>By <a href="#">{{ra.author}}</a></li>
+                                                        <li>By <a href="#">{{ra.author.firstName}}&nbsp{{ra.author.lastName}}</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -731,39 +544,39 @@
                                         {% for po in popularArticles %}
 
                                             <div class="media post-block post-block__small">
-                                                <a href="post-format-standard.html" class="align-self-center"><img
-                                                            class=" m-r-xs-30" src="{{ po.displayCover }}"
+                                                <a href="{{path('show_category',{'id': po.category.id})}} " class="align-self-center"><img
+                                                            class=" m-r-xs-30" src="{{asset('assets/images/article/')}}{{ po.cover }}"
                                                             alt="media image"></a>
                                                 <div class="media-body">
                                                     {% if po.category.name=="Lifestyle" %}
-                                                        <a href="post-format-standard.html"
+                                                        <a href="{{path('show_category',{'id': po.category.id})}}"
                                                            class="post-cat color-green-one">{{po.category.name}}</a>
                                                     {% endif %}
                                                     {% if po.category.name=="Business" %}
-                                                        <a href="post-format-standard.html"
+                                                        <a href="{{path('show_category',{'id': po.category.id})}}"
                                                            class="post-cat color-blue-two">{{po.category.name}}</a>
                                                     {% endif %}
                                                     {% if po.category.name=="Technology" %}
-                                                        <a href="post-format-standard.html"
+                                                        <a href="{{path('show_category',{'id': po.category.id})}}"
                                                            class="post-cat color-blue-one">{{po.category.name}}</a>
                                                     {% endif %}
                                                     {% if po.category.name=="Events" %}
-                                                        <a href="post-format-standard.html"
+                                                        <a href="{{path('show_category',{'id': po.category.id})}}"
                                                            class="post-cat color-red-one">{{po.category.name}}</a>
                                                     {% endif %}
                                                     {% if po.category.name=="Opportunities" %}
-                                                        <a href="post-format-standard.html"
+                                                        <a href="{{path('show_category',{'id': po.category.id})}}"
                                                            class="post-cat color-blue-grey-one">{{po.category.name}}</a>
                                                     {% endif %}
                                                     {% if po.category.name=="News" %}
-                                                        <a href="post-format-standard.html"
+                                                        <a href="{{path('show_category',{'id': po.category.id})}}"
                                                            class="post-cat color-blue-one">{{po.category.name}}</a>
                                                     {% endif %}
                                                     <h4 class="axil-post-title hover-line hover-line"><a
                                                                 href="{{path('show_article',{'id':po.id})}}">{{po.title}}</a></h4>
                                                     <div class="post-metas">
                                                         <ul class="list-inline">
-                                                            <li>By <a href="#">{{po.author}}</a></li>
+                                                            <li>By <a href="#">{{po.author.firstName}}&nbsp{{po.author.lastName}}</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -779,135 +592,89 @@
                             <!-- End of .tab-content -->
                         </div>
                         <!-- End of .sidebar-post-widget -->
-                        <div class="instagram-widget m-b-xs-40">
-                            <div class="widget-title">
-                                <h3>Instagram</h3>
-                            </div>
-                            <div class="axil-content">
-                                <ul class="instagram-post-list-wrapper">
-                                    <li class="instagram-post-list perfect-square">
-                                        <a href="#" class="list-inner"
-                                           style="background-image: url({{ asset('assets/images/instagram-post/instagram-post-1.jpg')}}">
-                                            <div class="post-info-wrapper overlay">
-                                                <div class="post-info">
-                                                    <i class="feather icon-heart"></i>
-                                                    20K+
-                                                </div>
-                                                <!-- End of .post-info -->
-                                                <div class="post-info">
-                                                    <i class="feather icon-message-square"></i>
-                                                    200+
-                                                </div>
-                                                <!-- End of .post-info -->
-                                            </div>
-                                            <!-- End of .post-info-wrapper overlay -->
-                                        </a>
-                                    </li>
-                                    <!-- End of .instagram-post-list -->
-                                    <li class="instagram-post-list perfect-square">
-                                        <a href="#" class="list-inner"
-                                           style="background-image: url({{ asset('assets/images/instagram-post/instagram-post-2.jpg')}}">
-                                            <div class="post-info-wrapper overlay">
-                                                <div class="post-info">
-                                                    <i class="feather icon-heart"></i>
-                                                    20K+
-                                                </div>
-                                                <!-- End of .post-info -->
-                                                <div class="post-info">
-                                                    <i class="feather icon-message-square"></i>
-                                                    200+
-                                                </div>
-                                                <!-- End of .post-info -->
-                                            </div>
-                                            <!-- End of .post-info-wrapper overlay -->
-                                        </a>
-                                    </li>
-                                    <!-- End of .instagram-post-list -->
-                                    <li class="instagram-post-list perfect-square">
-                                        <a href="#" class="list-inner"
-                                           style="background-image: url({{ asset('assets/images/instagram-post/instagram-post-3.jpg')}}">
-                                            <div class="post-info-wrapper overlay">
-                                                <div class="post-info">
-                                                    <i class="feather icon-heart"></i>
-                                                    20K+
-                                                </div>
-                                                <!-- End of .post-info -->
-                                                <div class="post-info">
-                                                    <i class="feather icon-message-square"></i>
-                                                    200+
-                                                </div>
-                                                <!-- End of .post-info -->
-                                            </div>
-                                            <!-- End of .post-info-wrapper overlay -->
-                                        </a>
-                                    </li>
-                                    <!-- End of .instagram-post-list -->
-                                    <li class="instagram-post-list perfect-square">
-                                        <a href="#" class="list-inner"
-                                           style="background-image: url({{ asset('assets/images/instagram-post/instagram-post-4.jpg')}}">
-                                            <div class="post-info-wrapper overlay">
-                                                <div class="post-info">
-                                                    <i class="feather icon-heart"></i>
-                                                    20K+
-                                                </div>
-                                                <!-- End of .post-info -->
-                                                <div class="post-info">
-                                                    <i class="feather icon-message-square"></i>
-                                                    200+
-                                                </div>
-                                                <!-- End of .post-info -->
-                                            </div>
-                                            <!-- End of .post-info-wrapper overlay -->
-                                        </a>
-                                    </li>
-                                    <!-- End of .instagram-post-list -->
-                                    <li class="instagram-post-list perfect-square">
-                                        <a href="#" class="list-inner"
-                                           style="background-image: url({{ asset('assets/images/instagram-post/instagram-post-5.jpg')}}">
-                                            <div class="post-info-wrapper overlay">
-                                                <div class="post-info">
-                                                    <i class="feather icon-heart"></i>
-                                                    20K+
-                                                </div>
-                                                <!-- End of .post-info -->
-                                                <div class="post-info">
-                                                    <i class="feather icon-message-square"></i>
-                                                    200+
-                                                </div>
-                                                <!-- End of .post-info -->
-                                            </div>
-                                            <!-- End of .post-info-wrapper overlay -->
-                                        </a>
-                                    </li>
-                                    <!-- End of .instagram-post-list -->
-                                    <li class="instagram-post-list perfect-square">
-                                        <a href="#" class="list-inner"
-                                           style="background-image: url({{ asset('assets/images/instagram-post/instagram-post-6.jpg')}}">
-                                            <div class="post-info-wrapper overlay">
-                                                <div class="post-info">
-                                                    <i class="feather icon-heart"></i>
-                                                    20K+
-                                                </div>
-                                                <!-- End of .post-info -->
-                                                <div class="post-info">
-                                                    <i class="feather icon-message-square"></i>
-                                                    200+
-                                                </div>
-                                                <!-- End of .post-info -->
-                                            </div>
-                                            <!-- End of .post-info-wrapper overlay -->
-                                        </a>
-                                    </li>
-                                    <!-- End of .instagram-post-list -->
-                                </ul>
-                                <!-- End of .instagram-post-list-wrapper -->
-                                <div class="m-t-xs-20">
-                                    <button class="btn btn-primary btn-small">FOLLOW US</button>
+                            <div class="instagram-widget m-b-xs-40">
+                                <div class="widget-title">
+                                    <h3>Instagram</h3>
                                 </div>
+                                <div class="axil-content">
+                                    <ul class="instagram-post-list-wrapper">
+                                        <li class="instagram-post-list perfect-square">
+                                            <a href="https://www.instagram.com/p/B338YpZnmlc/" class="list-inner" target="_blank"
+                                               style="background-image: url({{ asset('assets/images/insta1.jpg')}}">
+                                                <div class="post-info-wrapper overlay">
+                                                    <div class="post-info">
+                                                        <i class="feather icon-heart"></i>
+                                                        10
+                                                    </div>
+                                                    <!-- End of .post-info -->
+
+                                                    <!-- End of .post-info -->
+                                                </div>
+                                                <!-- End of .post-info-wrapper overlay -->
+                                            </a>
+                                        </li>
+                                        <!-- End of .instagram-post-list -->
+                                        <li class="instagram-post-list perfect-square">
+                                            <a href="https://www.instagram.com/p/B3wBFixnXo8/" class="list-inner" target="_blank"
+                                               style="background-image: url({{ asset('assets/images/insta2.jpg')}}">
+                                                <div class="post-info-wrapper overlay">
+                                                    <div class="post-info">
+                                                        <i class="feather icon-heart"></i>
+                                                        10+
+                                                    </div>
+                                                    <!-- End of .post-info -->
+
+                                                    <!-- End of .post-info -->
+                                                </div>
+                                                <!-- End of .post-info-wrapper overlay -->
+                                            </a>
+                                        </li>
+                                        <!-- End of .instagram-post-list -->
+                                        <li class="instagram-post-list perfect-square">
+                                            <a href="https://www.instagram.com/p/B3tp2gmnSht/" class="list-inner" target="_blank"
+                                               style="background-image: url({{ asset('assets/images/insta3.jpg')}}">
+                                                <div class="post-info-wrapper overlay">
+                                                    <div class="post-info">
+                                                        <i class="feather icon-heart"></i>
+                                                        10+
+                                                    </div>
+                                                    <!-- End of .post-info -->
+
+                                                    <!-- End of .post-info -->
+                                                </div>
+                                                <!-- End of .post-info-wrapper overlay -->
+                                            </a>
+                                        </li>
+                                        <!-- End of .instagram-post-list -->
+                                        <li class="instagram-post-list perfect-square">
+                                            <a href="https://www.instagram.com/p/B3rWijKH0_A/" class="list-inner" target="_blank"
+                                               style="background-image: url({{ asset('assets/images/insta4.jpg')}}">
+                                                <div class="post-info-wrapper overlay">
+                                                    <div class="post-info">
+                                                        <i class="feather icon-heart"></i>
+                                                        10+
+                                                    </div>
+                                                    <!-- End of .post-info -->
+                                                    <!-- End of .post-info -->
+                                                </div>
+                                                <!-- End of .post-info-wrapper overlay -->
+                                            </a>
+                                        </li>
+                                        <!-- End of .instagram-post-list -->
+
+                                        <!-- End of .instagram-post-list -->
+                                    </ul>
+                                    <!-- End of .instagram-post-list-wrapper -->
+                                    <div class="m-t-xs-20">
+                                        <a href="https://www.instagram.com/studentmag.tn/" target="_blank">
+                                            <button class="btn btn-primary btn-small" >FOLLOW US</button>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- End of .content -->
                             </div>
-                            <!-- End of .content -->
-                        </div>
                         <!-- End of .instagram-widget -->
+                        </div>
                     </aside>
                     <!-- End of .post-sidebar -->
                 </div>

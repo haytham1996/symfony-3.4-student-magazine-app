@@ -14,7 +14,7 @@ class UserType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('mail')->setMethod('POST')->add('Subscribe', SubmitType::class);
+        $builder->add('mail' )->setMethod('POST')->add('Subscribe', SubmitType::class);
     }/**
      * {@inheritdoc}
      */
