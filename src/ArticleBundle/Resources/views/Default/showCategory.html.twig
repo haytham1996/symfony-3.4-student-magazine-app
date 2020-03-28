@@ -77,7 +77,7 @@
                                 </h3>
                                 {% set intro = art.introduction | split('.') %}
 
-                                <p class="mid">{{intro[0]}} </p>
+                                <p class="mid">{{intro[0]}} ... </p>
                                 <div class="post-metas">
                                     <ul class="list-inline">
                                         <li>By <a href="#">{{art.author.firstName}}</a></li>
@@ -147,12 +147,7 @@
                         <div class="category-widget m-b-xs-40">
                             <div class="widget-title">
                                 <h3>Categories</h3>
-                                <div class="owl-nav">
-                                    <button class="custom-owl-prev"><i
-                                                class="feather icon-chevron-left"></i></button>
-                                    <button class="custom-owl-next"><i
-                                                class="feather icon-chevron-right"></i></button>
-                                </div>
+
                             </div>
 
                             <div class="category-carousel">
@@ -161,6 +156,7 @@
                                         <ul class="category-list-wrapper">
                                             <li class="category-list perfect-square">
                                                 <a href="{{ path('show_category',{'id':2}) }}" class="list-inner"
+                                                   style="background-image: url({{asset('assets/images/categories/Lifestyle.png')}})"
                                                 >
                                                     <div class="post-info-wrapper overlay">
                                                         <div class="counter-inner"><span class="counter">4</span>+
@@ -174,7 +170,8 @@
 
                                             <li class="category-list perfect-square">
                                                 <a href="{{ path('show_category',{'id':1}) }}" class="list-inner"
-                                                  >
+                                                   style="background-image: url({{asset('assets/images/categories/business.png')}})"
+                                                >
                                                     <div class="post-info-wrapper overlay">
                                                         <div class="counter-inner"><span class="counter">1</span>+
                                                         </div>
@@ -187,7 +184,8 @@
 
                                             <li class="category-list perfect-square">
                                                 <a href="{{ path('show_category',{'id':3}) }}" class="list-inner"
-                                                   >
+                                                   style="background-image: url({{asset('assets/images/categories/Technology.png')}})"
+                                                >
                                                     <div class="post-info-wrapper overlay">
                                                         <div class="counter-inner"><span class="counter">0</span>+
                                                         </div>
@@ -200,7 +198,8 @@
 
                                             <li class="category-list perfect-square">
                                                 <a href="{{ path('show_category',{'id':7}) }}" class="list-inner"
-                                                   >
+                                                   style="background-image: url({{asset('assets/images/categories/News.png')}})"
+                                                >
                                                     <div class="post-info-wrapper overlay">
                                                         <div class="counter-inner"><span class="counter">0</span>+
                                                         </div>
