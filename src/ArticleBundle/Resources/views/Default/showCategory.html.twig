@@ -239,31 +239,31 @@
                                         {% for ra in recentArticles %}
                                             <div class="media post-block post-block__small">
                                                 <a href="{{path('show_article',{'id':ra.id})}}" class="align-self-center"><img
-                                                            class=" m-r-xs-30" src="{{asset('assets/images/articles/')}}{{ ra.cover }}"
+                                                            class=" m-r-xs-30" src="{{asset('assets/images/article/')}}{{ ra.cover }}"
                                                             alt="media image"></a>
                                                 <div class="media-body">
                                                     {% if ra.category.name=="Lifestyle" %}
-                                                        <a href="post-format-standard.html"
+                                                        <a href="#"
                                                            class="post-cat color-green-one">{{ra.category.name}}</a>
                                                     {% endif %}
                                                     {% if ra.category.name=="Business" %}
-                                                        <a href="post-format-standard.html"
+                                                        <a href="#"
                                                            class="post-cat color-blue-two">{{ra.category.name}}</a>
                                                     {% endif %}
                                                     {% if ra.category.name=="Technology" %}
-                                                        <a href="post-format-standard.html"
+                                                        <a href="#"
                                                            class="post-cat color-blue-one">{{ra.category.name}}</a>
                                                     {% endif %}
                                                     {% if ra.category.name=="Events" %}
-                                                        <a href="post-format-standard.html"
+                                                        <a href="#"
                                                            class="post-cat color-red-one">{{ra.category.name}}</a>
                                                     {% endif %}
                                                     {% if ra.category.name=="Opportunities" %}
-                                                        <a href="post-format-standard.html"
+                                                        <a href="#"
                                                            class="post-cat color-blue-grey-one">{{ra.category.name}}</a>
                                                     {% endif %}
                                                     {% if ra.category.name=="News" %}
-                                                        <a href="post-format-standard.html"
+                                                        <a href="#"
                                                            class="post-cat color-blue-one">{{ra.category.name}}</a>
                                                     {% endif %}
                                                     <h4 class="axil-post-title hover-line hover-line"><a
@@ -336,10 +336,11 @@
                             <!-- End of .sidebar-post-widget -->
 
                         <div class="add-block-widget m-b-xs-40">
-                            <a href="#"><img src="" alt="sidebar add"
+                            <a href="#"><img src="" alt=""
                                              class="img-fluid"></a>
                         </div>
                         <!-- End of .add-block-widget -->
+                        </div>
                     </aside>
                     <!-- End of .post-sidebar -->
                 </div>

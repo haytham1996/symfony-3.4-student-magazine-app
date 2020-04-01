@@ -1,5 +1,23 @@
 {% extends 'base.html.twig' %}
-
+{% block meta %}
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@Papr">
+    <meta name="twitter:creator" content="@Papr">
+    <meta name="twitter:title" content="{{ article.title }}">
+    <meta name="twitter:description" content="{{ article.title }}">
+    <meta name="twitter:image" content="{{asset('assets/images/article/')}}{{article.cover}}">
+    <!-- Facebook -->
+    <meta property="og:url" content="">
+    <meta property="og:title" content="{{article.title}}">
+    <meta property="og:description" content="{{article.title}}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{asset('assets/images/article/')}}{{article.cover}}">
+    <meta property="og:image:secure_url" content="">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+{% endblock %}
 {% block css %}
 {% endblock %}
 
@@ -85,22 +103,14 @@
                             <!-- End of .single-blog-wrapper -->
                         </article>
                         <!-- End of .post-details -->
-                        <div class="post-shares m-t-xs-60">
-                            <div class="title">SHARE:</div>
-                            <ul class="social-share social-share__rectangular">
-                                <li><a href="#" class="btn bg-color-twitch"><i class="fab fa-twitch"></i>
-                                        1K+</a>
-                                </li>
-                                <li><a href="#" class="btn bg-color-facebook"><i class="fab fa-facebook-f"></i>
-                                        1K+</a>
-                                </li>
-                                <li><a href="#" class="btn bg-color-twitter"><i class="fab fa-twitter"></i>1000+</a>
-                                </li>
-                                <li><a href="#" class="btn bg-color-linkedin"><i
-                                                class="fab fa-linkedin-in"></i>1M+</a>
-                                </li>
-                            </ul>
-                        </div>
+
+
+                            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                            <div class="addthis_inline_share_toolbox" >
+
+                            </div>
+
+
 
                         <!-- End of .post-shares -->
 
@@ -113,16 +123,17 @@
                                 <div class="media-body">
                                     <div class="media-body-title">
                                         <h3><a href="#">{{article.author.firstName}} {{ article.author.lastName }}</a></h3>
+                                        <p>{{ article.author.post }}</p>
                                     </div>
                                     <!-- End of .media-body-title -->
 
                                     <div class="media-body-content">
                                         <p>{{article.author.description}}</p>
                                         <ul class="social-share social-share__with-bg">
-                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-behance"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="{{ article.author.facebook }}"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="{{ article.author.instagram }}"><i class="fab fa-instagram"></i></a></li>
+                                            <li><a href="{{ article.author.linkedin }}"><i class="fab fa-linkedin"></i></a></li>
+
                                         </ul>
                                         <!-- End of .social-share__no-bg -->
                                     </div>
@@ -524,37 +535,6 @@
 {% block js %}
 
 
-    <script type="text/javascript">
-        (function () {
-
-
-        var popupCenter = function (url , title , width , height) {
-            console.log("hello");
-            var popupWidth = width || 640;
-            var popupHeight = height || 320;
-
-            var windowLeft = window.screenLeft || window.screenX;
-            var windowTop = window.screenTop || window.screenY;
-            var windowWidth = window.innerWidth || document.documentElement.clientWidth;
-            var windowHeight = window.innerHeight || document.documentElement.clientHeight;
-            var popupLeft = windowLeft + windowWidth / 2 - popupWidth / 2;
-            var popupTop = windowTop + windowHeight / 2 - popupHeight / 2;
-            window.open(url, title, 'scrollbars=yes, width=' + popupWidth + ',height=' + popupHeight + ', top=' + popupTop + ', left=' + popupLeft);
-        } ;
-
-
-  document.querySelector('.share_facebook').addEventListener('click' , function (e) {
-      e.preventDefault();
-      var url = this.getAttribute('data-url') ;
-      var shareUrl = "https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(url) ;
-      popupCenter(shareUrl, "partager sur facebook ")
-
-  })
-
-        })()
-
-
-    </script>
 {% endblock %}
 
 

@@ -161,7 +161,7 @@ class ArticleController extends Controller
     }
     public function getRealEntities($articles){
         foreach ($articles as $articles){
-            $realEntities[$articles->getId()] = [$articles->displayCover(),$articles->getTitle() , $articles->getAuthor()];
+            $realEntities[$articles->getId()] = [$articles->getCover(),$articles->getTitle() , $articles->getAuthor()->getFirstName()];
         }
         return $realEntities;
     }

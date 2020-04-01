@@ -49,6 +49,102 @@ class Author
      */
     private $image;
 
+    /**
+     * @return string
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
+
+    /**
+     * @param string $post
+     */
+    public function setPost($post)
+    {
+        $this->post = $post;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="post", type="string", length=255)
+     */
+    private $post;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="facebook", type="string", length=255)
+     */
+
+
+    private $facebook;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="instagram", type="string", length=255)
+     */
+    private $instagram;
+
+    /**
+     * @return string
+     */
+    public function getFacebook()
+    {
+        return $this->facebook;
+    }
+
+    /**
+     * @param string $facebook
+     */
+    public function setFacebook($facebook)
+    {
+        $this->facebook = $facebook;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInstagram()
+    {
+        return $this->instagram;
+    }
+
+    /**
+     * @param string $instagram
+     */
+    public function setInstagram($instagram)
+    {
+        $this->instagram = $instagram;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLinkedin()
+    {
+        return $this->linkedin;
+    }
+
+    /**
+     * @param string $linkedin
+     */
+    public function setLinkedin($linkedin)
+    {
+        $this->linkedin = $linkedin;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="linkedin", type="string", length=255)
+     */
+    private $linkedin;
+
+
+
 
     /**
      * Get id
