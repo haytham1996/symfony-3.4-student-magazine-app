@@ -27,6 +27,7 @@ class ArticleController extends Controller
          $sixTrendingsArticles=$em->getRepository('ArticleBundle:Article')->findTrendingSix();
          $articlesList=$em->getRepository('ArticleBundle:Article')->find8Aarticles();
          $recentArticles=$em->getRepository('ArticleBundle:Article')->findMost4Recent();
+         unset($recentArticles[0]) ;
          $popularArticles=$em->getRepository('ArticleBundle:Article')->findPopularArticles();
         $categories=$em->getRepository('ArticleBundle:Category')->findAll();
         $date= new Date();
@@ -84,6 +85,9 @@ class ArticleController extends Controller
        // $image3=$images[2];
         $recentArticles=$em->getRepository('ArticleBundle:Article')->findMost4Recent();
         $popularArticles=$em->getRepository('ArticleBundle:Article')->findPopularArticles();
+       // $content=nl2br($article->getContent()) ;
+        $content=$article->getContent();
+       // $content= str_replace("\n","<br />" , $content);
 
         $user=new User();
         $form=$this->createFormBuilder($user) ;
@@ -108,6 +112,7 @@ class ArticleController extends Controller
             'recentArticles'=>$recentArticles ,
             'popularArticles'=>$popularArticles,
             'form'=>$form->createView(),
+            'content'=>$content,
 
         ));
     }

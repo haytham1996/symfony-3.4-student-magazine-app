@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+
 {% block meta %}
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
@@ -94,22 +95,27 @@
 
                                 <figure>
                                     <img src="{{asset('assets/images/article/')}}{{image1.image}}" alt="img" srcset="{{asset('assets/images/article/')}}{{asset('assets/images/article/')}}{{ image1.image }} 390w 292w">
-                                    <figcaption>Drawn for an insurance company</figcaption>
+                                    <figcaption></figcaption>
                                 </figure>
 
-                                <p>{{ article.content }} </p>
+
+                                <p >{{ article.content  | raw | nl2br }}  </p>
                                 <!-- End of .blockquote -->
                             </div>
                             <!-- End of .single-blog-wrapper -->
                         </article>
                         <!-- End of .post-details -->
-
+                        <div class="post-shares m-t-xs-60">
+                            <div class="title">SHARE:</div>
+                            <ul class="">
+                         <div class="addthis_inline_share_toolbox"  >
 
                             <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                            <div class="addthis_inline_share_toolbox" >
+                         </div>
+                            </ul>
 
-                            </div>
 
+                        </div>
 
 
                         <!-- End of .post-shares -->
@@ -206,7 +212,7 @@
                                     <div class="cat-carousel-inner">
                                         <ul class="category-list-wrapper">
                                             <li class="category-list perfect-square">
-                                                <a href="{{ path('show_category',{'id':2}) }}" class="list-inner"
+                                                <a href="{{ path('show_category',{'id':3}) }}" class="list-inner"
                                                    style="background-image: url({{asset('assets/images/categories/Lifestyle.png')}})"
                                                 >
                                                     <div class="post-info-wrapper overlay">
@@ -220,7 +226,7 @@
                                             <!-- End of .category-list -->
 
                                             <li class="category-list perfect-square">
-                                                <a href="{{ path('show_category',{'id':1}) }}" class="list-inner"
+                                                <a href="{{ path('show_category',{'id':2}) }}" class="list-inner"
                                                    style="background-image: url({{asset('assets/images/categories/business.png')}})"
                                                 >
                                                     <div class="post-info-wrapper overlay">
@@ -234,7 +240,7 @@
                                             <!-- End of .category-list -->
 
                                             <li class="category-list perfect-square">
-                                                <a href="{{ path('show_category',{'id':3}) }}" class="list-inner"
+                                                <a href="{{ path('show_category',{'id':4}) }}" class="list-inner"
                                                    style="background-image: url({{asset('assets/images/categories/Technology.png')}})"
                                                 >
                                                     <div class="post-info-wrapper overlay">
@@ -248,7 +254,7 @@
                                             <!-- End of .category-list -->
 
                                             <li class="category-list perfect-square">
-                                                <a href="{{ path('show_category',{'id':7}) }}" class="list-inner"
+                                                <a href="{{ path('show_category',{'id':1}) }}" class="list-inner"
                                                    style="background-image: url({{asset('assets/images/categories/News.png')}})"
                                                 >
                                                     <div class="post-info-wrapper overlay">
@@ -533,7 +539,7 @@
 
 
 {% block js %}
-
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e7fe80754b4827b"></script>
 
 {% endblock %}
 

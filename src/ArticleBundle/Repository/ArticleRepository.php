@@ -45,7 +45,7 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
     public function findMost4Recent()
     {
         $q=$this->getEntityManager()->createQuery("select v FROM  ArticleBundle:Article v 
- ORDER BY v.date DESC  ")->setMaxResults(4);
+ ORDER BY v.date DESC  ")->setMaxResults(5);
         return $q->getResult();
     }
 
