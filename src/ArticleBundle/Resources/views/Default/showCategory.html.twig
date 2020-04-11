@@ -147,6 +147,12 @@
                         <div class="category-widget m-b-xs-40">
                             <div class="widget-title">
                                 <h3>Categories</h3>
+                                <div class="owl-nav">
+                                    <button class="custom-owl-prev"><i
+                                                class="feather icon-chevron-left"></i></button>
+                                    <button class="custom-owl-next"><i
+                                                class="feather icon-chevron-right"></i></button>
+                                </div>
 
                             </div>
 
@@ -154,73 +160,55 @@
                                 <div class="owl-carousel owl-theme">
                                     <div class="cat-carousel-inner">
                                         <ul class="category-list-wrapper">
-                                            <li class="category-list perfect-square">
-                                                <a href="{{ path('show_category',{'id':3}) }}" class="list-inner"
-                                                   style="background-image: url({{asset('assets/images/categories/Lifestyle.png')}})"
-                                                >
-                                                    <div class="post-info-wrapper overlay">
-                                                        <div class="counter-inner"><span class="counter">4</span>+
+                                            {% for c in categories | slice(0,4) %}
+                                                <li class="category-list perfect-square">
+                                                    <a href="{{ path('show_category',{'id':c.id}) }}" class="list-inner"
+                                                       style="background-image: url({{asset('assets/images/categories/')}}{{c.cover}})"
+                                                    >
+                                                        <div class="post-info-wrapper overlay">
+                                                            <div class="counter-inner"><span class="counter">{{c.nbArticles}}</span>+
+                                                            </div>
+                                                            <h4 class="cat-title">{{c.name}}</h4>
                                                         </div>
-                                                        <h4 class="cat-title">Lifestyle</h4>
-                                                    </div>
-                                                    <!-- End of .counter-wrapper -->
-                                                </a>
-                                            </li>
+                                                        <!-- End of .counter-wrapper -->
+                                                    </a>
+                                                </li>
+                                            {% endfor %}
                                             <!-- End of .category-list -->
 
-                                            <li class="category-list perfect-square">
-                                                <a href="{{ path('show_category',{'id':2}) }}" class="list-inner"
-                                                   style="background-image: url({{asset('assets/images/categories/business.png')}})"
-                                                >
-                                                    <div class="post-info-wrapper overlay">
-                                                        <div class="counter-inner"><span class="counter">1</span>+
-                                                        </div>
-                                                        <h4 class="cat-title">Business</h4>
-                                                    </div>
-                                                    <!-- End of .counter-wrapper -->
-                                                </a>
-                                            </li>
-                                            <!-- End of .category-list -->
 
-                                            <li class="category-list perfect-square">
-                                                <a href="{{ path('show_category',{'id':4}) }}" class="list-inner"
-                                                   style="background-image: url({{asset('assets/images/categories/Technology.png')}})"
-                                                >
-                                                    <div class="post-info-wrapper overlay">
-                                                        <div class="counter-inner"><span class="counter">0</span>+
-                                                        </div>
-                                                        <h4 class="cat-title">Technology</h4>
-                                                    </div>
-                                                    <!-- End of .counter-wrapper -->
-                                                </a>
-                                            </li>
-                                            <!-- End of .category-list -->
 
-                                            <li class="category-list perfect-square">
-                                                <a href="{{ path('show_category',{'id':1}) }}" class="list-inner"
-                                                   style="background-image: url({{asset('assets/images/categories/News.png')}})"
-                                                >
-                                                    <div class="post-info-wrapper overlay">
-                                                        <div class="counter-inner"><span class="counter">0</span>+
-                                                        </div>
-                                                        <h4 class="cat-title">news</h4>
-                                                    </div>
-                                                    <!-- End of .counter-wrapper -->
-                                                </a>
-                                            </li>
-                                            <!-- End of .category-list -->
                                         </ul>
                                         <!-- End of .category-list-wrapper -->
                                     </div>
-                                    <!-- End of .cat-carousel-inner -->
-
 
                                     <!-- End of .cat-carousel-inner -->
+                                    <div class="cat-carousel-inner">
+                                        <ul class="category-list-wrapper">
+                                            {% for c in categories | slice(4,8) %}
+                                                <li class="category-list perfect-square">
+                                                    <a href="{{ path('show_category',{'id':c.id}) }}" class="list-inner"
+                                                       style="background-image: url({{asset('assets/images/categories/')}}{{c.cover}})"
+                                                    >
+                                                        <div class="post-info-wrapper overlay">
+                                                            <div class="counter-inner"><span class="counter">{{c.nbArticles}}</span>+
+                                                            </div>
+                                                            <h4 class="cat-title">{{c.name}}</h4>
+                                                        </div>
+                                                        <!-- End of .counter-wrapper -->
+                                                    </a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+
+
                                 </div>
                                 <!-- End of  .owl-carousel -->
                             </div>
                             <!-- End of .category-carousel -->
                         </div>
+                        <!-- End of .category-widget -->
                         <!-- End of .category-widget -->
 
                         <div class="post-widget sidebar-post-widget m-b-xs-40">

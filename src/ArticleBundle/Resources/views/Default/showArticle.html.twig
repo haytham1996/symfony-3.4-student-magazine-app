@@ -23,13 +23,17 @@
 {% endblock %}
 
 {% block body %}
+
+
+
     <div class="breadcrumb-wrapper">
         <div class="container">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ path('article_homepage') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ path('article_homepage') }}">Home </a></li>
                     <li class="breadcrumb-item"><a href="{{path('show_category',{'id': article.category.id}) }}">{{ article.category.name }}</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ article.title }}</li>
+
                 </ol>
                 <!-- End of .breadcrumb -->
             </nav>
@@ -69,6 +73,7 @@
             </div>
             <!-- End of .row -->
         </div>
+
         <!-- End of .container -->
     </section>
     <!-- End of .banner -->
@@ -76,6 +81,7 @@
     <!-- post-single-wrapper starts -->
     <div class="post-single-wrapper p-t-xs-60">
         <div class="container">
+            <div class="addthis_inline_share_toolbox_ivzf" ></div>
             <div class="row">
                 <div class="col-lg-8">
                     <main class="site-main">
@@ -91,12 +97,17 @@
                                     <!-- End of .social-share__no-bg -->
                                 </div>
                                 <!-- End of .social-share -->
+                                <br>
                                     <p>{{ article.introduction   }}</p>
 
                                 <figure>
-                                    <img src="{{asset('assets/images/article/')}}{{image1.image}}" alt="img" srcset="{{asset('assets/images/article/')}}{{asset('assets/images/article/')}}{{ image1.image }} 390w 292w">
+                                    <img src="{{asset('assets/images/article/')}}{{image1.image}}" alt="img" >
                                     <figcaption></figcaption>
                                 </figure>
+
+                                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+
+
 
 
                                 <p >{{ article.content  | raw | nl2br }}  </p>
@@ -120,12 +131,12 @@
 
                         <!-- End of .post-shares -->
 
-                        <hr class="m-t-xs-50 m-b-xs-60"> 
+                        <hr class="m-t-xs-50 m-b-xs-60">
 
                         <div class="about-author m-b-xs-60">
                             <div class="media">
-                                <a href="#"><img class="rounded-circle img-thumbnail" src="{{asset('assets/images/members/')}}{{ article.author.image }}"
-                                                 alt=""></a>
+                                <a href="#"><img class="rounded-circle " src="{{asset('assets/images/members/')}}{{ article.author.image }}"
+                                                 alt="" style="width: 7.5rem ; height: 7.5rem"></a>
                                 <div class="media-body">
                                     <div class="media-body-title">
                                         <h3><a href="#">{{article.author.firstName}} {{ article.author.lastName }}</a></h3>
@@ -136,9 +147,9 @@
                                     <div class="media-body-content">
                                         <p>{{article.author.description}}</p>
                                         <ul class="social-share social-share__with-bg">
-                                            <li><a href="{{ article.author.facebook }}"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="{{ article.author.instagram }}"><i class="fab fa-instagram"></i></a></li>
-                                            <li><a href="{{ article.author.linkedin }}"><i class="fab fa-linkedin"></i></a></li>
+                                            <li><a href="{{ article.author.facebook }} " target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="{{ article.author.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                            <li><a href="{{ article.author.linkedin }}" target="_blank"><i class="fab fa-linkedin"></i></a></li>
 
                                         </ul>
                                         <!-- End of .social-share__no-bg -->
@@ -204,6 +215,12 @@
                         <div class="category-widget m-b-xs-40">
                             <div class="widget-title">
                                 <h3>Categories</h3>
+                                <div class="owl-nav">
+                                    <button class="custom-owl-prev"><i
+                                                class="feather icon-chevron-left"></i></button>
+                                    <button class="custom-owl-next"><i
+                                                class="feather icon-chevron-right"></i></button>
+                                </div>
 
                             </div>
 
@@ -211,68 +228,49 @@
                                 <div class="owl-carousel owl-theme">
                                     <div class="cat-carousel-inner">
                                         <ul class="category-list-wrapper">
-                                            <li class="category-list perfect-square">
-                                                <a href="{{ path('show_category',{'id':3}) }}" class="list-inner"
-                                                   style="background-image: url({{asset('assets/images/categories/Lifestyle.png')}})"
-                                                >
-                                                    <div class="post-info-wrapper overlay">
-                                                        <div class="counter-inner"><span class="counter">4</span>+
+                                            {% for c in categories | slice(0,4) %}
+                                                <li class="category-list perfect-square">
+                                                    <a href="{{ path('show_category',{'id':c.id}) }}" class="list-inner"
+                                                       style="background-image: url({{asset('assets/images/categories/')}}{{c.cover}})"
+                                                    >
+                                                        <div class="post-info-wrapper overlay">
+                                                            <div class="counter-inner"><span class="counter">{{c.nbArticles}}</span>+
+                                                            </div>
+                                                            <h4 class="cat-title">{{c.name}}</h4>
                                                         </div>
-                                                        <h4 class="cat-title">Lifestyle</h4>
-                                                    </div>
-                                                    <!-- End of .counter-wrapper -->
-                                                </a>
-                                            </li>
+                                                        <!-- End of .counter-wrapper -->
+                                                    </a>
+                                                </li>
+                                            {% endfor %}
                                             <!-- End of .category-list -->
 
-                                            <li class="category-list perfect-square">
-                                                <a href="{{ path('show_category',{'id':2}) }}" class="list-inner"
-                                                   style="background-image: url({{asset('assets/images/categories/business.png')}})"
-                                                >
-                                                    <div class="post-info-wrapper overlay">
-                                                        <div class="counter-inner"><span class="counter">1</span>+
-                                                        </div>
-                                                        <h4 class="cat-title">Business</h4>
-                                                    </div>
-                                                    <!-- End of .counter-wrapper -->
-                                                </a>
-                                            </li>
-                                            <!-- End of .category-list -->
 
-                                            <li class="category-list perfect-square">
-                                                <a href="{{ path('show_category',{'id':4}) }}" class="list-inner"
-                                                   style="background-image: url({{asset('assets/images/categories/Technology.png')}})"
-                                                >
-                                                    <div class="post-info-wrapper overlay">
-                                                        <div class="counter-inner"><span class="counter">0</span>+
-                                                        </div>
-                                                        <h4 class="cat-title">Technology</h4>
-                                                    </div>
-                                                    <!-- End of .counter-wrapper -->
-                                                </a>
-                                            </li>
-                                            <!-- End of .category-list -->
 
-                                            <li class="category-list perfect-square">
-                                                <a href="{{ path('show_category',{'id':1}) }}" class="list-inner"
-                                                   style="background-image: url({{asset('assets/images/categories/News.png')}})"
-                                                >
-                                                    <div class="post-info-wrapper overlay">
-                                                        <div class="counter-inner"><span class="counter">0</span>+
-                                                        </div>
-                                                        <h4 class="cat-title">news</h4>
-                                                    </div>
-                                                    <!-- End of .counter-wrapper -->
-                                                </a>
-                                            </li>
-                                            <!-- End of .category-list -->
                                         </ul>
                                         <!-- End of .category-list-wrapper -->
                                     </div>
-                                    <!-- End of .cat-carousel-inner -->
-
 
                                     <!-- End of .cat-carousel-inner -->
+                                    <div class="cat-carousel-inner">
+                                        <ul class="category-list-wrapper">
+                                            {% for c in categories | slice(4,8) %}
+                                                <li class="category-list perfect-square">
+                                                    <a href="{{ path('show_category',{'id':c.id}) }}" class="list-inner"
+                                                       style="background-image: url({{asset('assets/images/categories/')}}{{c.cover}})"
+                                                    >
+                                                        <div class="post-info-wrapper overlay">
+                                                            <div class="counter-inner"><span class="counter">{{c.nbArticles}}</span>+
+                                                            </div>
+                                                            <h4 class="cat-title">{{c.name}}</h4>
+                                                        </div>
+                                                        <!-- End of .counter-wrapper -->
+                                                    </a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+
+
                                 </div>
                                 <!-- End of  .owl-carousel -->
                             </div>
@@ -338,7 +336,7 @@
                                     <div class="axil-content">
                                         {% for ra in recentArticles %}
                                             <div class="media post-block post-block__small">
-                                                <a href="{{path('show_category',{'id': article.category.id}) }}" class="align-self-center"><img
+                                                <a href="{{path('show_article',{'id': ra.id}) }}" class="align-self-center"><img
                                                             class=" m-r-xs-30" src="{{asset('assets/images/article/')}}{{ ra.cover }}"
                                                             alt="media image"></a>
                                                 <div class="media-body">
@@ -367,7 +365,7 @@
                                                            class="post-cat color-blue-one">{{ra.category.name}}</a>
                                                     {% endif %}
                                                     <h4 class="axil-post-title hover-line hover-line"><a
-                                                                href="{{path('show_category',{'id': article.category.id}) }}">{{ra.title}}</a></h4>
+                                                                href="{{path('show_article',{'id': ra.id}) }}">{{ra.title}}</a></h4>
                                                     <div class="post-metas">
                                                         <ul class="list-inline">
                                                             <li>By <a href="#">{{ra.author.firstName}} {{ ra.author.lastName }}</a></li>

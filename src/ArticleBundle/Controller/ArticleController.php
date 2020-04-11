@@ -77,7 +77,7 @@ class ArticleController extends Controller
     public function showArticleAction(Article $article , Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
+        $ip=$request->getClientIp();
         $categories = $em->getRepository('ArticleBundle:Category')->findAll();
         $images=$em->getRepository('ArticleBundle:Images')->findImagesByArticle($article->getId());
         $image1=$images[0] ;
@@ -104,6 +104,7 @@ class ArticleController extends Controller
 
 
         return $this->render('@Article/Default/showArticle.html.twig', array(
+            'ip' =>$ip,
             'article' => $article,
             'categories'=>$categories,
             'image1'=>$image1,

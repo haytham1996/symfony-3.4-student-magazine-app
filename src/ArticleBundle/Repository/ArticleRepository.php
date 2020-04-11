@@ -61,6 +61,12 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
      where v.category= :idCat ")->setParameter('idCat', $idCat)->setMaxResults(8);
             return $q->getResult();
         }
+    public function find4Categories()
+    {
+        $q=$this->getEntityManager()->createQuery("select v FROM  ArticleBundle:Article v 
+     where v.category= :idCat ")->setParameter('idCat', $idCat)->setMaxResults(8);
+        return $q->getResult();
+    }
 
     public function findEntitiesByString($str){
         return $this->getEntityManager()

@@ -34,6 +34,28 @@ class Category
      * @ORM\Column(name="nb_articles", type="integer", nullable=true)
      */
     private $nbArticles;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cover", type="string")
+     */
+    private $cover;
+
+    /**
+     * @return string
+     */
+    public function getCover()
+    {
+        return $this->cover;
+    }
+
+    /**
+     * @param string $cover
+     */
+    public function setCover($cover)
+    {
+        $this->cover = $cover;
+    }
 
 
     /**
