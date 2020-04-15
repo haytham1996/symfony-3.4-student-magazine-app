@@ -19,15 +19,15 @@
                                 <div class="post-cat-group m-b-xs-10">
                                     {% if (  latestArticle.category.name =="Lifestyle") %}
 
-                                        <a href="{{ path('show_category',{'id':3}) }}"
+                                        <a href="{{ path('show_category',{'id':latestArticle.category.id}) }}"
                                            class="post-cat cat-btn bg-color-green-one">{{ latestArticle.category.name }}</a>
                                     {% endif %}
                                     {% if ( latestArticle.category.name =="Business") %}
-                                        <a href="{{ path('show_category',{'id':2}) }}"
+                                        <a href="{{ path('show_category',{'id':latestArticle.category.id}) }}"
                                            class="post-cat cat-btn bg-color-purple-one">{{ latestArticle.category.name }}</a>
                                     {% endif %}
                                     {% if (latestArticle.category.name =="Technology") %}
-                                        <a href="{{ path('show_category',{'id':4}) }}"
+                                        <a href="{{ path('show_category',{'id':latestArticle.category.id}) }}"
                                            class="post-cat cat-btn bg-color-blue-one">{{ latestArticle.category.name }}</a>
                                     {% endif %}
                                 </div>
@@ -68,15 +68,15 @@
                                     <div class="post-cat-group m-b-xs-10">
                                         {% if (a.category.name=="Lifestyle") %}
 
-                                        <a href="{{ path('show_category',{'id':3}) }}"
+                                        <a href="{{ path('show_category',{'id':a.category.id}) }}"
                                            class="post-cat cat-btn bg-color-green-one">{{ a.category.name }}</a>
                                         {% endif %}
                                         {% if (a.category.name=="Business") %}
-                                        <a href="{{ path('show_category',{'id':2}) }}"
+                                        <a href="{{ path('show_category',{'id':a.category.id}) }}"
                                            class="post-cat cat-btn bg-color-purple-one">{{ a.category.name }}</a>
                                         {% endif %}
                                         {% if (a.category.name=="Technology") %}
-                                        <a href="{{ path('show_category',{'id':4}) }}"
+                                        <a href="{{ path('show_category',{'id':a.category.id}) }}"
                                            class="post-cat cat-btn bg-color-blue-one">{{ a.category.name }}</a>
                                         {% endif %}
                                     </div>
@@ -126,13 +126,13 @@
                             <div class="media-body media-body__big">
                                 <div class="post-cat-group m-b-xs-10">
                                     {% if topArticles[0].category.name=="Lifestyle" %}
-                                    <a href="{{ path('show_category',{'id':3}) }}" class="post-cat cat-btn bg-color-green-one">{{topArticles[0].category.name}}</a>
+                                    <a href="{{ path('show_category',{'id':topArticles[0].category.id}) }}" class="post-cat cat-btn bg-color-green-one">{{topArticles[0].category.name}}</a>
                                     {% endif %}
                                     {% if topArticles[0].category.name=="Business" %}
-                                        <a href="{{ path('show_category',{'id':3}) }}" class="post-cat cat-btn bg-color-purple-one">{{topArticles[0].category.name}}</a>
+                                        <a href="{{ path('show_category',{'id':topArticles[0].category.id}) }}" class="post-cat cat-btn bg-color-purple-one">{{topArticles[0].category.name}}</a>
                                     {% endif %}
                                     {% if topArticles[0].category.name=="Technology" %}
-                                        <a href="{{ path('show_category',{'id':4}) }}" class="post-cat cat-btn bg-color-blue-one">{{topArticles[0].category.name}}</a>
+                                        <a href="{{ path('show_category',{'id':topArticles[0].category.id}) }}" class="post-cat cat-btn bg-color-blue-one">{{topArticles[0].category.name}}</a>
                                     {% endif %}
                                 </div>
                                 <div class="axil-media-bottom">
@@ -165,13 +165,13 @@
                             <div class="media-body">
                                 <div class="post-cat-group m-b-xs-10">
                                     {% if topArticles[1].category.name=="Lifestyle" %}
-                                        <a href="{{ path('show_category',{'id':3}) }}" class="post-cat cat-btn bg-color-green-one">{{topArticles[1].category.name}}</a>
+                                        <a href="{{ path('show_category',{'id':topArticles[1].category.id}) }}" class="post-cat cat-btn bg-color-green-one">{{topArticles[1].category.name}}</a>
                                     {% endif %}
                                     {% if topArticles[1].category.name=="Business" %}
-                                        <a href="{{ path('show_category',{'id':2}) }}" class="post-cat cat-btn bg-color-purple-one">{{topArticles[1].category.name}}</a>
+                                        <a href="{{ path('show_category',{'id':topArticles[1].category.id}) }}" class="post-cat cat-btn bg-color-purple-one">{{topArticles[1].category.name}}</a>
                                     {% endif %}
                                     {% if topArticles[1].category.name=="Technology" %}
-                                        <a href="{{ path('show_category',{'id':4}) }}" class="post-cat cat-btn bg-color-blue-one">{{topArticles[1].category.name}}</a>
+                                        <a href=href="{{ path('show_category',{'id':topArticles[1].category.id}) }}"" class="post-cat cat-btn bg-color-blue-one">{{topArticles[1].category.name}}</a>
                                     {% endif %}
                                 </div>
                                 <div class="axil-media-bottom">
@@ -200,13 +200,13 @@
                             <div class="media-body">
                                 <div class="post-cat-group m-b-xs-10">
                                     {% if topArticles[2].category.name=="Lifestyle" %}
-                                        <a href="{{ path('show_category',{'id':3}) }}" class="post-cat cat-btn bg-color-green-one">{{topArticles[2].category.name}}</a>
+                                        <a href="{{ path('show_category',{'id':topArticles[2].category.id}) }}" class="post-cat cat-btn bg-color-green-one">{{topArticles[2].category.name}}</a>
                                     {% endif %}
                                     {% if topArticles[2].category.name=="Business" %}
-                                        <a href="{{ path('show_category',{'id':2}) }}" class="post-cat cat-btn bg-color-purple-one">{{topArticles[2].category.name}}</a>
+                                        <a href="{{ path('show_category',{'id':topArticles[2].category.id}) }}" class="post-cat cat-btn bg-color-purple-one">{{topArticles[2].category.name}}</a>
                                     {% endif %}
                                     {% if topArticles[2].category.name=="Technology" %}
-                                        <a href="{{ path('show_category',{'id':4}) }}" class="post-cat cat-btn bg-color-blue-one">{{topArticles[2].category.name}}</a>
+                                        <a href="{{ path('show_category',{'id':topArticles[2].category.id}) }}" class="post-cat cat-btn bg-color-blue-one">{{topArticles[2].category.name}}</a>
                                     {% endif %}
                                 </div>
                                 <div class="axil-media-bottom">
@@ -249,13 +249,13 @@
                         <div class="media-body">
                             <div class="post-cat-group m-b-xs-10">
                                 {% if tr.category.name=="Lifestyle" %}
-                                    <a href="{{ path('show_category',{'id':3}) }}" class="post-cat cat-btn bg-color-green-one">{{tr.category.name}}</a>
+                                    <a href="{{ path('show_category',{'id':tr.category.id}) }}" class="post-cat cat-btn bg-color-green-one">{{tr.category.name}}</a>
                                 {% endif %}
                                 {% if tr.category.name=="Business" %}
-                                    <a href="{{ path('show_category',{'id':2}) }}" class="post-cat cat-btn bg-color-purple-one">{{tr.category.name}}</a>
+                                    <a href="{{ path('show_category',{'id':tr.category.id}) }}" class="post-cat cat-btn bg-color-purple-one">{{tr.category.name}}</a>
                                 {% endif %}
                                 {% if tr.category.name=="Technology" %}
-                                    <a href="{{ path('show_category',{'id':4}) }}" class="post-cat cat-btn bg-color-blue-one">{{tr.category.name}}</a>
+                                    <a href="{{ path('show_category',{'id':tr.category.id}) }}" class="post-cat cat-btn bg-color-blue-one">{{tr.category.name}}</a>
                                 {% endif %}
                             </div>
                             <h3 class="axil-post-title hover-line hover-line"><a

@@ -231,27 +231,27 @@
                                                             alt="media image"></a>
                                                 <div class="media-body">
                                                     {% if ra.category.name=="Lifestyle" %}
-                                                        <a href="#"
+                                                        <a href="{{ path('show_category',{'id':ra.category.id}) }}"
                                                            class="post-cat color-green-one">{{ra.category.name}}</a>
                                                     {% endif %}
                                                     {% if ra.category.name=="Business" %}
-                                                        <a href="#"
+                                                        <a href="{{ path('show_category',{'id':ra.category.id}) }}"
                                                            class="post-cat color-blue-two">{{ra.category.name}}</a>
                                                     {% endif %}
                                                     {% if ra.category.name=="Technology" %}
-                                                        <a href="#"
+                                                        <a href="{{ path('show_category',{'id':ra.category.id}) }}"
                                                            class="post-cat color-blue-one">{{ra.category.name}}</a>
                                                     {% endif %}
                                                     {% if ra.category.name=="Events" %}
-                                                        <a href="#"
+                                                        <a href="{{ path('show_category',{'id':ra.category.id}) }}"
                                                            class="post-cat color-red-one">{{ra.category.name}}</a>
                                                     {% endif %}
                                                     {% if ra.category.name=="Opportunities" %}
-                                                        <a href="#"
+                                                        <a href="{{ path('show_category',{'id':ra.category.id}) }}"
                                                            class="post-cat color-blue-grey-one">{{ra.category.name}}</a>
                                                     {% endif %}
                                                     {% if ra.category.name=="News" %}
-                                                        <a href="#"
+                                                        <a href="{{ path('show_category',{'id':ra.category.id}) }}"
                                                            class="post-cat color-blue-one">{{ra.category.name}}</a>
                                                     {% endif %}
                                                     <h4 class="axil-post-title hover-line hover-line"><a
