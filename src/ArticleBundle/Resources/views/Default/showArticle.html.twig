@@ -56,7 +56,9 @@
                         </h2>
                         <div class="post-metas banner-post-metas m-t-xs-20">
                             <ul class="list-inline">
-                                <li><a href="#" class="post-author post-author-with-img">{{article.author.firstName}} &nbsp {{article.author.lastName}} </a></li>
+                                <li><a href="#" class="post-author post-author-with-img">
+                                        <img alt="author" src="{{asset('assets/images/members/')}}{{ article.author.image }}">
+                                        {{article.author.firstName}} &nbsp {{article.author.lastName}} </a></li>
                                 <li><a href="#"><i class="feather icon-activity"></i>{{ article.views }}</a></li>
                                 <li><a href="#"><i class="feather icon-share-2"></i>{{article.share}}</a></li>
                             </ul>
@@ -150,6 +152,7 @@
                                             <li><a href="{{ article.author.facebook }} " target="_blank"><i class="fab fa-facebook-f"></i></a></li>
                                             <li><a href="{{ article.author.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a></li>
                                             <li><a href="{{ article.author.linkedin }}" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                                            <li><a href="{{ article.author.twitter }}" target="_blank"><i class="fab fa-twitter"></i></a></li>
 
                                         </ul>
                                         <!-- End of .social-share__no-bg -->

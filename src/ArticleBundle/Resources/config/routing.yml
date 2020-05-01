@@ -10,4 +10,7 @@ show_category:
 search_ajax:
   path:     /search
   defaults: { _controller: ArticleBundle:Article:search }
+contact_us:
+  path:     /cotactus
+  defaults: { _controller: ArticleBundle:Article:showContactUs }
 

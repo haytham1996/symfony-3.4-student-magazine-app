@@ -171,4 +171,41 @@ class ArticleController extends Controller
         }
         return $realEntities;
     }
+
+    public function  showContactUsAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $categories = $em->getRepository('ArticleBundle:Category')->findAll();
+
+        $recentArticles=$em->getRepository('ArticleBundle:Article')->findMost4Recent();
+        $popularArticles=$em->getRepository('ArticleBundle:Article')->findPopularArticles();
+
+
+
+        $user=new User();
+        $form=$this->createFormBuilder($user) ;
+
+        $form=$this->createForm('ArticleBundle\Form\UserType',$user) ;
+        $form->handleRequest($request) ;
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em=$this->getDoctrine()->getManager() ;
+            $em->persist($user) ;
+            $em->flush() ;
+            return $this->redirectToRoute('contact_us');
+        }
+
+
+        return $this->render('@Article/Default/contactUs.html.twig', array(
+
+
+            'categories'=>$categories,
+            'recentArticles'=>$recentArticles ,
+            'popularArticles'=>$popularArticles,
+            'form'=>$form->createView(),
+
+        ));
+    }
+
 }

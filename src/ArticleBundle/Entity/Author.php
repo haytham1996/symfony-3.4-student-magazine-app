@@ -89,6 +89,29 @@ class Author
     private $instagram;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="twitter", type="string", length=255)
+     */
+    private $twitter;
+
+    /**
+     * @return string
+     */
+    public function getTwitter()
+    {
+        return $this->twitter;
+    }
+
+    /**
+     * @param string $twitter
+     */
+    public function setTwitter($twitter)
+    {
+        $this->twitter = $twitter;
+    }
+
+    /**
      * @return string
      */
     public function getFacebook()

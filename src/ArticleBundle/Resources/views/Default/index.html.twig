@@ -14,7 +14,7 @@
                         <div class="media post-block m-b-xs-20">
                             <figure class="fig-container">
                                 <a href="{{path('show_article',{'id':latestArticle.id})}}"><img src="{{asset('assets/images/article/')}}{{latestArticle.cover}}"
-                                                                         alt="latest post" style="width: 75rem ; height:50rem"></a>
+                                                                         alt="latest post" style="width: 75rem ; height:auto"></a>
 
                                 <div class="post-cat-group m-b-xs-10">
                                     {% if (  latestArticle.category.name =="Lifestyle") %}
@@ -58,7 +58,7 @@
 
                         </div>
                         <!-- End of .section-title -->
-                        {% for a in recentArticles %}
+                        {% for a in recentArticles | slice(0,3) %}
                         <div class="axil-content" >
                             <div class="media post-block m-b-xs-30">
                                 <a href="{{path('show_article',{'id':a.id})}}" class="align-self-center"><img src="{{asset('assets/images/article/')}}{{a.cover}}"
@@ -84,7 +84,7 @@
                                                 href="{{path('show_article',{'id':a.id})}}">{{ a.title }}</a></h3>
                                     <div class="post-metas">
                                         <ul class="list-inline">
-                                            <li><a href="#">{{a.author.firstName}} {{a.author.lastName}}</a></li>
+                                            <li>By <a href="#">{{a.author.firstName}} {{a.author.lastName}}</a></li>
                                         </ul>
                                     </div>
                                 </div>
