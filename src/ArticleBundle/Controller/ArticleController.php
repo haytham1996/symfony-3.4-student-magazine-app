@@ -81,10 +81,13 @@ class ArticleController extends Controller
         $categories = $em->getRepository('ArticleBundle:Category')->findAll();
         $images=$em->getRepository('ArticleBundle:Images')->findImagesByArticle($article->getId());
         $image1=$images[0] ;
-     //   $image2=$images[1];
-       // $image3=$images[2];
+        $allArticles=$em->getRepository('ArticleBundle:Article')->findAll();
         $recentArticles=$em->getRepository('ArticleBundle:Article')->findMost4Recent();
         $popularArticles=$em->getRepository('ArticleBundle:Article')->findPopularArticles();
+        $previousArticle=$em->getRepository('ArticleBundle:Article')->find($article->getId()-1);
+        $nextArticle=$em->getRepository('ArticleBundle:Article')->find($article->getId()+1);
+        $firstArticle=$allArticles[0];
+        $lastArticle=end($allArticles) ;
        // $content=nl2br($article->getContent()) ;
         $content=$article->getContent();
        // $content= str_replace("\n","<br />" , $content);
@@ -114,6 +117,10 @@ class ArticleController extends Controller
             'popularArticles'=>$popularArticles,
             'form'=>$form->createView(),
             'content'=>$content,
+            'nextArticle'=>$nextArticle,
+            "previousArticle"=>$previousArticle,
+            'firstArticle'=>$firstArticle,
+            'lastArticle'=>$lastArticle  ,
 
         ));
     }

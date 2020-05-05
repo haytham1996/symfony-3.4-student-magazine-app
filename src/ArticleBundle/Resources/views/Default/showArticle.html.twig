@@ -170,16 +170,54 @@
 
 
                         <div class="post-navigation-wrapper row  m-b-xs-60">
-                            <div class="post-navigation col-lg-6">
-
+                            {% if previousArticle == null %}
+                            <div class="post-navigation col-lg-6" style="background-image: url({{asset('assets/images/categories/')}}{{lastArticle.cover}}">
+                                <div class="post-nav-content" >
+                                    <a href="{{path('show_article',{'id': lastArticle.id}) }}" class="prev-post">
+                                        <i class="feather icon-chevron-left"></i>Previous Post
+                                    </a>
+                                    <h3><a href="{{path('show_article',{'id': lastArticle.id}) }}">{{lastArticle.Title}}</a></h3>
+                                </div>
                             </div>
+                            {% else %}
+                                <div class="post-navigation col-lg-6" style="background-image: url({{asset('assets/images/categories/')}}{{previousArticle.cover}}">
+                                    <div class="post-nav-content" >
+                                        <a href="{{path('show_article',{'id': previousArticle.id}) }}" class="prev-post">
+                                            <i class="feather icon-chevron-left"></i>Previous Post
+                                        </a>
+                                        <h3><a href="{{path('show_article',{'id': previousArticle.id}) }}">{{previousArticle.Title}}</a></h3>
+                                    </div>
+                                </div>
 
+
+                            {% endif %}
+                            {% if nextArticle == null %}
+                            <div class="post-navigation text-right col-lg-6" style="background-image: url({{asset('assets/images/categories/')}}{{firstArticle.cover}})">
+                                <div class="post-nav-content"  >
+                                    <a href="{{ path('show_article',{'id':firstArticle.id}) }}" class="next-post">
+                                        Next Post<i class="feather icon-chevron-right"></i>
+                                    </a>
+                                    <h3><a href="{{ path('show_article',{'id':firstArticle.id}) }}">{{firstArticle.title}}</a></h3>
+                                </div>
+                            </div>
+                                {% else %}
+                                    <div class="post-navigation text-right col-lg-6" style="background-image: url({{asset('assets/images/categories/')}}{{nextArticle.cover}})">
+                                        <div class="post-nav-content"  >
+                                            <a href="{{ path('show_article',{'id':nextArticle.id}) }}" class="next-post">
+                                                Next Post<i class="feather icon-chevron-right"></i>
+                                            </a>
+                                            <h3><a href="{{ path('show_article',{'id':nextArticle.id}) }}">{{nextArticle.title}}</a></h3>
+                                        </div>
+                                    </div>
+
+                            {% endif %}
                         </div>
                         <!-- End of .post-navigation -->
                     </main>
                     <!-- End of main -->
                 </div>
                 <!--End of .col-auto  -->
+
 
                 <div class="col-lg-4">
                     <aside class="post-sidebar">

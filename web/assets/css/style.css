@@ -8758,7 +8758,6 @@ blockquote p::before,
 
 .post-navigation-wrapper .post-navigation {
 	position: relative;
-	background: url(../images/post-nav-bg.jpg);
 	background-size: calc(100% - 0.4rem) 100%;
 	background-repeat: no-repeat;
 	background-position: center center;

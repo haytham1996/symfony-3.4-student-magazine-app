@@ -28,21 +28,21 @@ if ($name == "") {
     $msg['field'] = "contact-message";
     $msg['code'] = FALSE;
 } else {
-    $to = 'contact@example.com';
-    $subject = 'Papr Contact Query';
+    $to = 'haytham.benmansour@esprit.tn ';
+    $subject = 'Student magazine Contact Query';
     $_message = '<html><head></head><body>';
     $_message .= '<p>Name: ' . $name . '</p>';
-    $_message .= '<p>Message: ' . $phone . '</p>';
+    $_message .= '<p>phone: ' . $phone . '</p>';
     $_message .= '<p>Email: ' . $email . '</p>';
     $_message .= '<p>Message: ' . $message . '</p>';
     $_message .= '</body></html>';
 
     $headers = 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-    $headers .= 'From:  Papr <contact@example.com>' . "\r\n";
-    $headers .= 'cc: contact@example.com' . "\r\n";
-    $headers .= 'bcc: contact@example.com' . "\r\n";
-    mail($to, $subject, $_message, $headers, '-f contact@example.com');
+    $headers .= 'From:  Student magazine <studentmag@contact.com>' . "\r\n";
+    $headers .= 'cc: studentmag@contact.com' . "\r\n";
+    $headers .= 'bcc: studentmag@contact.com' . "\r\n";
+    mail($to, $subject, $_message, $headers, '-f studentmag@contact.com');
 
     $msg['success'] = "\n Email has been sent successfully.";
     $msg['code'] = TRUE;
