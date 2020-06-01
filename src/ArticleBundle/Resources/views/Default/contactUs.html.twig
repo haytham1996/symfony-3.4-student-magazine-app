@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
-
+{% block meta %}
+    <title>Contact us</title>
+{% endblock %}
 {% block css %}
 {% endblock %}
 
@@ -36,22 +38,6 @@
     </section>
     <!-- End of .banner -->
 
-    <div class="axil-about-us section-gap  section-gap-top__with-text">
-        <div class="container">
-
-            <div class="section-title d-block text-center">
-                <h2 class="axil-title m-b-xs-20">Meet Our Publishing Authors</h2>
-                <p>Wherever & whenever you need us. We are here for you - contact us for all your support needs,
-                    <br>be it technical, general queries or information support.</p>
-            </div>
-
-            <figure class="m-b-xs-30 p-t-xs-10">
-                <img src="{{ asset('assets/images/contact-banner.jpg') }}" alt="contact banner" class="img-fluid mx-auto">
-            </figure>
-        </div>
-        <!-- End of .container -->
-    </div>
-    <!-- End of .section-gap -->
 
     <section class="contact-form section-gap bg-grey-light-three ">
         <div class="container">
@@ -83,7 +69,7 @@
 
                                 <div class="form-group col-12">
                                     <label for="contact-email">Email</label>
-                                    <input type="email il" name="contact-email" id="contact-email">
+                                    <input type="email" name="contact-email" id="contact-email">
                                 </div>
 
                                 <div class="form-group col-12">
@@ -118,6 +104,9 @@
                                     <div>
                                         <a class="tel" href="tel:8884562790"><i class="fas fa-phone"></i> (+216)
                                             55 328 137</a>
+                                        <br><br>
+                                        <a class="tel" href="tel:8884562790"><i class="fas fa-phone"></i> (+216)
+                                            56 245 672</a>
                                     </div>
 
                                 </address>
@@ -177,6 +166,16 @@
 
 {% block js %}
 <script src="{{ asset('assets/scripts/email.php') }}"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166867040-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-166867040-1');
+    </script>
+
 {% endblock %}
 
 

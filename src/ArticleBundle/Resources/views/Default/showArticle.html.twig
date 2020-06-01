@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block meta %}
+    <title>{{ article.title }}</title>
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@Papr">
@@ -31,7 +32,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ path('article_homepage') }}">Home </a></li>
-                    <li class="breadcrumb-item"><a href="{{path('show_category',{'id': article.category.id}) }}">{{ article.category.name }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{path('show_category',{'slug': article.category.slug}) }}">{{ article.category.name  }}</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ article.title }}</li>
 
                 </ol>
@@ -49,7 +50,7 @@
                 <div class="col-lg-6">
                     <div class="post-title-wrapper">
                         <div class="btn-group">
-                            <a href="#" class="cat-btn bg-color-blue-one">{{article.category.name}}</a>
+                            <a href="{{ path('show_category',{'slug':article.category.slug}) }}" class="{{article.category.cssClass}}">{{article.category.name |upper}}</a>
                         </div>
 
                         <h2 class="m-t-xs-20 m-b-xs-0 axil-post-title hover-line">{{article.title}}
@@ -57,8 +58,8 @@
                         <div class="post-metas banner-post-metas m-t-xs-20">
                             <ul class="list-inline">
                                 <li><a href="#" class="post-author post-author-with-img">
-                                        <img alt="author" src="{{asset('assets/images/members/')}}{{ article.author.image }}">
-                                        {{article.author.firstName}} &nbsp {{article.author.lastName}} </a></li>
+                                        <img alt="{{article.title}}" src="{{asset('assets/images/members/')}}{{ article.author.image }}">
+                                        {{article.author.firstName}} {{article.author.lastName}} </a></li>
                                 <li><a href="#"><i class="feather icon-activity"></i>{{ article.views }}</a></li>
                                 <li><a href="#"><i class="feather icon-share-2"></i>{{article.share}}</a></li>
                             </ul>
@@ -70,7 +71,7 @@
                 <!-- End of .col-lg-6 -->
 
                 <div class="col-lg-6">
-                    <img src="{{asset('assets/images/article/')}}{{article.cover}}" alt="" class="img-fluid" width="600" height="600">
+                    <img src="{{asset('assets/images/article/')}}{{article.cover}}" alt="{{ article.title }}" class="img-fluid" width="600" height="600">
                 </div>
             </div>
             <!-- End of .row -->
@@ -103,7 +104,7 @@
                                     <p>{{ article.introduction   }}</p>
 
                                 <figure>
-                                    <img src="{{asset('assets/images/article/')}}{{image1.image}}" alt="img" >
+                                    <img src="{{asset('assets/images/article/')}}{{image1.image}}" alt="{{ article.title }}" >
                                     <figcaption></figcaption>
                                 </figure>
 
@@ -138,7 +139,7 @@
                         <div class="about-author m-b-xs-60">
                             <div class="media">
                                 <a href="#"><img class="rounded-circle " src="{{asset('assets/images/members/')}}{{ article.author.image }}"
-                                                 alt="" style="width: 7.5rem ; height: 7.5rem"></a>
+                                                 alt="{{ article.title }}" style="width: 7.5rem ; height: 7.5rem"></a>
                                 <div class="media-body">
                                     <div class="media-body-title">
                                         <h3><a href="#">{{article.author.firstName}} {{ article.author.lastName }}</a></h3>
@@ -173,19 +174,19 @@
                             {% if previousArticle == null %}
                             <div class="post-navigation col-lg-6" style="background-image: url({{asset('assets/images/categories/')}}{{lastArticle.cover}}">
                                 <div class="post-nav-content" >
-                                    <a href="{{path('show_article',{'id': lastArticle.id}) }}" class="prev-post">
+                                    <a href="{{path('show_article',{'slug': lastArticle.slug}) }}" class="prev-post">
                                         <i class="feather icon-chevron-left"></i>Previous Post
                                     </a>
-                                    <h3><a href="{{path('show_article',{'id': lastArticle.id}) }}">{{lastArticle.Title}}</a></h3>
+                                    <h3><a href="{{path('show_article',{'slug': lastArticle.slug}) }}">{{lastArticle.Title}}</a></h3>
                                 </div>
                             </div>
                             {% else %}
                                 <div class="post-navigation col-lg-6" style="background-image: url({{asset('assets/images/categories/')}}{{previousArticle.cover}}">
                                     <div class="post-nav-content" >
-                                        <a href="{{path('show_article',{'id': previousArticle.id}) }}" class="prev-post">
+                                        <a href="{{path('show_article',{'slug': previousArticle.slug}) }}" class="prev-post">
                                             <i class="feather icon-chevron-left"></i>Previous Post
                                         </a>
-                                        <h3><a href="{{path('show_article',{'id': previousArticle.id}) }}">{{previousArticle.Title}}</a></h3>
+                                        <h3><a href="{{path('show_article',{'slug': previousArticle.slug}) }}">{{previousArticle.Title}}</a></h3>
                                     </div>
                                 </div>
 
@@ -194,19 +195,19 @@
                             {% if nextArticle == null %}
                             <div class="post-navigation text-right col-lg-6" style="background-image: url({{asset('assets/images/categories/')}}{{firstArticle.cover}})">
                                 <div class="post-nav-content"  >
-                                    <a href="{{ path('show_article',{'id':firstArticle.id}) }}" class="next-post">
+                                    <a href="{{ path('show_article',{'slug':firstArticle.slug}) }}" class="next-post">
                                         Next Post<i class="feather icon-chevron-right"></i>
                                     </a>
-                                    <h3><a href="{{ path('show_article',{'id':firstArticle.id}) }}">{{firstArticle.title}}</a></h3>
+                                    <h3><a href="{{ path('show_article',{'slug':firstArticle.slug}) }}">{{firstArticle.title}}</a></h3>
                                 </div>
                             </div>
                                 {% else %}
                                     <div class="post-navigation text-right col-lg-6" style="background-image: url({{asset('assets/images/categories/')}}{{nextArticle.cover}})">
                                         <div class="post-nav-content"  >
-                                            <a href="{{ path('show_article',{'id':nextArticle.id}) }}" class="next-post">
+                                            <a href="{{ path('show_article',{'slug':nextArticle.slug}) }}" class="next-post">
                                                 Next Post<i class="feather icon-chevron-right"></i>
                                             </a>
-                                            <h3><a href="{{ path('show_article',{'id':nextArticle.id}) }}">{{nextArticle.title}}</a></h3>
+                                            <h3><a href="{{ path('show_article',{'slug':nextArticle.slug}) }}">{{nextArticle.title}}</a></h3>
                                         </div>
                                     </div>
 
@@ -230,8 +231,7 @@
                                 <div class="section-title">
                                     <h3 class="axil-title">Subscribe To Our Weekly Newsletter</h3>
                                     <p class="mid m-t-xs-10 m-b-xs-20">No spam, notifications only about new
-                                        products,
-                                        updates.</p>
+                                        articles, events, and exciting opportunities.</p>
                                 </div>
                                 <!-- End of .section-title -->
 
@@ -271,7 +271,7 @@
                                         <ul class="category-list-wrapper">
                                             {% for c in categories | slice(0,4) %}
                                                 <li class="category-list perfect-square">
-                                                    <a href="{{ path('show_category',{'id':c.id}) }}" class="list-inner"
+                                                    <a href="{{ path('show_category',{'slug':c.slug}) }}" class="list-inner"
                                                        style="background-image: url({{asset('assets/images/categories/')}}{{c.cover}})"
                                                     >
                                                         <div class="post-info-wrapper overlay">
@@ -296,7 +296,7 @@
                                         <ul class="category-list-wrapper">
                                             {% for c in categories | slice(4,8) %}
                                                 <li class="category-list perfect-square">
-                                                    <a href="{{ path('show_category',{'id':c.id}) }}" class="list-inner"
+                                                    <a href="{{ path('show_category',{'slug':c.slug}) }}" class="list-inner"
                                                        style="background-image: url({{asset('assets/images/categories/')}}{{c.cover}})"
                                                     >
                                                         <div class="post-info-wrapper overlay">
@@ -377,39 +377,19 @@
                                     <div class="axil-content">
                                         {% for ra in recentArticles %}
                                             <div class="media post-block post-block__small">
-                                                <a href="{{path('show_article',{'id': ra.id}) }}" class="align-self-center"><img
+                                                <a href="{{path('show_article',{'slug':ra.slug})}}" class="align-self-center"><img
                                                             class=" m-r-xs-30" src="{{asset('assets/images/article/')}}{{ ra.cover }}"
-                                                            alt="media image"></a>
+                                                            alt="{{ ra.title }}"></a>
                                                 <div class="media-body">
-                                                    {% if ra.category.name=="Lifestyle" %}
-                                                        <a href="{{path('show_category',{'id': article.category.id}) }}"
-                                                           class="post-cat color-green-one">{{ra.category.name}}</a>
-                                                    {% endif %}
-                                                    {% if ra.category.name=="Business" %}
-                                                        <a href="{{path('show_category',{'id': article.category.id}) }}"
-                                                           class="post-cat color-blue-two">{{ra.category.name}}</a>
-                                                    {% endif %}
-                                                    {% if ra.category.name=="Technology" %}
-                                                        <a href="{{path('show_category',{'id': article.category.id}) }}"
-                                                           class="post-cat color-blue-one">{{ra.category.name}}</a>
-                                                    {% endif %}
-                                                    {% if ra.category.name=="Events" %}
-                                                        <a href="{{path('show_category',{'id': article.category.id}) }}"
-                                                           class="post-cat color-red-one">{{ra.category.name}}</a>
-                                                    {% endif %}
-                                                    {% if ra.category.name=="Opportunities" %}
-                                                        <a href="{{path('show_category',{'id': article.category.id}) }}"
-                                                           class="post-cat color-blue-grey-one">{{ra.category.name}}</a>
-                                                    {% endif %}
-                                                    {% if ra.category.name=="News" %}
-                                                        <a href="{{path('show_category',{'id': article.category.id}) }}"
-                                                           class="post-cat color-blue-one">{{ra.category.name}}</a>
-                                                    {% endif %}
+                                                    <a href="{{path('show_category',{'slug': ra.category.slug})}}"
+                                                       class="{{ra.category.cssClassTwo}}">{{ra.category.name |upper}}</a>
+
+
                                                     <h4 class="axil-post-title hover-line hover-line"><a
-                                                                href="{{path('show_article',{'id': ra.id}) }}">{{ra.title}}</a></h4>
+                                                                href="{{path('show_article',{'slug':ra.slug})}}">{{ra.title}}</a></h4>
                                                     <div class="post-metas">
                                                         <ul class="list-inline">
-                                                            <li>By <a href="#">{{ra.author.firstName}} {{ ra.author.lastName }}</a></li>
+                                                            <li>By <a href="#">{{ra.author.firstName}}&nbsp{{ra.author.lastName}}</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -425,39 +405,19 @@
                                         {% for po in popularArticles %}
 
                                             <div class="media post-block post-block__small">
-                                                <a href="{{path('show_category',{'id': po.category.id}) }}" class="align-self-center"><img
+                                                <a href="{{path('show_category',{'slug': po.category.slug})}} " class="align-self-center"><img
                                                             class=" m-r-xs-30" src="{{asset('assets/images/article/')}}{{ po.cover }}"
-                                                            alt="media image"></a>
+                                                            alt="{{po.title}}"></a>
                                                 <div class="media-body">
-                                                    {% if po.category.name=="Lifestyle" %}
-                                                        <a href="{{path('show_category',{'id': po.category.id}) }}"
-                                                           class="post-cat color-green-one">{{po.category.name}}</a>
-                                                    {% endif %}
-                                                    {% if po.category.name=="Business" %}
-                                                        <a href="{{path('show_category',{'id': po.category.id}) }}"
-                                                           class="post-cat color-blue-two">{{po.category.name}}</a>
-                                                    {% endif %}
-                                                    {% if po.category.name=="Technology" %}
-                                                        <a href="{{path('show_category',{'id': po.category.id}) }}"
-                                                           class="post-cat color-blue-one">{{po.category.name}}</a>
-                                                    {% endif %}
-                                                    {% if po.category.name=="Events" %}
-                                                        <a href="{{path('show_category',{'id': po.category.id}) }}"
-                                                           class="post-cat color-red-one">{{po.category.name}}</a>
-                                                    {% endif %}
-                                                    {% if po.category.name=="Opportunities" %}
-                                                        <a href="{{path('show_category',{'id': po.category.id}) }}"
-                                                           class="post-cat color-blue-grey-one">{{po.category.name}}</a>
-                                                    {% endif %}
-                                                    {% if po.category.name=="News" %}
-                                                        <a href="{{path('show_category',{'id': po.category.id}) }}"
-                                                           class="post-cat color-blue-one">{{po.category.name}}</a>
-                                                    {% endif %}
+
+                                                    <a href="{{path('show_category',{'slug': po.category.slug})}}"
+                                                       class="{{po.category.cssClassTwo}}">{{po.category.name |upper}}</a>
+
                                                     <h4 class="axil-post-title hover-line hover-line"><a
-                                                                href="{{path('show_category',{'id': po.category.id}) }}">{{po.title}}</a></h4>
+                                                                href="{{path('show_article',{'slug':po.slug})}}">{{po.title}}</a></h4>
                                                     <div class="post-metas">
                                                         <ul class="list-inline">
-                                                            <li>By <a href="#">{{po.author.firstName}} {{ po.author.lastName }}</a></li>
+                                                            <li>By <a href="#">{{po.author.firstName}}&nbsp{{po.author.lastName}}</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -473,8 +433,6 @@
                                 <!-- End of .tab-content -->
                             </div>
                             <!-- End of .sidebar-post-widget -->
-                        <!-- End of .sidebar-post-widget -->
-
                             <div class="instagram-widget m-b-xs-40">
                                 <div class="widget-title">
                                     <h3>Instagram</h3>
@@ -549,16 +507,14 @@
                                     </ul>
                                     <!-- End of .instagram-post-list-wrapper -->
                                     <div class="m-t-xs-20">
-                                    <a href="https://www.instagram.com/studentmag.tn/" target="_blank">
-                                        <button class="btn btn-primary btn-small" >FOLLOW US</button>
-                                    </a>
+                                        <a href="https://www.instagram.com/studentmag.tn/" target="_blank">
+                                            <button class="btn btn-primary btn-small" >FOLLOW US</button>
+                                        </a>
                                     </div>
                                 </div>
                                 <!-- End of .content -->
                             </div>
-
-
-                        <!-- End of .add-block-widget -->
+                            <!-- End of .instagram-widget -->
                         </div>
                     </aside>
                     <!-- End of .post-sidebar -->
@@ -579,6 +535,16 @@
 
 {% block js %}
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e7fe80754b4827b"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166867040-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-166867040-1');
+    </script>
+
 
 {% endblock %}
 

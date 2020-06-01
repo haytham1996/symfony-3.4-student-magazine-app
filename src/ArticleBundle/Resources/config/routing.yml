@@ -1,11 +1,11 @@
 article_homepage:
-    path:     /home
+    path:     /
     defaults: { _controller: ArticleBundle:Article:index }
 show_article:
-    path:     /article/{id}
+    path:     /article/{slug}
     defaults: { _controller: ArticleBundle:Article:showArticle }
 show_category:
-  path:     /category/{id}
+  path:     /{slug}
   defaults: { _controller: ArticleBundle:Article:showCategory }
 search_ajax:
   path:     /search
@@ -13,4 +13,7 @@ search_ajax:
 contact_us:
   path:     /cotactus
   defaults: { _controller: ArticleBundle:Article:showContactUs }
+about_us:
+  path:     /about_us
+  defaults: { _controller: ArticleBundle:Article:showAboutUs }
 

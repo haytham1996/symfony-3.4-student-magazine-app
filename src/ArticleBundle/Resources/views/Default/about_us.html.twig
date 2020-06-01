@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+{% block meta %}
+    <title>About us</title>
+{% endblock %}
+{% block css %}
+{% endblock %}
+
+{% block body %}
+<div class="breadcrumb-wrapper">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('article_homepage') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">About Us</li>
+            </ol>
+            <!-- End of .breadcrumb -->
+        </nav>
+    </div>
+</div>
+    <!-- End of .container -->
+
+    <section class="banner banner__default bg-grey-light-three">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="post-title-wrapper">
+                        <h2 class="m-b-xs-0 axil-post-title hover-line">About Us</h2>
+                    </div>
+                    <!-- End of .post-title-wrapper -->
+                </div>
+                <!-- End of .col-lg-8 -->
+            </div>
+        </div>
+        <!-- End of .container -->
+    </section>
+
+
+<div class="axil-our-team section-gap section-gap-top__with-text bg-grey-light-three">
+    <div class="container">
+        <div class="axil-team-grid-wrapper">
+            <div class="section-title d-block text-center">
+                <h2 class="axil-title m-b-xs-20">Meet Our Team</h2>
+                <p>Wherever &amp; whenever you need us. We are here for you - contact us for all your
+                    support needs,
+                    <br>be it technical, general queries or information support.</p>
+            </div>
+            <div class="row">
+                {% for author in authors |slice(0 , 8) %}
+                    {% if author.firstName != "Hiba" %}
+                <div class="col-lg-4">
+                    <div class="axil-team-block m-b-xs-30">
+
+                            <img src="{{asset('assets/images/members/')}}{{ author.image}}" alt="{{author.firstName}}" style="max-width: 100% ; height: 256px">
+
+
+                        <div class="axil-team-inner-content text-center">
+                            <h3 class="axil-member-title hover-line"><a href="#">{{author.firstName}} {{ author.lastName }}</a></h3>
+                            <div class="axil-designation">
+                                {{author.post}}
+                            </div>
+                        </div>
+                        <!-- End of .axil-team-inner-content -->
+
+                        <div class="axil-team-share-wrapper">
+                            <ul
+                                    class="social-share social-share__with-bg social-share__with-bg-white social-share__vertical">
+                                <li><a href="{{ author.facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="{{ author.twitter }}" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="{{ author.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="{{ author.linkedin }}" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                            </ul>
+                            <!-- End of .social-share -->
+                        </div>
+                        <!-- End of .axil-team-share-wrapper -->
+                    </div>
+                    <!-- End of .team-block -->
+                </div>
+                <!-- End of .col-lg-4 -->
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+            <!-- End of .row -->
+        </div>
+        <!-- End of .team-grid-wrapper -->
+    </div>
+    <!-- End of .container -->
+
+    <div class="axil-about-us section-gap-top p-b-xs-20">
+        <div class="container">
+
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2 class="axil-title">Who are we ?</h2>
+
+                    <p>We are a student magazine based in Hammamet,
+                        that inspires, educates and celebrates students . </p>
+
+
+                    <h3 class="h4 m-t-lg-40">Our Vision</h3>
+
+                    <p> Build a generation of young Entrepreneurs
+                        that will change the world and create a better future .
+                    </p>
+
+
+                    <h3 class="h4 m-t-lg-40">Our Mission</h3>
+
+                    <p> Arm our students with knowledge and inspire
+                        them to push their limits and to be more active and creative .
+                    </p>
+
+                </div>
+                <!-- End of .col-lg-8 -->
+
+
+            </div>
+            <!-- End of .row -->
+        </div>
+        <!-- End of .container -->
+    </div>
+</div>
+</div>
+{% endblock %}
+
+
+{% block js %}
+<script src="{{ asset('assets/scripts/email.php') }}"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166867040-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-166867040-1');
+    </script>
+
+{% endblock %}
+
+

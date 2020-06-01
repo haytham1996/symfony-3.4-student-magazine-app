@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
+  <component name="CompassSettings">
+    <option name="compassConfigPath" value="$MODULE_DIR$/web/assets/less/components/config.rb" />
+    <option name="compassExecutableFilePath" value="C:/Ruby26-x64/bin/compass.bat" />
+    <option name="compassSupportEnabled" value="true" />
+  </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />

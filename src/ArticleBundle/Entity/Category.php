@@ -24,6 +24,13 @@ class Category
     /**
      * @var string
      *
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -40,6 +47,79 @@ class Category
      * @ORM\Column(name="cover", type="string")
      */
     private $cover;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="color", type="string")
+     */
+    private $color;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="css_class", type="string")
+     */
+    private $cssClass;
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * @return string
+     */
+
+
+
+    public function getCssClassTwo()
+    {
+        return $this->CssClassTwo;
+    }
+
+    /**
+     * @param string $CssClassTwo
+     */
+    public function setCssClassTwo($CssClassTwo)
+    {
+        $this->CssClassTwo = $CssClassTwo;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="css_class_two", type="string")
+     */
+    private $CssClassTwo;
+
+    /**
+     * @return string
+     */
+    public function getCssClass()
+    {
+        return $this->cssClass;
+    }
+
+    /**
+     * @param string $cssClass
+     */
+    public function setCssClass($cssClass)
+    {
+        $this->cssClass = $cssClass;
+    }
+
+
 
     /**
      * @return string
@@ -115,4 +195,21 @@ class Category
     {
         return $this->nbArticles;
     }
+
+    /**
+     * @return string
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * @param string $color
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+    }
+
 }

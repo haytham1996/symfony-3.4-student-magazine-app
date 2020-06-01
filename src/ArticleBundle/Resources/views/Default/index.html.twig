@@ -2,7 +2,16 @@
 
 {% block css %}
 {% endblock %}
+{% block meta %}
+    <title>Student magazine</title>
+    <meta name="description" content="We are a student magazine based in Hammamet,
+that inspires, educates and celebrates students .
+Our vision: Build a generation of young Entrepreneurs
+that will change the world and create a better future .
+Our mission: Arm our students with knowledge and inspire
+them to push their limits and to be more active and creative">
 
+{% endblock %}
 {% block body %}
 
     <div class="recent-news-wrapper section-gap p-t-xs-15 p-t-sm-60">
@@ -13,28 +22,21 @@
                     <div class="axil-latest-post">
                         <div class="media post-block m-b-xs-20">
                             <figure class="fig-container">
-                                <a href="{{path('show_article',{'id':latestArticle.id})}}"><img src="{{asset('assets/images/article/')}}{{latestArticle.cover}}"
-                                                                         alt="latest post" style="width: 75rem ; height:auto"></a>
+                                <a href="{{path('show_article',{'slug':latestArticle.slug})}}"><img src="{{asset('assets/images/article/')}}{{latestArticle.cover}}"
+                                                                                                alt="{{latestArticle.title}}" style="width: 75rem ; height:auto"></a>
 
                                 <div class="post-cat-group m-b-xs-10">
-                                    {% if (  latestArticle.category.name =="Lifestyle") %}
 
-                                        <a href="{{ path('show_category',{'id':latestArticle.category.id}) }}"
-                                           class="post-cat cat-btn bg-color-green-one">{{ latestArticle.category.name }}</a>
-                                    {% endif %}
-                                    {% if ( latestArticle.category.name =="Business") %}
-                                        <a href="{{ path('show_category',{'id':latestArticle.category.id}) }}"
-                                           class="post-cat cat-btn bg-color-purple-one">{{ latestArticle.category.name }}</a>
-                                    {% endif %}
-                                    {% if (latestArticle.category.name =="Technology") %}
-                                        <a href="{{ path('show_category',{'id':latestArticle.category.id}) }}"
-                                           class="post-cat cat-btn bg-color-blue-one">{{ latestArticle.category.name }}</a>
-                                    {% endif %}
+
+                                    <a href="{{ path('show_category',{'slug':latestArticle.category.slug}) }}"
+                                       class="{{latestArticle.category.cssClass}}">{{ latestArticle.category.name | upper }}</a>
+
+
                                 </div>
                             </figure>
                             <div class="media-body">
                                 <h3 class="axil-post-title hover-line hover-line"><a
-                                            href="{{path('show_article',{'id':latestArticle.id})}}">{{latestArticle.title}}</a></h3>
+                                            href="{{path('show_article',{'slug':latestArticle.slug})}}">{{latestArticle.title}}</a></h3>
                                 <div class="post-metas">
                                     <ul class="list-inline">
                                         <li>By <a href="#" class="post-author"> {{latestArticle.author.firstName}}&nbsp{{latestArticle.author.lastName}}</a></li>
@@ -59,54 +61,52 @@
                         </div>
                         <!-- End of .section-title -->
                         {% for a in recentArticles | slice(0,3) %}
-                        <div class="axil-content" >
-                            <div class="media post-block m-b-xs-30">
-                                <a href="{{path('show_article',{'id':a.id})}}" class="align-self-center"><img src="{{asset('assets/images/article/')}}{{a.cover}}"
+                            <div class="axil-content" >
+                                <div class="media post-block m-b-xs-30">
+                                    <a href="{{path('show_article',{'slug':a.slug})}}" class="align-self-center"><img src="{{asset('assets/images/article/')}}{{a.cover}}"
 
-                                            class=" m-r-xs-30"  alt=""></a>
-                                <div class="media-body">
-                                    <div class="post-cat-group m-b-xs-10">
-                                        {% if (a.category.name=="Lifestyle") %}
+                                                                                                                  class=" m-r-xs-30"  alt="{{ a.title }}"></a>
+                                    <div class="media-body">
+                                        <div class="post-cat-group m-b-xs-10">
 
-                                        <a href="{{ path('show_category',{'id':a.category.id}) }}"
-                                           class="post-cat cat-btn bg-color-green-one">{{ a.category.name }}</a>
-                                        {% endif %}
-                                        {% if (a.category.name=="Business") %}
-                                        <a href="{{ path('show_category',{'id':a.category.id}) }}"
-                                           class="post-cat cat-btn bg-color-purple-one">{{ a.category.name }}</a>
-                                        {% endif %}
-                                        {% if (a.category.name=="Technology") %}
-                                        <a href="{{ path('show_category',{'id':a.category.id}) }}"
-                                           class="post-cat cat-btn bg-color-blue-one">{{ a.category.name }}</a>
-                                        {% endif %}
+
+                                            <a href="{{ path('show_category',{'slug':a.category.slug}) }}"
+                                               class="{{a.category.cssClass}}">{{ a.category.name |upper }}</a>
+
+                                        </div>
+                                        <h3 class="axil-post-title hover-line hover-line"><a
+                                                    href="{{path('show_article',{'slug':a.slug})}}">{{ a.title }}</a></h3>
+                                        <div class="post-metas">
+                                            <ul class="list-inline">
+                                                <li>By <a href="#">{{a.author.firstName}} {{a.author.lastName}}</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                    <h3 class="axil-post-title hover-line hover-line"><a
-                                                href="{{path('show_article',{'id':a.id})}}">{{ a.title }}</a></h3>
-                                    <div class="post-metas">
-                                        <ul class="list-inline">
-                                            <li>By <a href="#">{{a.author.firstName}} {{a.author.lastName}}</a></li>
-                                        </ul>
-                                    </div>
+
                                 </div>
-
                             </div>
-                            </div>
-                            {% endfor %}
-                            <!-- End of .post-block -->
+                        {% endfor %}
+                        <!-- End of .post-block -->
 
-                        </div>
-                        <!-- End of .content -->
                     </div>
-                    <!-- End of .recent-news -->
+                    <!-- End of .content -->
                 </div>
-                <!-- End of .col-lg-6 -->
+                <!-- End of .recent-news -->
             </div>
-            <!-- End of .row -->
+            <!-- End of .col-lg-6 -->
         </div>
-        <!-- End of .container -->
+        <!-- End of .row -->
+    </div>
+    <!-- End of .container -->
     </div>
 
+
+
+
+
+
     <!-- End of .section-gap -->
+
     <section class="section-gap section-gap-top__with-text top-stories bg-grey-light-three">
         <div class="container">
             <div class="section-title m-b-xs-40">
@@ -117,27 +117,21 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="axil-img-container m-b-xs-30">
-                        <a href="{{path('show_article',{'id':topArticles[0].id})}}" class="d-block">
-                            <img src="{{asset('assets/images/article/')}}{{ topArticles[0].cover }}" alt="gallery images"
+                        <a href="{{path('show_article',{'slug':topArticles[0].slug})}}" class="d-block">
+                            <img src="{{asset('assets/images/article/')}}{{ topArticles[0].cover }}" alt="{{topArticles[0].title}}"
                                  class="w-100">
                             <div class="grad-overlay"></div>
                         </a>
                         <div class="media post-block position-absolute">
                             <div class="media-body media-body__big">
                                 <div class="post-cat-group m-b-xs-10">
-                                    {% if topArticles[0].category.name=="Lifestyle" %}
-                                    <a href="{{ path('show_category',{'id':topArticles[0].category.id}) }}" class="post-cat cat-btn bg-color-green-one">{{topArticles[0].category.name}}</a>
-                                    {% endif %}
-                                    {% if topArticles[0].category.name=="Business" %}
-                                        <a href="{{ path('show_category',{'id':topArticles[0].category.id}) }}" class="post-cat cat-btn bg-color-purple-one">{{topArticles[0].category.name}}</a>
-                                    {% endif %}
-                                    {% if topArticles[0].category.name=="Technology" %}
-                                        <a href="{{ path('show_category',{'id':topArticles[0].category.id}) }}" class="post-cat cat-btn bg-color-blue-one">{{topArticles[0].category.name}}</a>
-                                    {% endif %}
+
+                                    <a href="{{ path('show_category',{'slug':topArticles[0].category.slug}) }}" class="{{topArticles[0].category.cssClass}}">{{topArticles[0].category.name |upper}}</a>
+
                                 </div>
                                 <div class="axil-media-bottom">
                                     <h3 class="axil-post-title hover-line hover-line"><a
-                                                href="{{path('show_article',{'id':topArticles[0].id})}}">{{topArticles[0].title}}</a></h3>
+                                                href="{{path('show_article',{'slug':topArticles[0].slug})}}">{{topArticles[0].title}}</a></h3>
                                     <div class="post-metas">
                                         <ul class="list-inline">
                                             <li>By <a href="#" class="post-author">{{topArticles[0].author.firstName}}&nbsp{{topArticles[0].author.lastName}}</a></li>
@@ -156,27 +150,21 @@
                 <!-- End of .grid-item -->
                 <div class="col-lg-4">
                     <div class="axil-img-container m-b-xs-30">
-                        <a href="{{path('show_article',{'id':topArticles[1].id})}}" class="d-block">
-                            <img src="{{asset('assets/images/article/')}}{{  topArticles[1].cover }}" alt="gallery images"
+                        <a href="{{path('show_article',{'slug':topArticles[1].slug})}}" class="d-block">
+                            <img src="{{asset('assets/images/article/')}}{{  topArticles[1].cover }}" alt="{{  topArticles[1].title }}"
                                  class="w-100">
                             <div class="grad-overlay"></div>
                         </a>
                         <div class="media post-block position-absolute">
                             <div class="media-body">
                                 <div class="post-cat-group m-b-xs-10">
-                                    {% if topArticles[1].category.name=="Lifestyle" %}
-                                        <a href="{{ path('show_category',{'id':topArticles[1].category.id}) }}" class="post-cat cat-btn bg-color-green-one">{{topArticles[1].category.name}}</a>
-                                    {% endif %}
-                                    {% if topArticles[1].category.name=="Business" %}
-                                        <a href="{{ path('show_category',{'id':topArticles[1].category.id}) }}" class="post-cat cat-btn bg-color-purple-one">{{topArticles[1].category.name}}</a>
-                                    {% endif %}
-                                    {% if topArticles[1].category.name=="Technology" %}
-                                        <a href=href="{{ path('show_category',{'id':topArticles[1].category.id}) }}"" class="post-cat cat-btn bg-color-blue-one">{{topArticles[1].category.name}}</a>
-                                    {% endif %}
+
+                                    <a href="{{ path('show_category',{'slug':topArticles[1].category.slug}) }}" class="{{topArticles[1].category.cssClass}}">{{topArticles[1].category.name |upper}}</a>
+
                                 </div>
                                 <div class="axil-media-bottom">
                                     <h3 class="axil-post-title hover-line hover-line"><a
-                                                href="{{path('show_article',{'id':topArticles[1].id})}}">{{topArticles[1].title}}</a></h3>
+                                                href="{{path('show_article',{'slug':topArticles[1].slug})}}">{{topArticles[1].title}}</a></h3>
                                     <div class="post-metas">
                                         <ul class="list-inline">
                                             <li><a href="#"
@@ -190,8 +178,8 @@
                     </div>
                     <!-- End of .axil-img-container -->
                     <div class="axil-img-container m-b-xs-30">
-                        <a href="{{path('show_article',{'id':topArticles[2].id})}}" class="d-block">
-                            <img src="{{asset('assets/images/article/')}}{{ topArticles[2].cover }}" alt="gallery images"
+                        <a href="{{path('show_article',{'slug':topArticles[2].slug})}}" class="d-block">
+                            <img src="{{asset('assets/images/article/')}}{{ topArticles[2].cover }}" alt="{{ topArticles[2].title }}"
                                  class="w-100">
                             <div class="grad-overlay"></div>
                         </a>
@@ -199,19 +187,13 @@
                         <div class="media post-block position-absolute">
                             <div class="media-body">
                                 <div class="post-cat-group m-b-xs-10">
-                                    {% if topArticles[2].category.name=="Lifestyle" %}
-                                        <a href="{{ path('show_category',{'id':topArticles[2].category.id}) }}" class="post-cat cat-btn bg-color-green-one">{{topArticles[2].category.name}}</a>
-                                    {% endif %}
-                                    {% if topArticles[2].category.name=="Business" %}
-                                        <a href="{{ path('show_category',{'id':topArticles[2].category.id}) }}" class="post-cat cat-btn bg-color-purple-one">{{topArticles[2].category.name}}</a>
-                                    {% endif %}
-                                    {% if topArticles[2].category.name=="Technology" %}
-                                        <a href="{{ path('show_category',{'id':topArticles[2].category.id}) }}" class="post-cat cat-btn bg-color-blue-one">{{topArticles[2].category.name}}</a>
-                                    {% endif %}
+
+                                    <a href="{{ path('show_category',{'slug':topArticles[2].category.slug}) }}" class="{{topArticles[2].category.cssClass}}">{{topArticles[2].category.name |upper}}</a>
+
                                 </div>
                                 <div class="axil-media-bottom">
                                     <h3 class="axil-post-title hover-line hover-line"><a
-                                                href="{{path('show_article',{'id':topArticles[2].id})}}">{{topArticles[2].title}}</a></h3>
+                                                href="{{path('show_article',{'slug':topArticles[2].slug})}}">{{topArticles[2].title}}</a></h3>
                                     <div class="post-metas">
                                         <ul class="list-inline">
                                             <li><a href="#" class="d-flex align-items-center"><span>By {{topArticles[2].author.firstName}}&nbsp{{topArticles[2].author.lastName}}</span></a></li>
@@ -242,38 +224,32 @@
 
                 {% for tr in sixTrending %}
 
-                <div class="col-lg-6">
+                    <div class="col-lg-6">
 
-                    <div class="media post-block m-b-xs-30">
-                        <a href="{{path('show_article',{'id':tr.id})}}" class="align-self-center"><img class=" m-r-xs-30" src="{{asset('assets/images/article/')}}{{ tr.cover }}" alt=""></a>
-                        <div class="media-body">
-                            <div class="post-cat-group m-b-xs-10">
-                                {% if tr.category.name=="Lifestyle" %}
-                                    <a href="{{ path('show_category',{'id':tr.category.id}) }}" class="post-cat cat-btn bg-color-green-one">{{tr.category.name}}</a>
-                                {% endif %}
-                                {% if tr.category.name=="Business" %}
-                                    <a href="{{ path('show_category',{'id':tr.category.id}) }}" class="post-cat cat-btn bg-color-purple-one">{{tr.category.name}}</a>
-                                {% endif %}
-                                {% if tr.category.name=="Technology" %}
-                                    <a href="{{ path('show_category',{'id':tr.category.id}) }}" class="post-cat cat-btn bg-color-blue-one">{{tr.category.name}}</a>
-                                {% endif %}
-                            </div>
-                            <h3 class="axil-post-title hover-line hover-line"><a
-                                        href="{{path('show_article',{'id':tr.id})}}">{{ tr.title }}</a>
-                            </h3>
-                            <div class="post-metas">
-                                <ul class="list-inline">
-                                    <li>By <a href="#">{{tr.author.firstName}}&nbsp{{tr.author.lastName}}</a></li>
-                                </ul>
+                        <div class="media post-block m-b-xs-30">
+                            <a href="{{path('show_article',{'slug':tr.slug})}}" class="align-self-center"><img class=" m-r-xs-30" src="{{asset('assets/images/article/')}}{{ tr.cover }}" alt="{{ tr.title }}"></a>
+                            <div class="media-body">
+                                <div class="post-cat-group m-b-xs-10">
+
+                                    <a href="{{ path('show_category',{'slug':tr.category.slug}) }}" class="{{tr.category.cssClass}}">{{tr.category.name |upper}}</a>
+
+                                </div>
+                                <h3 class="axil-post-title hover-line hover-line"><a
+                                            href="{{path('show_article',{'slug':tr.slug})}}">{{ tr.title }}</a>
+                                </h3>
+                                <div class="post-metas">
+                                    <ul class="list-inline">
+                                        <li>By <a href="#">{{tr.author.firstName}}&nbsp{{tr.author.lastName}}</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
+                        <!-- End of .post-block -->
                     </div>
-                    <!-- End of .post-block -->
-                </div>
                 {% endfor %}    <!-- End of .col-lg-6 -->
             </div>
         </div>
-            <!-- End of .row -->
+        <!-- End of .row -->
 
         </div>
 
@@ -282,6 +258,7 @@
     </section>
     <!-- End of .trending-stories -->
 
+
     <div class="random-posts section-gap">
         <div class="container">
             <div class="row">
@@ -289,21 +266,15 @@
                     <main class="axil-content">
                       {% for la in articlesList %}
                         <div class="media post-block post-block__mid m-b-xs-30">
-                            <a href="{{path('show_article',{'id':la.id})}}" class="align-self-center"><img class=" m-r-xs-30" src="{{asset('assets/images/article/')}}{{ la.cover }}" alt=""></a>
+                            <a href="{{path('show_article',{'slug':la.slug})}}" class="align-self-center"><img class=" m-r-xs-30" src="{{asset('assets/images/article/')}}{{ la.cover }}" alt="{{ la.title }}"></a>
                             <div class="media-body">
                                 <div class="post-cat-group m-b-xs-10">
-                                    {% if la.category.name=="Lifestyle" %}
-                                        <a href="{{path('show_category',{'id':la.category.id})}}" class="post-cat cat-btn bg-color-green-one">{{la.category.name}}</a>
-                                    {% endif %}
-                                    {% if la.category.name=="Business" %}
-                                        <a href="{{path('show_category',{'id':la.category.id})}}" class="post-cat cat-btn bg-color-purple-one">{{la.category.name}}</a>
-                                    {% endif %}
-                                    {% if la.category.name=="Technology" %}
-                                        <a href="{{path('show_category',{'id':la.category.id})}}" class="post-cat cat-btn bg-color-blue-one">{{la.category.name}}</a>
-                                    {% endif %}
+
+                                        <a href="{{path('show_category',{'slug':la.category.slug})}}" class="{{la.category.cssClass}}">{{la.category.name |upper}}</a>
+
                                 </div>
                                 <h3 class="axil-post-title hover-line hover-line"><a
-                                            href="{{path('show_article',{'id':la.id})}}">{{ la.title }}</a>
+                                            href="{{path('show_article',{'slug':la.slug})}}">{{ la.title }}</a>
                                 </h3>
                                 {% set intro = la.introduction | split('.') %}
                                 <p class="mid">{{ intro[0] }} ... </p>
@@ -337,8 +308,7 @@
                                     <h3 class="axil-title">Subscribe To Our Weekly
                                         Newsletter</h3>
                                     <p class="mid m-t-xs-10 m-b-xs-20">No spam, notifications only about new
-                                        articles,
-                                        updates.</p>
+                                        articles, events, and exciting opportunities.</p>
                                 </div>
                                 {{ form_start(form2) }}
                                 <div class="subscription-form-wrapper">
@@ -347,12 +317,14 @@
                                             <label for="subscription-email-2">Enter Email Address</label>
                                             {{ form_widget(form2.mail) }}
                                         </div>
+
                                         <div class="m-b-xs-0">
                                             {{ form_widget(form2.Subscribe, { 'attr': {'class': 'btn btn-primary btn-small'} }) }}
                                             {{ form_rest(form2) }}
                                         </div>
                                     </form>
                                     <!-- End of .subscription-form -->
+
                                 </div>
                                 {{ form_end(form2) }}
 
@@ -360,6 +332,7 @@
                             </div>
                             <!-- End of .newsletter-content -->
                         </div>
+
 
 
                         <!-- End of  .newsletter-widget -->
@@ -381,7 +354,7 @@
                                         <ul class="category-list-wrapper">
                                         {% for c in categories | slice(0,4) %}
                                             <li class="category-list perfect-square">
-                                                <a href="{{ path('show_category',{'id':c.id}) }}" class="list-inner"
+                                                <a href="{{ path('show_category',{'slug':c.slug}) }}" class="list-inner"
                                                    style="background-image: url({{asset('assets/images/categories/')}}{{c.cover}})"
                                                 >
                                                     <div class="post-info-wrapper overlay">
@@ -406,7 +379,7 @@
                                         <ul class="category-list-wrapper">
                                             {% for c in categories | slice(4,8) %}
                                             <li class="category-list perfect-square">
-                                                <a href="{{ path('show_category',{'id':c.id}) }}" class="list-inner"
+                                                <a href="{{ path('show_category',{'slug':c.slug}) }}" class="list-inner"
                                                    style="background-image: url({{asset('assets/images/categories/')}}{{c.cover}})"
                                                 >
                                                     <div class="post-info-wrapper overlay">
@@ -486,36 +459,15 @@
                                     <div class="axil-content">
                                         {% for ra in recentArticles %}
                                         <div class="media post-block post-block__small">
-                                            <a href="{{path('show_article',{'id':ra.id})}}" class="align-self-center"><img
+                                            <a href="{{path('show_article',{'slug':ra.slug})}}" class="align-self-center"><img
                                                         class=" m-r-xs-30" src="{{asset('assets/images/article/')}}{{ ra.cover }}"
-                                                        alt="media image"></a>
+                                                        alt="{{ra.title}}"></a>
                                             <div class="media-body">
-                                                {% if ra.category.name=="Lifestyle" %}
-                                                <a href="{{path('show_category',{'id': ra.category.id})}}"
-                                                   class="post-cat color-green-one">{{ra.category.name}}</a>
-                                                {% endif %}
-                                                {% if ra.category.name=="Business" %}
-                                                    <a href="{{path('show_category',{'id': ra.category.id})}}"
-                                                       class="post-cat color-blue-two">{{ra.category.name}}</a>
-                                                {% endif %}
-                                                {% if ra.category.name=="Technology" %}
-                                                    <a href="{{path('show_category',{'id':ra.category.id})}}"
-                                                       class="post-cat color-blue-one">{{ra.category.name}}</a>
-                                                {% endif %}
-                                                {% if ra.category.name=="Events" %}
-                                                    <a href="{{path('show_category',{'id': ra.category.id})}}"
-                                                       class="post-cat color-red-one">{{ra.category.name}}</a>
-                                                {% endif %}
-                                                {% if ra.category.name=="Opportunities" %}
-                                                    <a href="{{path('show_category',{'id': ra.category.id})}}"
-                                                       class="post-cat color-blue-grey-one">{{ra.category.name}}</a>
-                                                {% endif %}
-                                                {% if ra.category.name=="News" %}
-                                                    <a href="{{path('show_category',{'id': ra.category.id})}}"
-                                                       class="post-cat color-blue-one">{{ra.category.name}}</a>
-                                                {% endif %}
+                                                <a href="{{path('show_category',{'slug': ra.category.slug})}}"
+                                                   class="{{ra.category.cssClassTwo}}">{{ra.category.name |upper}}</a>
+
                                                 <h4 class="axil-post-title hover-line hover-line"><a
-                                                            href="{{path('show_article',{'id':ra.id})}}">{{ra.title}}</a></h4>
+                                                            href="{{path('show_article',{'slug':ra.slug})}}">{{ra.title}}</a></h4>
                                                 <div class="post-metas">
                                                     <ul class="list-inline">
                                                         <li>By <a href="#">{{ra.author.firstName}}&nbsp{{ra.author.lastName}}</a></li>
@@ -534,36 +486,16 @@
                                         {% for po in popularArticles %}
 
                                             <div class="media post-block post-block__small">
-                                                <a href="{{path('show_category',{'id': po.category.id})}} " class="align-self-center"><img
+                                                <a href="{{path('show_category',{'slug': po.category.slug})}} " class="align-self-center"><img
                                                             class=" m-r-xs-30" src="{{asset('assets/images/article/')}}{{ po.cover }}"
-                                                            alt="media image"></a>
+                                                            alt="{{po.title}}"></a>
                                                 <div class="media-body">
-                                                    {% if po.category.name=="Lifestyle" %}
-                                                        <a href="{{path('show_category',{'id': po.category.id})}}"
-                                                           class="post-cat color-green-one">{{po.category.name}}</a>
-                                                    {% endif %}
-                                                    {% if po.category.name=="Business" %}
-                                                        <a href="{{path('show_category',{'id': po.category.id})}}"
-                                                           class="post-cat color-blue-two">{{po.category.name}}</a>
-                                                    {% endif %}
-                                                    {% if po.category.name=="Technology" %}
-                                                        <a href="{{path('show_category',{'id': po.category.id})}}"
-                                                           class="post-cat color-blue-one">{{po.category.name}}</a>
-                                                    {% endif %}
-                                                    {% if po.category.name=="Events" %}
-                                                        <a href="{{path('show_category',{'id': po.category.id})}}"
-                                                           class="post-cat color-red-one">{{po.category.name}}</a>
-                                                    {% endif %}
-                                                    {% if po.category.name=="Opportunities" %}
-                                                        <a href="{{path('show_category',{'id': po.category.id})}}"
-                                                           class="post-cat color-blue-grey-one">{{po.category.name}}</a>
-                                                    {% endif %}
-                                                    {% if po.category.name=="News" %}
-                                                        <a href="{{path('show_category',{'id': po.category.id})}}"
-                                                           class="post-cat color-blue-one">{{po.category.name}}</a>
-                                                    {% endif %}
+
+                                                        <a href="{{path('show_category',{'slug': po.category.slug})}}"
+                                                           class="{{po.category.cssClassTwo}}">{{po.category.name |upper}}</a>
+
                                                     <h4 class="axil-post-title hover-line hover-line"><a
-                                                                href="{{path('show_article',{'id':po.id})}}">{{po.title}}</a></h4>
+                                                                href="{{path('show_article',{'slug':po.slug})}}">{{po.title}}</a></h4>
                                                     <div class="post-metas">
                                                         <ul class="list-inline">
                                                             <li>By <a href="#">{{po.author.firstName}}&nbsp{{po.author.lastName}}</a></li>
@@ -681,6 +613,16 @@
 
 
 {% block js %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166867040-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-166867040-1');
+    </script>
+
 {% endblock %}
 
 

@@ -3,6 +3,7 @@
 namespace ArticleBundle\Controller;
 
 use ArticleBundle\Entity\Article;
+use ArticleBundle\Entity\Author;
 use ArticleBundle\Entity\Category;
 use ArticleBundle\Entity\User;
 use ArticleBundle\Form\UserType;
@@ -23,6 +24,7 @@ class ArticleController extends Controller
         $articles= $em->getRepository('ArticleBundle:Article')->findMost3Recent();
         $latestArticle=$articles[0] ;
          unset($articles[0]);
+         $allArticles=$em->getRepository('ArticleBundle:Article')->findAll();
          $topArticles = $em->getRepository('ArticleBundle:Article')->findMost3Shared();
          $sixTrendingsArticles=$em->getRepository('ArticleBundle:Article')->findTrendingSix();
          $articlesList=$em->getRepository('ArticleBundle:Article')->find8Aarticles();
@@ -57,7 +59,9 @@ class ArticleController extends Controller
 
 
 
+
         return $this->render('@Article/Default/index.html.twig', array(
+            'allArticles'=> $allArticles ,
             'articles' => $articles,
             'latestArticle'=>$latestArticle,
             'topArticles'=>$topArticles,
@@ -104,6 +108,7 @@ class ArticleController extends Controller
             $em->flush() ;
             return $this->redirectToRoute('show_article', ['id' => $article->getId()]);
         }
+
 
 
         return $this->render('@Article/Default/showArticle.html.twig', array(
@@ -174,7 +179,7 @@ class ArticleController extends Controller
     }
     public function getRealEntities($articles){
         foreach ($articles as $articles){
-            $realEntities[$articles->getId()] = [$articles->getCover(),$articles->getTitle() , $articles->getAuthor()->getFirstName()];
+            $realEntities[$articles->getSlug()] = [$articles->getCover(),$articles->getTitle() , $articles->getAuthor()->getFirstName() , $articles->getCategory()->getName , $articles->getCategory()->getCssClass , $articles->getCategory()->getSlag()];
         }
         return $realEntities;
     }
@@ -215,4 +220,15 @@ class ArticleController extends Controller
         ));
     }
 
+    public function  showAboutUsAction()
+    {
+        $em = $this->getDoctrine()->resetManager();
+        $authors = $em->getRepository(Author::class)->findAll();
+        $categories = $em->getRepository('ArticleBundle:Category')->findAll();
+
+        return $this->render('@Article/Default/about_us.html.twig', array(
+            'categories'=>$categories,
+            'authors' => $authors
+        ));
+    }
 }
